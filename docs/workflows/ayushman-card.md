@@ -68,4 +68,10 @@ flowchart TD
 
 **Why this matters for Sathi:** the card is the gateway to both PM-JAY and MJPJAY. A "family card drive" (who in the family has a card, who doesn't) is a cheap, high-trust first action that brings every family member into the Sathi profile, and the 70+ Vay Vandana card is an easy win for elderly parents.
 
-> Note: Working assumptions, not yet verified: eligibility lists, Maharashtra / MJPJAY integration, Vay Vandana rules for 70+, app steps and labels, SHA approval process, portability, and helpline / grievance channels. Verify against current NHA guidelines, beneficiary.nha.gov.in and State Health Assurance Society notifications before building.
+## Verification (27 Oct 2026, batch 1)
+
+- **Confirmed:** Ayushman Vay Vandana card for everyone **70+** regardless of income; covers **the senior individually** up to ₹5 lakh/year; apply on beneficiary.nha.gov.in or the Ayushman app (senior enrolment option + Aadhaar eKYC), or at empanelled hospitals / CSCs.
+- **Changed in guide:** added that Vay Vandana cover is up to ₹5 lakh a year for the senior.
+- **Not added:** helpline numbers (14555 not confirmed for Vay Vandana; 1800 11 0770 appears only on a third-party site).
+
+Sources: [Business Today: Ayushman Vaya Vandana card](https://www.businesstoday.in/amp/personal-finance/insurance/story/ayushman-vaya-vandana-card-2024-how-to-apply-for-the-card-online-offline-check-eligibility-documents-needed-452296-2024-11-02) · [Outlook Money: get your Ayushman card](https://www.outlookmoney.com/personal-finance/get-your-ayushman-card-in-15-minutes-how-to-apply) · [Angel One: Vaya Vandana eligibility](https://www.angelone.in/news/ayushman-vaya-vandana-yojana-check-eligibility-how-to-download-and-more)

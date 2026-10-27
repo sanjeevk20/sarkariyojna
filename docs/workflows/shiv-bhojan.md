@@ -72,4 +72,11 @@ flowchart TD
 
 **Why this matters for Sathi:** for diners this is a pure *location* problem ("which centre near me is open now?"), a clean geospatial use case. For operators (SHGs, NGOs) it is a classic government-payment-tracking problem, which opens a small B2B segment.
 
-> Note: Working assumptions, not yet verified: current price, thali contents, timings, plate quotas, photo-capture rule, operator selection and subsidy process, and whether / how many centres are currently operating (the scheme has been reviewed since launch). Verify against current Food & Civil Supplies GRs and District Supply Offices before building.
+## Verification (27 Oct 2026, batch 1)
+
+- **Confirmed:** the scheme is **continuing**: in March 2025 the Deputy CM told the Assembly there is no decision to discontinue it; the diner still pays **₹10** (actual cost about ₹50 urban / ₹35 rural, rest paid by the Food & Civil Supplies Department).
+- **Confirmed:** **vendor payment delays** have been reported, which supports the operator claim/payment tracker idea.
+- **Reported (secondary):** about 1,900 centres operating.
+- **Changed in guide:** tip now says the scheme is running but individual centres can close.
+
+Sources: [Free Press Journal: Govt won't discontinue Shiv Bhojan Thali](https://www.freepressjournal.in/mumbai/maha-govt-wont-discontinue-10-shiv-bhojan-thali-anandacha-shidha-schemes-dy-cm-ajit-pawar-confirms) · [Deccan Herald: schemes to continue](https://www.deccanherald.com/amp/story/india%2Fmaharashtra%2Fladki-bahin-yojana-ladka-bhau-yojana-shiv-bhojan-thali-anandacha-shidha-to-continue-maharashtra-government-3394717) · [Deccan Herald: ₹10 meal costs ₹50](https://www.deccanherald.com/amp/story/india%2Fmaharashtras-rs-10-shiv-bhojan-meal-actually-costs-rs-50-in-cities-govt-808884.html) · [sarkariyojana.com: Shiv Bhojan](https://sarkariyojana.com/shiv-bhojan-yojana/)

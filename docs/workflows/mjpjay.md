@@ -69,4 +69,13 @@ flowchart TD
 
 **Why this matters for Sathi (and GIS):** a health emergency is the moment families are most likely to be overcharged. Two features carry most of the value: (1) cards made for every family member in advance, and (2) "nearest network hospital that does *this* procedure", which is a geospatial query over the empanelled-hospital list and their package lists. That routing problem is a natural fit for your GIS expertise.
 
-> Note: Working assumptions, not yet verified: coverage amount and eligibility (universal coverage changes since 2024), number of procedures and hospitals, road-accident cover for non-residents, card process, pre-authorization and emergency rules, follow-up period, and helpline numbers. Verify against current State Health Assurance Society notifications, jeevandayee.gov.in and NHA guidelines before building.
+## Verification (27 Oct 2026, batch 1)
+
+Official portal (jeevandayee.gov.in) was not reachable from the research environment; checked against news and secondary sources.
+
+- **Confirmed:** since July 2024 the scheme covers all Maharashtra residents with a ration card and domicile (reportedly also domicile without ration card); cover raised from ₹1.5 lakh to **₹5 lakh per family**; integrated with PM-JAY; cashless at empanelled hospitals; Aarogyamitra helps at hospitals.
+- **Reported (secondary):** about 1,356 procedures and about 1,900 empanelled hospitals; road-accident victims in Maharashtra (including from outside the state) covered up to about ₹1 lakh per person.
+- **Not added:** helpline numbers (155388 / 1800-233-2200 appear only on aggregator sites). Add after official confirmation.
+- **No change needed** to the guide.
+
+Sources: [India TV: ₹5 lakh coverage for all from July](https://www.indiatvnews.com/maharashtra/maharashtra-upgraded-health-scheme-july-launch-premium-hike-mahatma-jyotirao-phule-jan-arogya-abhiyan-mjpjay-shas-ayushman-bharat-2024-06-18-937505) · [Business Today: govt to directly pay MJPJAY claims](https://www.businesstoday.in/personal-finance/insurance/story/maharashtra-govt-to-directly-pay-cashless-claims-under-mjpjay-scheme-check-details-446631-2024-09-19) · [Policybazaar: MJPJAY](https://www.policybazaar.com/health-insurance/govt-scheme/mahatma-jyotirao-phule-jan-arogya/)

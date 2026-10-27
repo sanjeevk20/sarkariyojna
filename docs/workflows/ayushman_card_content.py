@@ -15,7 +15,7 @@ T = {
   stuck="Stuck?", tip="Tip:",
   steps=[
    ("you", "Check if your family is eligible", "पात्रता तपासा",
-    "Check on <b>beneficiary.nha.gov.in</b> or the <b>Ayushman app</b> (\"Am I eligible\") using your mobile number, ration card or Aadhaar.<ul><li>Eligible poor and vulnerable families</li><li>In Maharashtra, families covered under <b>MJPJAY</b></li><li>Everyone aged <b>70 or more</b>, whatever their income (Ayushman Vay Vandana card)</li></ul>", None),
+    "Check on <b>beneficiary.nha.gov.in</b> or the <b>Ayushman app</b> (\"Am I eligible\") using your mobile number, ration card or Aadhaar.<ul><li>Eligible poor and vulnerable families</li><li>In Maharashtra, families covered under <b>MJPJAY</b></li><li>Everyone aged <b>70 or more</b>, whatever their income (Ayushman Vay Vandana card, up to ₹5 lakh a year for the senior)</li></ul>", None),
    ("you", "Keep these ready", "हे तयार ठेवा",
     "<ul><li><b>Aadhaar</b> of each family member</li><li><b>Mobile number linked to Aadhaar</b> (for OTP)</li><li><b>Ration card</b></li><li>A smartphone, or go to a CSC / hospital help desk</li></ul>",
     ("stuck", "Mobile not linked to Aadhaar? Use <b>face authentication</b> in the app, or update the mobile at an Aadhaar centre.")),
@@ -46,7 +46,7 @@ T = {
   stuck="अडचण?", tip="सूचना:",
   steps=[
    ("you", "कुटुंब पात्र आहे का ते तपासा", None,
-    "<b>beneficiary.nha.gov.in</b> किंवा <b>आयुष्मान ॲपवर</b> (\"Am I eligible\") मोबाईल नंबर, रेशन कार्ड किंवा आधार वापरून तपासा.<ul><li>पात्र गरीब व वंचित कुटुंबे</li><li>महाराष्ट्रात <b>महात्मा ज्योतिराव फुले जन आरोग्य योजनेत</b> समाविष्ट कुटुंबे</li><li><b>70 वर्षे किंवा जास्त</b> वयाचे सर्वजण, उत्पन्न कितीही असो (आयुष्मान वय वंदना कार्ड)</li></ul>", None),
+    "<b>beneficiary.nha.gov.in</b> किंवा <b>आयुष्मान ॲपवर</b> (\"Am I eligible\") मोबाईल नंबर, रेशन कार्ड किंवा आधार वापरून तपासा.<ul><li>पात्र गरीब व वंचित कुटुंबे</li><li>महाराष्ट्रात <b>महात्मा ज्योतिराव फुले जन आरोग्य योजनेत</b> समाविष्ट कुटुंबे</li><li><b>70 वर्षे किंवा जास्त</b> वयाचे सर्वजण, उत्पन्न कितीही असो (आयुष्मान वय वंदना कार्ड, ज्येष्ठ व्यक्तीसाठी वर्षाला ₹5 लाखांपर्यंत)</li></ul>", None),
    ("you", "हे तयार ठेवा", None,
     "<ul><li>कुटुंबातील प्रत्येकाचे <b>आधार</b></li><li><b>आधारशी लिंक मोबाईल नंबर</b> (OTP साठी)</li><li><b>रेशन कार्ड</b></li><li>स्मार्टफोन, किंवा CSC / रुग्णालयाच्या मदत कक्षात जा</li></ul>",
     ("stuck", "मोबाईल आधारशी लिंक नाही? ॲपमध्ये <b>चेहरा प्रमाणीकरण</b> वापरा, किंवा आधार केंद्रात मोबाईल अद्ययावत करा.")),

@@ -73,4 +73,13 @@ flowchart TD
 
 **Why this matters for Sathi:** this is the largest DBT scheme in Maharashtra by beneficiary count and a natural top-of-funnel. Women who come for Ladki Bahin also need income, domicile and bank-seeding fixes, and their families need scholarships and certificates: one profile, many schemes.
 
-> Note: Working assumptions, not yet verified: the ₹1,500 amount, age band, income limit, marital-status rules, exclusion list, ration-card income exemption, domicile alternatives, eKYC requirement, offline channels, and grievance route. Scheme rules have changed through GRs since launch; verify against the latest GRs and the live portal before building.
+## Verification (27 Oct 2026, batch 1)
+
+Official portal (ladakibahin.maharashtra.gov.in) was not reachable from the research environment; checked against news and secondary sources.
+
+- **Confirmed:** ₹1,500/month by DBT; women 21-65; family income up to ₹2.5 lakh; Aadhaar-linked bank account.
+- **Changed in guide:** eKYC is now **mandatory and annual**; tens of lakhs of beneficiaries (reported 68-92 lakh) were removed after the 2025-26 eKYC drive; some were wrongly flagged (e.g. as government employees) and later restored. Guide now says eKYC every year, warns about removal, and adds a grievance route for wrongful removal.
+- **Added caution:** new registrations **may be closed** (secondary sources say the portal now handles only eKYC, corrections and status). Not confirmed officially.
+- **Still unverified:** four-wheeler and other exclusion details, ration-card income exemption, domicile alternatives, max beneficiaries per household.
+
+Sources: [Free Press Journal: 68 lakh accounts closed after eKYC](https://www.freepressjournal.in/mumbai/maharashtras-ladki-bahin-yojana-sees-68-lakh-accounts-closed-after-e-kyc-drive) · [Outlook Money: 92 lakh names dropped](https://www.outlookmoney.com/news/maharashtra-drops-92-lakh-names-from-ladki-bahin-scheme-after-eligibility-checks) · [The Hitavada: 80 lakh ineligible after eKYC deadline](https://www.thehitavada.com/Encyc/2026/6/2/80-lakh-women-become-ineligible-for-ladki-bahin-scheme-after-e-kyc-deadline.html) · [The Hitavada: Won't scrap scheme, says Fadnavis](https://www.thehitavada.com/Encyc/2026/6/3/wont-scrap-ladki-bahin-scheme-says-fadnavis.html) · [sarkariyojana.com: eKYC](https://sarkariyojana.com/ladki-bahin-yojana-ekyc/)

@@ -70,4 +70,12 @@ flowchart TD
 
 **Why this matters for Sathi:** this is the first scheme in the set where the money comes from a **bank**, not the government. The real bottleneck is bank sanction, not the corporation's LOI. A bank-readiness score (documents, credit, project report quality) and an EMI/refund tracker are high-value features, and they open a B2B channel with banks and CAs, matching the brief's "Banks for loans" idea.
 
-> Note: Working assumptions, not yet verified: eligible communities, age and income limits, loan and interest-refund caps, refund period, group-loan options, portal name and flow, claim frequency, and escalation channels. Verify against current Annasaheb Patil Mahamandal GRs and udyog.mahaswayam.gov.in before building.
+## Verification (27 Oct 2026, batch 1)
+
+Official portal (udyog.mahaswayam.gov.in) not checked; sources are secondary and **conflict**.
+
+- **Confirmed (consistent across sources):** interest-refund model (bank loan first, corporation refunds interest on EMIs paid on time); individual and group loans; Maharashtra residents.
+- **Conflicting, so kept out of the guide:** individual loan cap (₹10 lakh vs ₹15 lakh), refund cap (₹3 lakh vs ₹4.5 lakh), age limit (18-50 men / 18-55 women vs up to 60), group loan up to ₹50 lakh with refund up to ₹15 lakh. The guide deliberately says "up to a set limit".
+- **No change needed** to the guide until official figures are confirmed.
+
+Sources: [Surajya Consultancy: APAMVM](https://www.surajyaconsultancy.com/scheme/apamvm) · [GovCSC: Annasaheb Patil loan scheme](https://govcsc.com/annasaheb-patil-loan-scheme/) · [Pune People's Co-op Bank](https://www.punepeoples.bank.in/annasaheb-patil-mahamandal-karj-yojana) · [SKOCH: Loan Interest Reimbursement Scheme](https://exhibition.skoch.in/beacon-of-hope/annasaheb-patil-arthik-magas-vikas-mahamandal-maryadit-mumbai/)

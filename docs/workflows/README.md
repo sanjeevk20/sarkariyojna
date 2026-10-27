@@ -2,7 +2,7 @@
 
 Step-by-step citizen guides (English + Marathi) and team system workflows for Maharashtra and central government services. Each page has a citizen guide image, a Marathi version, a Mermaid system diagram with Sathi touchpoints, and a stage table.
 
-> **Status:** all guides are working drafts written from general knowledge. Facts (amounts, limits, portals, status wording) and Marathi text are **not yet verified** against official sources. Each page lists what to verify.
+> **Status:** guides are working drafts. **Batch 1 checked on 27 Oct 2026** (Ladki Bahin, PMAY-Urban 2.0, MJPJAY, Ayushman card, Annasaheb Patil, Shiv Bhojan) against news and secondary sources, with corrections applied; see each page's *Verification* section. Official portals were not reachable from the research environment, so final confirmation against GRs is still needed. All other guides and all Marathi text are **not yet verified**.
 
 ## Certificates (the document chain)
 

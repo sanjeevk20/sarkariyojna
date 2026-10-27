@@ -77,4 +77,10 @@ flowchart TD
 
 **Why this matters for Sathi:** PMAY-U 2.0 has four very different paths behind one name, and fake "PMAY" websites are common. A trusted vertical chooser plus readiness check is high-value; ISS also opens a B2B channel with banks and housing finance companies.
 
-> Note: Working assumptions, not yet verified: income bands, the four verticals and who each is for, BLC / AHP assistance amounts, ISS loan / house-value caps and subsidy amount, female ownership rule, application channels, status labels, and grievance route. Verify against PMAY-U 2.0 operational guidelines, Maharashtra housing GRs, and pmay-urban.gov.in before building.
+## Verification (27 Oct 2026, batch 1)
+
+- **Confirmed (official):** income bands EWS up to ₹3 lakh, LIG ₹3-6 lakh, MIG ₹6-9 lakh; no pucca house anywhere in India; four verticals BLC / AHP / ARH / ISS; beneficiary picks **one** vertical; ISS maximum subsidy **₹1.80 lakh** for income up to ₹9 lakh.
+- **Added to guide:** "only one option" rule and ISS figures (₹1.80 lakh subsidy, loans up to ₹25 lakh, houses up to ₹35 lakh). The ₹25 lakh / ₹35 lakh caps and "4% on first ₹8 lakh over 5 yearly instalments" come from lender sites and are consistent across them.
+- **Still unverified:** BLC / AHP assistance amounts, carpet-area limits (sources differ), female-ownership rule, application channels and status labels.
+
+Sources: [PM India: Cabinet approves PMAY-U 2.0](https://www.pmindia.gov.in/en/news_updates/cabinet-approves-pradhan-mantri-awas-yojana-urban-2-0-scheme/) · [MoHUA PMAY-U FAQ](https://pmaymis.gov.in/pmaymis2_2024/faq.html) · [Tata Capital: PMAY 2.0](https://www.tatacapital.com/home-loan/pmay.html) · [IIFL Home Loans: PMAY-U 2.0](https://www.iiflhomeloans.com/pmay-urban)
