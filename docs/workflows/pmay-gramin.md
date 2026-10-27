@@ -1,6 +1,6 @@
 # PM Awas Yojana - Gramin (PMAY-G) - End-to-End Workflow
 
-Rural housing: financial help to build a pucca house, released in stages as construction progresses. Official site: https://pmayg.nic.in. Urban families use **PMAY-Urban 2.0**, a separate process not covered here.
+Rural housing: financial help to build a pucca house, released in stages as construction progresses. Official site: https://pmayg.nic.in. Urban families use [PMAY-Urban 2.0](pmay-urban.md).
 
 ## For citizens: step by step
 
