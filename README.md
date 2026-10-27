@@ -14,6 +14,7 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/workflows/income-certificate.md` | Aaple Sarkar income certificate: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/ferfar.md` | 7/12 Ferfar (mutation): citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/mahadbt-scholarship.md` | MahaDBT scholarship: student guide (EN + Marathi) + system workflow |
+| `docs/workflows/mjprf.md` | Mahatma Jyotiba Phule Research Fellowship (MahaJyoti PhD): guide (EN + Marathi) + system workflow |
 | `docs/workflows/caste-certificate.md` | Caste certificate: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/domicile-certificate.md` | Domicile certificate: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/ncl-certificate.md` | Non-Creamy Layer certificate: citizen guide (EN + Marathi) + system workflow |
