@@ -3,6 +3,11 @@
 Official site: https://pmkisan.gov.in (Operational Guidelines PDF + "Know Your Status").
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.
 
+![PM-KISAN end-to-end workflow](pm-kisan.png)
+
+<details><summary>Mermaid source (editable)</summary>
+
+
 ```mermaid
 flowchart TD
     A([Farmer wants PM-KISAN]) --> B{Eligible?<br/>Owns cultivable land<br/>Not income-tax payer / govt employee / pensioner above limit}
@@ -38,6 +43,8 @@ flowchart TD
     classDef blocked fill:#F8D7DA,stroke:#C82333,color:#000
     class F1,F2,F3,F4 blocked
 ```
+
+</details>
 
 ## Stages
 
