@@ -11,3 +11,5 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/product-brief.md` | Product brief: pain points, differentiator, 12 concepts, Scheme Finder deep dive, MVP plan, tech stack |
 | `docs/workflows/pm-kisan.md` | PM-KISAN: step-by-step farmer guide + system workflow with Sathi touchpoints |
 | `docs/workflows/income-certificate.md` | Aaple Sarkar income certificate: citizen guide (EN + Marathi) + system workflow |
+| `docs/workflows/ferfar.md` | 7/12 Ferfar (mutation): citizen guide (EN + Marathi) + system workflow |
+| `docs/workflows/gen_guide.py` | Renders citizen guides from a `*_content.py` file |
