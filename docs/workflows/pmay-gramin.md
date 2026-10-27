@@ -16,6 +16,15 @@ Blue = you do this. Purple = government does this (you wait). Green = house comp
 
 Sources: [`pmay-gramin-guide.html`](pmay-gramin-guide.html), [`pmay-gramin-guide-mr.html`](pmay-gramin-guide-mr.html), generated from [`pmay_gramin_content.py`](pmay_gramin_content.py) with `python3 gen_guide.py pmay_gramin_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| PMAY-G: beneficiary search and reports | <https://pmayg.nic.in> | Third-party sites only |
+| PIB: PMAY-G document (PDF) | <https://static.pib.gov.in/WriteReadData/specificdocs/documents/2024/nov/doc20241119437801.pdf> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

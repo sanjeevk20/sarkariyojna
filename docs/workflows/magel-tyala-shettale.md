@@ -18,6 +18,15 @@ Blue = you do this. Purple = agriculture office does this (you wait). Green = gr
 
 Sources: [`magel-tyala-shettale-guide.html`](magel-tyala-shettale-guide.html), [`magel-tyala-shettale-guide-mr.html`](magel-tyala-shettale-guide-mr.html), generated from [`magel_tyala_shettale_content.py`](magel_tyala_shettale_content.py) with `python3 gen_guide.py magel_tyala_shettale_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| MahaDBT: apply, track, grievance | <https://mahadbt.maharashtra.gov.in> | Government page |
+| Agriculture Department, Maharashtra | <https://krishi.maharashtra.gov.in> | Third-party sites only |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

@@ -16,6 +16,15 @@ Blue = you do this. Purple = government / bank does this (you wait). Green = hom
 
 Sources: [`pmay-urban-guide.html`](pmay-urban-guide.html), [`pmay-urban-guide-mr.html`](pmay-urban-guide-mr.html), generated from [`pmay_urban_content.py`](pmay_urban_content.py) with `python3 gen_guide.py pmay_urban_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| PMAY-U 2.0: apply online | <https://pmay-urban.gov.in> | Third-party sites only |
+| PMAY-U MIS: FAQ | <https://pmaymis.gov.in/pmaymis2_2024/faq.html> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

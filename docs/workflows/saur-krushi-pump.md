@@ -16,6 +16,15 @@ Blue = you do this. Purple = MSEDCL / supplier does this (you wait). Green = pum
 
 Sources: [`saur-krushi-pump-guide.html`](saur-krushi-pump-guide.html), [`saur-krushi-pump-guide-mr.html`](saur-krushi-pump-guide-mr.html), generated from [`saur_krushi_pump_content.py`](saur_krushi_pump_content.py) with `python3 gen_guide.py saur_krushi_pump_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| MSEDCL solar pump portal: apply, pay, complain | <https://www.mahadiscom.in/solar_MTSKPY/> | Government page |
+| MSEDCL: FAQ | <https://www.mahadiscom.in/solar_MTSKPY/faq.php> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

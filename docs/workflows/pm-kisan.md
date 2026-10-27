@@ -17,6 +17,16 @@ Source to edit: [`pm-kisan-farmer-guide.html`](pm-kisan-farmer-guide.html)
 
 Source to edit: [`pm-kisan-farmer-guide-mr.html`](pm-kisan-farmer-guide-mr.html). Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| PM-KISAN: eKYC, Know Your Status | <https://pmkisan.gov.in> | Government page |
+| Helpline: 155261 / 011-24300606 | - | Government page |
+| AgriStack Farmer ID (Maharashtra) | <https://mhfr.agristack.gov.in> | Third-party sites only |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

@@ -16,6 +16,16 @@ Blue = you / family do this. Purple = hospital / scheme does this. Green = treat
 
 Sources: [`mjpjay-guide.html`](mjpjay-guide.html), [`mjpjay-guide-mr.html`](mjpjay-guide-mr.html), generated from [`mjpjay_content.py`](mjpjay_content.py) with `python3 gen_guide.py mjpjay_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| MJPJAY (Jeevandayee): hospitals, packages | <https://www.jeevandayee.gov.in> | Government page |
+| MJPJAY contact page | <https://www.jeevandayee.gov.in/MJPJAY/marathi/ContactUs.html> | Government page |
+| Short code 155388 (DoT allotment) | <https://dot.gov.in/node/4256> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

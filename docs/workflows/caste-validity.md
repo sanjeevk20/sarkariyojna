@@ -16,6 +16,16 @@ Blue = you do this. Purple = committee does this (you wait). Green = validity re
 
 Sources: [`caste-validity-guide.html`](caste-validity-guide.html), [`caste-validity-guide-mr.html`](caste-validity-guide-mr.html), generated from [`caste_validity_content.py`](caste_validity_content.py) with `python3 gen_guide.py caste_validity_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| CCVIS (BARTI): SC / OBC / VJNT / SBC validity | <https://ccvis.barti.in/home_menu.php> | Government page |
+| e-Tribe Validity (TRTI): ST validity | <https://etribevalidity.trti-maha.in/> | Government page |
+| BARTI: caste certificate verification | <https://www.barti.in/department/cast-certificate-verification> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

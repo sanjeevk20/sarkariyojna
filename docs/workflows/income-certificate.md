@@ -18,6 +18,15 @@ Source to edit: [`income-certificate-guide.html`](income-certificate-guide.html)
 
 Source to edit: [`income-certificate-guide-mr.html`](income-certificate-guide-mr.html). Both guides are generated from [`income_certificate_content.py`](income_certificate_content.py) with `python3 gen_guide.py income_certificate_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| Aaple Sarkar: apply and track | <https://aaplesarkar.mahaonline.gov.in> | Third-party sites only |
+| India.gov.in: Maharashtra income certificate service | <https://services.india.gov.in/service/detail/maharashtra-income-certificate-with-affidavit> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.
