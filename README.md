@@ -25,4 +25,5 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/workflows/shravanbal.md` | Shravanbal Yojana (senior citizen pension): citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/mjpjay.md` | Mahatma Jyotiba Phule Jan Arogya Yojana: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/ayushman-card.md` | Ayushman Bharat card: citizen guide (EN + Marathi) + system workflow |
+| `docs/workflows/shiv-bhojan.md` | Shiv Bhojan Thali: diner guide (EN + Marathi) + diner / operator workflow |
 | `docs/workflows/gen_guide.py` | Renders citizen guides from a `*_content.py` file |
