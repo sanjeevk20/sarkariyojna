@@ -11,6 +11,7 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/workflows/README.md` | **Index of all workflow guides**, grouped by category, with quick routers |
 | `docs/product-brief.md` | Product brief: pain points, differentiator, 12 concepts, Scheme Finder deep dive, MVP plan, tech stack |
 | `docs/workflows/pm-kisan.md` | PM-KISAN: step-by-step farmer guide + system workflow with Sathi touchpoints |
+| `docs/workflows/pik-vima.md` | Crop insurance (PM Fasal Bima, Maharashtra 2025 rules): guide (EN + Marathi) + system workflow |
 | `docs/workflows/krushi-swavalamban.md` | Krushi Swavalamban Yojana (SC farmers, wells / irrigation): guide (EN + Marathi) + system workflow |
 | `docs/workflows/birsa-munda.md` | Birsa Munda Krushi Kranti Yojana (ST farmers, wells / irrigation): guide (EN + Marathi) + system workflow |
 | `docs/workflows/magel-tyala-shettale.md` | Magel Tyala Shettale (farm pond): guide (EN + Marathi) + system workflow |
