@@ -78,4 +78,10 @@ flowchart TD
 
 **Why this matters for Sathi:** together with Annasaheb Patil (open category), this gives Sathi a **"which corporation is mine?"** router across community-specific development corporations, which is a common point of confusion. The same bank-readiness and EMI-tracker features apply to both.
 
-> Note: Working assumptions, not yet verified: eligible communities, age and income limits, project-size bands and subsidy / margin-money amounts, interest rates, NSFDC scheme list, online application availability, sanction committee process, and escalation channels. Verify against current Mahatma Phule Mahamandal GRs and the corporation's official website before building.
+## Verification (27 Oct 2026, batch 3)
+
+- **Reported (secondary):** official website **mpbcdc.maharashtra.gov.in**; small-project subsidy scheme with 50% bank loan + corporation grant (figures unclear: around ₹10,000 grant, projects up to ~₹50,000).
+- **Changed in guide:** official website added.
+- **Not found:** age / income limits, NSFDC scheme details, online application steps. Guide keeps general wording.
+
+Sources: [MahaBharti: Anudan Yojana for Backward Class (mpbcdc)](https://mahabharti.in/yojana/anudan-yojana-for-backward-class)

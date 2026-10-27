@@ -69,4 +69,10 @@ flowchart TD
 
 **Why this matters for Sathi:** SGNY beneficiaries are among the most vulnerable and least able to visit offices repeatedly. The most common silent failure is a missed annual life certificate, which a simple reminder prevents. This is a strong case for assisted-mode (e-Seva operator / family member) use of Sathi.
 
-> Note: Working assumptions, not yet verified: benefit amount, age limit, income limit, residence requirement, full list of eligible categories, disability threshold, committee structure, life-certificate rule, and transition at 65. Verify against current Maharashtra Social Justice / Revenue GRs and Aaple Sarkar before building.
+## Verification (27 Oct 2026, batch 3)
+
+- **Confirmed (official district sites):** **₹1,500/month by DBT**; **₹2,500** for beneficiaries with disability (from Oct 2025); family income **up to ₹21,000/year** or BPL (**₹50,000** for disability); below 65; apply via Aaple Sarkar / MahaDBT or Tahsil / Talathi office.
+- **Changed in guide:** exact amounts and income limits added.
+- **Still unverified:** life-certificate rule, full category list, committee process.
+
+Sources: [Thane district: Sanjay Gandhi Niradhar Yojana](https://thane.nic.in/en/sanjay-ghandhi-niradhar-yojana/) · [Gadchiroli district: Sanjay Gandhi Yojana](https://gadchiroli.gov.in/sanjay-gandhi-yojana/) · [Vikaspedia: SGNY](https://en.vikaspedia.in/viewcontent/schemesall/state-specific-schemes/welfare-schemes-of-maharashtra/sanjay-gandhi-niradhar-anudan-yojana-of-maharashtra-govt?lgn=en)

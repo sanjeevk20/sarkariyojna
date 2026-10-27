@@ -78,4 +78,10 @@ flowchart TD
 
 Helpline: 155261 / 011-24300606
 
-> Note: Stage names and status strings are working assumptions from the Operational Guidelines and status page as recalled, not yet verified against the live site. Verify before building.
+## Verification (27 Oct 2026, batch 3)
+
+- **Confirmed:** "RFT signed by State Govt" = state has verified and requested release; "FTO generated, payment confirmation pending" = transfer order created, money due soon. A "temporary hold" status is also reported.
+- **No change needed** to the guide.
+- **Still unverified:** exclusion list incl. ₹10,000 pension threshold, helpline numbers, eKYC rule details.
+
+Sources: [AgriFarming: FTO processed but money not received](https://www.agrifarming.in/pm-kisan-fto-processed-but-money-not-received) · [BiharHelp: RFT signed by state](https://biharhelp.in/pm-kisan-rft-signed-by-state/) · [GovtSchemes: temporary hold](https://www.govtschemes.in/pm-kissan-temporary-hold)

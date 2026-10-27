@@ -72,4 +72,11 @@ flowchart TD
 
 **Why this matters for Sathi:** the applicant is elderly but the *user* is usually a son, daughter or e-Seva operator. Sathi's family profile fits naturally: one person manages a parent's pension, a sibling's scholarship and their own certificates. The annual life-certificate reminder alone prevents the most common silent stoppage.
 
-> Note: Working assumptions, not yet verified: benefit amount and Group A / B split, central IGNOAPS share, age and income limits, residence rule, accepted age proofs, committee process, and life-certificate rule. Verify against current Maharashtra Social Justice / Revenue GRs, NSAP guidelines and Aaple Sarkar before building.
+## Verification (27 Oct 2026, batch 3)
+
+- **Confirmed (official district sites):** **₹1,500/month by DBT** for **65+**; family income **up to ₹21,000/year** or BPL.
+- **Conflicting:** one non-official site splits it as ₹1,300 state + IGNOAPS central share; official district pages state ₹1,500. Guide uses ₹1,500.
+- **Changed in guide:** exact amount and income limit added.
+- **Still unverified:** life-certificate rule, accepted age proofs, Group A/B mechanics.
+
+Sources: [Thane district: Sanjay Gandhi / Shravanbal](https://thane.nic.in/en/sanjay-ghandhi-niradhar-yojana/) · [Gadchiroli district: Sanjay Gandhi Yojana](https://gadchiroli.gov.in/sanjay-gandhi-yojana/) · [Public Services Map: Maharashtra schemes](https://www.publicservicesmap.in/schemes/maharashtra)

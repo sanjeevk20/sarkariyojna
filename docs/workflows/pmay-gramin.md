@@ -72,4 +72,10 @@ flowchart TD
 
 **Why this matters for Sathi (and GIS):** PMAY-G is a geo-tagged, stage-gated workflow tied to a land parcel. That connects directly to the land wedge: the same parcel's 7/12 must be clean for sanction, and every instalment depends on a verified geo-tagged photo. A stage tracker that checks photo location against the parcel, and flags "instalment due but photo missing", is a natural fit for GIS-based validation and a candidate for narrow patent claims.
 
-> Note: Working assumptions, not yet verified: unit assistance amount, instalment count and stages, exclusion criteria (revised in 2024), Awaas+ survey and self-survey process, MGNREGA wage days, SBM toilet amount, state gharkul scheme names, land-purchase assistance, and grievance route. Verify against current PMAY-G guidelines, Maharashtra Rural Development GRs, and pmayg.nic.in before building.
+## Verification (27 Oct 2026, batch 3)
+
+- **Confirmed (official):** 2024-29 phase, 2 crore houses; unit assistance **₹1.20 lakh** (plains) / **₹1.30 lakh** (NE, hill states, J&K, Ladakh); **90/95 days MGNREGA** wages; **₹12,000** toilet support; identification via **Awaas+ 2024 app** (launched 17 Sep 2024).
+- **Changed in guide:** exclusion list updated to the **Sept 2024 relaxed criteria**: still excluded for motorised 3/4-wheelers, mechanised farm equipment, KCC limit ₹50,000+, income/professional tax payers, 2.5+ acres irrigated land; two-wheelers, fridges and income up to ₹15,000/month **no longer** exclude.
+- **Still unverified:** instalment count/stages, state gharkul scheme names, land-purchase assistance, grievance route.
+
+Sources: [PIB: PMAY-G document](https://static.pib.gov.in/WriteReadData/specificdocs/documents/2024/nov/doc20241119437801.pdf) · [Sansad: parliamentary reply](https://eparlib.sansad.in/bitstream/123456789/3006401/1/AU1336_CA4fLm.pdf) · [Business Today: exclusion norms relaxed](https://www.businesstoday.in/amp/india/story/pmay-g-automatic-exclusion-norms-relaxed-details-on-centres-rural-housing-scheme-here-445380-2024-09-11) · [Vajiram & Ravi: new eligibility norms](https://vajiramandravi.com/current-affairs/centre-eases-exclusion-criteria-for-pmay-gramin-new-eligibility-norms-explained/)

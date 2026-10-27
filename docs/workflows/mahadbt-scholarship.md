@@ -68,4 +68,11 @@ flowchart TD
 | 7 | DBT payment | PFMS / bank | Aadhaar not seeded, account inactive | Bank-side checklist |
 | - | Renewal | Student | Forgets renewal; new income cert needed | Renewal reminder |
 
-> Note: Working assumptions, not yet verified: registration menu labels, status wording ("Sent back", "Pending at college"), "My Applied Schemes" label, the one-scholarship rule, which schemes pay fees to the college, and the grievance route. Verify on the live portal and per-scheme GRs before building.
+## Verification (27 Oct 2026, batch 3)
+
+- **Reported (college notice, 2025-26):** income limits **SC/ST ₹2.5 lakh**, **OBC/SBC/VJNT/SEBC ₹8 lakh**; current-year income certificate from Tehsildar required.
+- **Timing:** the 2025-26 cycle reportedly closed on 30 Nov 2025; 2026-27 expected to open. Check the portal for current dates.
+- **No change needed** to the guide (it avoids fixed limits and stresses current-year income certificate and deadlines).
+- **Still unverified:** one-scholarship rule, status wording ("pending at college"), grievance route, renewal pass rules (sources conflict).
+
+Sources: [Tirpude College: Notice of Scholarship 2025](https://www.tirpude.edu.in/wp-content/uploads/2025/10/Notice-of-Scholarship-2025.pdf) · [IndiaScholarships: MahaDBT post-matric](https://www.indiascholarships.in/bn/scholarships/mahadbt-post-matric-scholarship-maharashtra) · [DJSCE: MahaDBT form filling](https://www.djsce.ac.in/docs/Process-of-MahaDBT-Scholarship-Form-Filling-1.pptx.pdf)
