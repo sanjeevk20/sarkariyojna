@@ -4,7 +4,7 @@ Step-by-step citizen guides (English + Marathi) and team system workflows for Ma
 
 > **Status:** **all 26 guides checked on 27 Oct 2026** (3 batches) against news, district/central government pages and secondary sources, with corrections applied; see each page's *Verification* section. Maharashtra state portals were not reachable from the research environment, so final confirmation against current GRs is still needed, and **Marathi text still needs native-speaker review**.
 
-> **Uttar Pradesh:** 12 more guides (English + Hindi) are in [`up/`](up/README.md).
+> **Other states:** Uttar Pradesh, 12 guides (English + Hindi) in [`up/`](up/README.md); Karnataka, 10 guides (English + Kannada) in [`ka/`](ka/README.md).
 
 ## Certificates (the document chain)
 
