@@ -18,6 +18,15 @@ Blue = you do this. Purple = MahaJyoti / university does this (you wait). Green 
 
 Sources: [`mjprf-guide.html`](mjprf-guide.html), [`mjprf-guide-mr.html`](mjprf-guide-mr.html), generated from [`mjprf_content.py`](mjprf_content.py) with `python3 gen_guide.py mjprf_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| MahaJyoti: notices and applications | <https://mahajyoti.org.in> | Government page |
+| MahaJyoti: PhD scheme guidelines (PDF) | <https://mahajyoti.org.in/wp-content/uploads/2023/06/Guidelines-for-PhD-Scheme-2023-23.06.2023-Final-Approved-1.pdf> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

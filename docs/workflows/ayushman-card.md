@@ -16,6 +16,16 @@ Blue = you do this. Purple = government does this (you wait). Green = card in us
 
 Sources: [`ayushman-card-guide.html`](ayushman-card-guide.html), [`ayushman-card-guide-mr.html`](ayushman-card-guide-mr.html), generated from [`ayushman_card_content.py`](ayushman_card_content.py) with `python3 gen_guide.py ayushman_card_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| Ayushman card: create / download | <https://beneficiary.nha.gov.in> | Third-party sites only |
+| PM-JAY: scheme and hospitals | <https://pmjay.gov.in> | Third-party sites only |
+| Helpline: 14555 | - | Third-party sites only |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

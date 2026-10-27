@@ -16,6 +16,15 @@ Blue = you do this. Purple = government does this (you wait). Green = money rece
 
 Sources: [`ladki-bahin-guide.html`](ladki-bahin-guide.html), [`ladki-bahin-guide-mr.html`](ladki-bahin-guide-mr.html), generated from [`ladki_bahin_content.py`](ladki_bahin_content.py) with `python3 gen_guide.py ladki_bahin_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| Ladki Bahin portal: application, eKYC | <https://ladakibahin.maharashtra.gov.in> | Third-party sites only |
+| Helpline: 181 | - | Third-party sites only |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

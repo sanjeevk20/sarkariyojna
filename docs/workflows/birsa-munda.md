@@ -18,6 +18,15 @@ Blue = you do this. Purple = agriculture office does this (you wait). Green = gr
 
 Sources: [`birsa-munda-guide.html`](birsa-munda-guide.html), [`birsa-munda-guide-mr.html`](birsa-munda-guide-mr.html), generated from [`birsa_munda_content.py`](birsa_munda_content.py) with `python3 gen_guide.py birsa_munda_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| MahaDBT: apply, track, grievance | <https://mahadbt.maharashtra.gov.in> | Government page |
+| ZP Satara: scheme page 2024-25 | <https://www.zpsatara.gov.in/en/scheme/birsa-munda-agricultural-revolution-scheme-for-the-year-2024-25/> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

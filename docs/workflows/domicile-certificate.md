@@ -16,6 +16,14 @@ Blue = you do this. Purple = government does this (you wait). Green = certificat
 
 Sources: [`domicile-certificate-guide.html`](domicile-certificate-guide.html), [`domicile-certificate-guide-mr.html`](domicile-certificate-guide-mr.html), generated from [`domicile_certificate_content.py`](domicile_certificate_content.py) with `python3 gen_guide.py domicile_certificate_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| Aaple Sarkar: apply and track | <https://aaplesarkar.mahaonline.gov.in> | Third-party sites only |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

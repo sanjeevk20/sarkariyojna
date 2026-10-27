@@ -18,6 +18,16 @@ Blue = you do this. Purple = government / insurer does this (you wait). Green = 
 
 Sources: [`pik-vima-guide.html`](pik-vima-guide.html), [`pik-vima-guide-mr.html`](pik-vima-guide-mr.html), generated from [`pik_vima_content.py`](pik_vima_content.py) with `python3 gen_guide.py pik_vima_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| PMFBY: enrol, policy, claim status | <https://pmfby.gov.in> | Government page |
+| AgriStack Farmer ID (Maharashtra) | <https://mhfr.agristack.gov.in> | Third-party sites only |
+| PIB: PMFBY press release | <https://www.pib.gov.in/PressReleasePage.aspx?PRID=2304549&reg=48&lang=2> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

@@ -82,6 +82,6 @@ Most schemes depend on these. Typical student chain: income → domicile → cas
 3. Render the guides to PNG with [`render.js`](render.js) (needs Playwright + Chromium):
    `node render.js <out>.html <out>.png '#page'` and `node render.js <out>-mr.html <out>-mr.png '#page'`.
 4. Render the Mermaid system diagram to an SVG page (e.g. via Mermaid Live or mermaid-cli), then `node render.js <diagram>.html <name>.png svg`.
-5. Add a `<name>.md` page (guide images, diagram, stage table, Verification section) and add a row here.
+5. Add a `<name>.md` page (guide images, Official links table, diagram, stage table, Verification section) and add a row here.
 
 To rebuild every guide after a content change: `for f in *_content.py; do python3 gen_guide.py "$f"; done`, then re-render the PNGs.

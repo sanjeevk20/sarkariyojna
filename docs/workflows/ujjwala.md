@@ -16,6 +16,15 @@ Blue = you do this. Purple = gas agency does this (you wait). Green = cooking on
 
 Sources: [`ujjwala-guide.html`](ujjwala-guide.html), [`ujjwala-guide-mr.html`](ujjwala-guide-mr.html), generated from [`ujjwala_content.py`](ujjwala_content.py) with `python3 gen_guide.py ujjwala_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| PMUY: apply and scheme details | <https://pmuy.gov.in> | Third-party sites only |
+| Rajya Sabha answer, Feb 2025 (PDF) | <https://rsdebate.nic.in/bitstream/123456789/758543/1/PQ_267_10022025_U777_p406_p407.pdf> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

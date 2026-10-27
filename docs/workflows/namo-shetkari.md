@@ -16,6 +16,16 @@ Blue = you do this. Purple = government does this (you wait). Green = money rece
 
 Sources: [`namo-shetkari-guide.html`](namo-shetkari-guide.html), [`namo-shetkari-guide-mr.html`](namo-shetkari-guide-mr.html), generated from [`namo_shetkari_content.py`](namo_shetkari_content.py) with `python3 gen_guide.py namo_shetkari_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| Namo Shetkari (NSMNY) beneficiary status | <https://nsmny.mahait.org> | Third-party sites only |
+| PM-KISAN: eKYC, Know Your Status | <https://pmkisan.gov.in> | Government page |
+| Vikaspedia: scheme summary | <https://en.vikaspedia.in/viewcontent/schemesall/state-specific-schemes/welfare-schemes-of-maharashtra/namo-shetkari-maha-samman-nidhi-yojana> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.

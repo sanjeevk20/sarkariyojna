@@ -16,6 +16,16 @@ Blue = you do this. Purple = government does this (you wait). Green = certificat
 
 Sources: [`caste-certificate-guide.html`](caste-certificate-guide.html), [`caste-certificate-guide-mr.html`](caste-certificate-guide-mr.html), generated from [`caste_certificate_content.py`](caste_certificate_content.py) with `python3 gen_guide.py caste_certificate_content.py`. Marathi text pending native-speaker review.
 
+## Official links
+
+Use only these addresses. Checked on 27 Oct 2026 through search results; the government sites could not be opened directly from our build environment. "Third-party sites only" means several non-government sites agree on the address but no government page confirmed it yet, so open it and check before you share it.
+
+| What | Link | Checked via |
+| :--- | :--- | :--- |
+| Aaple Sarkar: apply and track | <https://aaplesarkar.mahaonline.gov.in> | Third-party sites only |
+| BARTI: caste certificate verification | <https://www.barti.in/department/cast-certificate-verification> | Government page |
+| Social Justice Dept: Acts, rules, GRs | <https://sjsa.maharashtra.gov.in/en/document-category/acts-rules/> | Government page |
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.
