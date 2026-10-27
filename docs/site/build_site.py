@@ -118,9 +118,49 @@ def build():
     posts.sort(key=lambda p: order.index(p["cat"]))
     data = dict(cats=[dict(id=i, en=e, mr=m) for i, e, m in CATS], posts=posts, routers=routers())
     js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
-    tpl = (ROOT / "template.html").read_text()
-    (ROOT / "index.html").write_text(tpl.replace("/*__DATA__*/null", js))
-    print(f"{len(posts)} guides -> {ROOT / 'index.html'}")
+    page = (ROOT / "template.html").read_text().replace("/*__DATA__*/null", js)
+    # index.html: page fragment for the claude.ai artifact host, which adds the document skeleton.
+    (ROOT / "index.html").write_text(page)
+    # dist/index.html: complete document for static hosting (GitHub Pages).
+    (ROOT / "dist").mkdir(exist_ok=True)
+    (ROOT / "dist" / "index.html").write_text(standalone(page))
+    print(f"{len(posts)} guides -> {ROOT / 'index.html'}, {ROOT / 'dist' / 'index.html'}")
+
+
+SITE_URL = "https://sanjeevk20.github.io/sarkariyojna/"
+DESC = "Step-by-step guides to 26 Maharashtra and central government schemes, in English and Marathi, with official links."
+FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
+           "%3Ccircle cx='16' cy='16' r='16' fill='%232d6a39'/%3E%3Cpath d='M9 21c0-7 5-11 14-12-1 9-5 14-12 14' "
+           "fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E")
+
+
+def standalone(page):
+    head, body = page.split("</style>", 1)
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sathi Yojana Guides">
+<meta property="og:description" content="{DESC}">
+<meta property="og:url" content="{SITE_URL}">
+<link rel="canonical" href="{SITE_URL}">
+<link rel="icon" href="{FAVICON}">
+{head}
+/* Reset normally supplied by the artifact host. */
+:root {{ padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }}
+body {{ margin: 0; -webkit-text-size-adjust: 100%; }}
+img {{ max-width: 100%; }}
+[hidden] {{ display: none !important; }}
+</style>
+</head>
+<body>
+{body.strip()}
+</body>
+</html>
+"""
 
 
 if __name__ == "__main__":

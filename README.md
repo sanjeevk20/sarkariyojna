@@ -8,7 +8,7 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 
 | Path | What |
 | :--- | :--- |
-| `docs/site/index.html` | **Sathi guides website**: all guides as a searchable blog (EN + Marathi, steps, official links, system diagrams, sources). Rebuild with `python3 docs/site/build_site.py` |
+| `docs/site/index.html` | **Sathi guides website**: all guides as a searchable blog (EN + Marathi, steps, official links, system diagrams, sources). Rebuild with `python3 docs/site/build_site.py`; `docs/site/dist/index.html` is the standalone copy for GitHub Pages |
 | `docs/workflows/README.md` | **Index of all workflow guides**, grouped by category, with quick routers |
 | `docs/product-brief.md` | Product brief: pain points, differentiator, 12 concepts, Scheme Finder deep dive, MVP plan, tech stack |
 | `docs/workflows/pm-kisan.md` | PM-KISAN: step-by-step farmer guide + system workflow with Sathi touchpoints |
