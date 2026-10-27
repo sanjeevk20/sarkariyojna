@@ -2,7 +2,7 @@
 
 Step-by-step citizen guides (English + Marathi) and team system workflows for Maharashtra and central government services. Each page has a citizen guide image, a Marathi version, a Mermaid system diagram with Sathi touchpoints, and a stage table.
 
-> **Status:** **all 21 guides checked on 27 Oct 2026** (3 batches) against news, district/central government pages and secondary sources, with corrections applied; see each page's *Verification* section. Maharashtra state portals were not reachable from the research environment, so final confirmation against current GRs is still needed, and **Marathi text still needs native-speaker review**.
+> **Status:** **all 22 guides checked on 27 Oct 2026** (3 batches) against news, district/central government pages and secondary sources, with corrections applied; see each page's *Verification* section. Maharashtra state portals were not reachable from the research environment, so final confirmation against current GRs is still needed, and **Marathi text still needs native-speaker review**.
 
 ## Certificates (the document chain)
 
@@ -28,6 +28,7 @@ Most schemes depend on these. Typical student chain: income → domicile → cas
 |---|---|---|---|---|
 | [PM-KISAN](pm-kisan.md) | पीएम-किसान | Landholding farmers | [EN](pm-kisan-farmer-guide.png) | [MR](pm-kisan-farmer-guide-mr.png) |
 | [Krushi Swavalamban Yojana](krushi-swavalamban.md) | डॉ. बाबासाहेब आंबेडकर कृषी स्वावलंबन योजना | SC / Nav-Bauddha farmers (wells, irrigation) | [EN](krushi-swavalamban-guide.png) | [MR](krushi-swavalamban-guide-mr.png) |
+| [Birsa Munda Krushi Kranti Yojana](birsa-munda.md) | बिरसा मुंडा कृषी क्रांती योजना | ST farmers incl. forest-rights holders (wells, irrigation) | [EN](birsa-munda-guide.png) | [MR](birsa-munda-guide-mr.png) |
 | [MahaDBT scholarship](mahadbt-scholarship.md) | महाडीबीटी शिष्यवृत्ती | College students | [EN](mahadbt-scholarship-guide.png) | [MR](mahadbt-scholarship-guide-mr.png) |
 | [Mahatma Jyotiba Phule Research Fellowship (MahaJyoti)](mjprf.md) | महात्मा ज्योतिबा फुले संशोधन अधिछात्रवृत्ती | OBC / VJ-NT / SBC PhD scholars | [EN](mjprf-guide.png) | [MR](mjprf-guide-mr.png) |
 | [Ladki Bahin Yojana](ladki-bahin.md) | लाडकी बहीण योजना | Women 21-65 | [EN](ladki-bahin-guide.png) | [MR](ladki-bahin-guide-mr.png) |
@@ -66,6 +67,7 @@ Most schemes depend on these. Typical student chain: income → domicile → cas
 
 - **Age:** below 65 and destitute → [Sanjay Gandhi](sanjay-gandhi.md); 65+ → [Shravanbal](shravanbal.md); 70+ health → [Ayushman Vay Vandana](ayushman-card.md)
 - **Housing:** village → [PMAY-Gramin](pmay-gramin.md); city / town → [PMAY-Urban 2.0](pmay-urban.md)
+- **Farm irrigation grants:** SC / Nav-Bauddha → [Krushi Swavalamban](krushi-swavalamban.md); ST → [Birsa Munda](birsa-munda.md)
 - **Business loan:** open category → [Annasaheb Patil](annasaheb-patil.md); SC / Nav-Bauddha → [Mahatma Phule Mahamandal](mahatma-phule-mahamandal.md)
 - **Health:** make the [Ayushman card](ayushman-card.md) first, then use it under [MJPJAY](mjpjay.md)
 

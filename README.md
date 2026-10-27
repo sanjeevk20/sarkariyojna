@@ -12,6 +12,7 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/product-brief.md` | Product brief: pain points, differentiator, 12 concepts, Scheme Finder deep dive, MVP plan, tech stack |
 | `docs/workflows/pm-kisan.md` | PM-KISAN: step-by-step farmer guide + system workflow with Sathi touchpoints |
 | `docs/workflows/krushi-swavalamban.md` | Krushi Swavalamban Yojana (SC farmers, wells / irrigation): guide (EN + Marathi) + system workflow |
+| `docs/workflows/birsa-munda.md` | Birsa Munda Krushi Kranti Yojana (ST farmers, wells / irrigation): guide (EN + Marathi) + system workflow |
 | `docs/workflows/income-certificate.md` | Aaple Sarkar income certificate: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/ferfar.md` | 7/12 Ferfar (mutation): citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/mahadbt-scholarship.md` | MahaDBT scholarship: student guide (EN + Marathi) + system workflow |
