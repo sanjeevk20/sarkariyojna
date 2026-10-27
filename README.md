@@ -14,4 +14,5 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/workflows/ferfar.md` | 7/12 Ferfar (mutation): citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/mahadbt-scholarship.md` | MahaDBT scholarship: student guide (EN + Marathi) + system workflow |
 | `docs/workflows/caste-certificate.md` | Caste certificate: citizen guide (EN + Marathi) + system workflow |
+| `docs/workflows/domicile-certificate.md` | Domicile certificate: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/gen_guide.py` | Renders citizen guides from a `*_content.py` file |
