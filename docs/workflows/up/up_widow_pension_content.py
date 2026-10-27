@@ -1,0 +1,110 @@
+"""Nirashrit Mahila Pension (UP widow pension) guide content (EN + HI)."""
+
+OUT = "up-widow-pension-guide"
+PHASE_BREAK = 4
+
+T = {'en': {'lang': 'en',
+        'font': "'Noto Sans','FreeSans',sans-serif",
+        'h1': 'Widow Pension (UP): Nirashrit Mahila Pension',
+        'sub': 'निराश्रित महिला (विधवा) पेंशन, उत्तर प्रदेश',
+        'benefit': 'About ₹1,000 a month into the bank account (an increase to ₹1,500 has been reported)',
+        'legend': ['You do this', 'Government does this (you wait)', 'Pension received'],
+        'phases': ['Before you apply', 'After you apply'],
+        'who': {'you': 'You', 'gov': 'Government', 'done': 'Done'},
+        'stuck': 'Stuck?',
+        'tip': 'Tip:',
+        'steps': [('you',
+                   'Check if you can get it',
+                   'पात्रता जांचें',
+                   '<ul><li>Woman aged <b>18 or more</b> whose husband has died, living in UP</li><li>Family income up '
+                   'to about <b>₹2 lakh a year</b></li><li>Not getting any other government pension</li></ul>',
+                   ('tip', 'If you remarry, the pension stops. Tell the office so you are not asked to repay later.')),
+                  ('you',
+                   'Keep these papers ready',
+                   'कागज़ तैयार रखें',
+                   "<ul><li><b>Husband's death certificate</b></li><li>Aadhaar</li><li>Income certificate</li><li>Bank "
+                   'passbook (account <b>linked to Aadhaar</b>)</li><li>Photo</li></ul>',
+                   None),
+                  ('you',
+                   'Apply on the pension portal',
+                   'पेंशन पोर्टल पर आवेदन करें',
+                   'Apply on <b>sspy-up.gov.in</b> (Nirashrit Mahila Pension) or through a Jan Seva Kendra. Note the '
+                   '<b>registration number</b>.',
+                   ('tip', 'Applying is <b>free</b>.')),
+                  ('gov',
+                   'Verification',
+                   'सत्यापन',
+                   'The <b>BDO</b> (village) or <b>SDM</b> (town) office verifies your details.',
+                   ('stuck',
+                    'No death certificate? Get it registered first at the gram panchayat or municipal office; late '
+                    'registration is possible.')),
+                  ('gov',
+                   'District approval',
+                   'ज़िले से स्वीकृति',
+                   'The <b>District Probation Officer</b> (Women Welfare) sanctions the pension.',
+                   None),
+                  ('done',
+                   'Pension in your account',
+                   'खाते में पेंशन',
+                   'Money comes by <b>DBT</b>, usually every three months. Check status on sspy-up.gov.in.',
+                   ('stuck',
+                    'Payment stopped? Check that the account is Aadhaar-linked and active, then contact the District '
+                    'Probation Officer.'))],
+        'rights_t': 'Not paid for long? Complain.',
+        'rights': 'Complain to the <b>District Probation Officer</b>, on <b>IGRS Jansunwai</b> or the <b>CM Helpline '
+                  "1076</b>. The women's helpline <b>181</b> can also guide you.",
+        'help': '<b>Apply / status:</b> sspy-up.gov.in · Amount as reported; check the current notice<br><b>Applying '
+                'is free</b> · <b>Use only official websites</b>'},
+ 'hi': {'lang': 'hi',
+        'font': "'Noto Sans Devanagari','Noto Sans','FreeSans',sans-serif",
+        'h1': 'विधवा पेंशन (उत्तर प्रदेश): निराश्रित महिला पेंशन',
+        'sub': None,
+        'benefit': 'लगभग ₹1,000 प्रति माह बैंक खाते में (₹1,500 करने की खबरें आई हैं)',
+        'legend': ['यह आप करें', 'यह सरकार करती है (आप प्रतीक्षा करें)', 'पेंशन मिली'],
+        'phases': ['आवेदन से पहले', 'आवेदन के बाद'],
+        'who': {'you': 'आप', 'gov': 'सरकार', 'done': 'पूरा'},
+        'stuck': 'अटक गए?',
+        'tip': 'सुझाव:',
+        'steps': [('you',
+                   'पात्रता जांचें',
+                   None,
+                   '<ul><li><b>18 वर्ष या अधिक</b> उम्र की महिला जिनके पति का निधन हो गया हो, उत्तर प्रदेश की '
+                   'निवासी</li><li>पारिवारिक आय लगभग <b>₹2 लाख प्रति वर्ष</b> तक</li><li>कोई अन्य सरकारी पेंशन न मिल '
+                   'रही हो</li></ul>',
+                   ('tip', 'पुनर्विवाह करने पर पेंशन बंद हो जाती है। कार्यालय को बता दें ताकि बाद में वसूली न हो।')),
+                  ('you',
+                   'कागज़ तैयार रखें',
+                   None,
+                   '<ul><li><b>पति का मृत्यु प्रमाण पत्र</b></li><li>आधार</li><li>आय प्रमाण पत्र</li><li>बैंक पासबुक '
+                   '(खाता <b>आधार से जुड़ा</b>)</li><li>फोटो</li></ul>',
+                   None),
+                  ('you',
+                   'पेंशन पोर्टल पर आवेदन करें',
+                   None,
+                   '<b>sspy-up.gov.in</b> पर (निराश्रित महिला पेंशन) या जन सेवा केंद्र से आवेदन करें। <b>पंजीकरण '
+                   'संख्या</b> लिख लें।',
+                   ('tip', 'आवेदन <b>मुफ़्त</b> है।')),
+                  ('gov',
+                   'सत्यापन',
+                   None,
+                   '<b>बीडीओ</b> (गांव) या <b>एसडीएम</b> (शहर) कार्यालय विवरण की जांच करता है।',
+                   ('stuck',
+                    'मृत्यु प्रमाण पत्र नहीं है? पहले ग्राम पंचायत या नगर कार्यालय में मृत्यु दर्ज कराएं; देर से '
+                    'पंजीकरण भी हो सकता है।')),
+                  ('gov',
+                   'ज़िले से स्वीकृति',
+                   None,
+                   '<b>ज़िला प्रोबेशन अधिकारी</b> (महिला कल्याण) पेंशन स्वीकृत करते हैं।',
+                   None),
+                  ('done',
+                   'खाते में पेंशन',
+                   None,
+                   'पैसा <b>डीबीटी</b> से आता है, आमतौर पर हर तीन महीने पर। स्थिति sspy-up.gov.in पर देखें।',
+                   ('stuck',
+                    'भुगतान रुक गया? जांचें कि खाता आधार से जुड़ा और चालू है, फिर ज़िला प्रोबेशन अधिकारी से संपर्क '
+                    'करें।'))],
+        'rights_t': 'लंबे समय से भुगतान नहीं? शिकायत करें।',
+        'rights': '<b>ज़िला प्रोबेशन अधिकारी</b>, <b>आईजीआरएस जनसुनवाई</b> या <b>मुख्यमंत्री हेल्पलाइन 1076</b> पर '
+                  'शिकायत करें। महिला हेल्पलाइन <b>181</b> भी मार्गदर्शन कर सकती है।',
+        'help': '<b>आवेदन / स्थिति:</b> sspy-up.gov.in · राशि बताए गए अनुसार; वर्तमान सूचना देखें<br><b>आवेदन मुफ़्त '
+                'है</b> · <b>केवल आधिकारिक वेबसाइट का उपयोग करें</b>'}}
