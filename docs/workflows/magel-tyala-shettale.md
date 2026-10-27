@@ -2,7 +2,7 @@
 
 Grant for farmers to dig a farm pond (शेततळे) for rainwater storage and protective irrigation. Launched in 2016; now runs as the farm-pond component of the **Mukhyamantri Shashwat Krushi Sinchan Yojana** on the MahaDBT farmer portal. Grant depends on pond size, up to ₹75,000. Open to all categories. Plastic lining is a separate grant (see [Krushi Swavalamban](krushi-swavalamban.md) for SC / Nav-Bauddha and [Birsa Munda](birsa-munda.md) for ST farmers).
 
-Related: [Ferfar](ferfar.md) (land must be in the farmer's name), [PM-KISAN](pm-kisan.md).
+Related: [Ferfar](ferfar.md) (land must be in the farmer's name), [PM-KISAN](pm-kisan.md). Once the pond is ready, a solar pump: [Magel Tyala Saur Krushi Pump](saur-krushi-pump.md).
 
 ## For farmers: step by step
 
