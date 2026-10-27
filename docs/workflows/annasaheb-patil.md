@@ -1,6 +1,6 @@
 # Annasaheb Patil Loan Scheme (Interest Refund) - End-to-End Workflow
 
-Annasaheb Patil Arthik Magas Vikas Mahamandal: for economically backward families of communities not covered by another state development corporation (e.g. Maratha and other open-category communities). The beneficiary takes a **bank** loan for a business; the corporation **refunds the interest** for EMIs paid on time. Individual and group loan options. Portal: https://udyog.mahaswayam.gov.in.
+Annasaheb Patil Arthik Magas Vikas Mahamandal: for economically backward families of communities not covered by another state development corporation (e.g. Maratha and other open-category communities). The beneficiary takes a **bank** loan for a business; the corporation **refunds the interest** for EMIs paid on time. Individual and group loan options. Portal: https://udyog.mahaswayam.gov.in. For SC / Nav-Bauddha families, see [Mahatma Phule Mahamandal](mahatma-phule-mahamandal.md).
 
 ## For citizens: step by step
 
