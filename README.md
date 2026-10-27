@@ -9,3 +9,4 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | Path | What |
 | :--- | :--- |
 | `docs/product-brief.md` | Product brief: pain points, differentiator, 12 concepts, Scheme Finder deep dive, MVP plan, tech stack |
+| `docs/workflows/pm-kisan.md` | PM-KISAN end-to-end workflow diagram with Sathi touchpoints |
