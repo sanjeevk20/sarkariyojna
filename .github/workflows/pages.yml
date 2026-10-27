@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Build site from the workflow guides
+        env:
+          # Optional: set the GOATCOUNTER_CODE repository variable to turn on visit and "Did this help?" counts.
+          SATHI_GOATCOUNTER: ${{ vars.GOATCOUNTER_CODE }}
         run: |
           pip install beautifulsoup4==4.12.3
           python3 docs/site/build_site.py

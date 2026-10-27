@@ -8,7 +8,7 @@ workflow and the sources.
 
     python3 docs/site/build_site.py   ->   docs/site/index.html
 """
-import json, pathlib, re
+import datetime, json, os, pathlib, re
 from bs4 import BeautifulSoup
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -117,12 +117,14 @@ def parse_md(path):
         links.append(dict(label=m[1], url=m[3], gov=m[4].startswith("Government")))
     mermaid = re.search(r"```mermaid\n(.*?)```", md, re.S)[1].strip()
     ver = md.split("## Verification", 1)[1] if "## Verification" in md else ""
+    d = re.match(r" \((\d{1,2} \w{3} \d{4})", ver)
+    verified = datetime.datetime.strptime(d[1], "%d %b %Y").date().isoformat() if d else None
     sources, seen = [], set()
     for m in re.finditer(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", ver):
         if m[2] not in seen:
             seen.add(m[2])
             sources.append(dict(label=m[1], url=m[2]))
-    return guide, links, mermaid, sources
+    return guide, links, mermaid, sources, verified
 
 
 def build():
@@ -130,16 +132,16 @@ def build():
     for sid, _, _, _, _, folder, local in STATES:
         for row in index_rows(folder):
             slug = row["slug"]
-            guide, links, mermaid, sources = parse_md(folder / f"{slug}.md")
+            guide, links, mermaid, sources, verified = parse_md(folder / f"{slug}.md")
             posts.append(dict(row, state=sid, local=local, cat=CATEGORY[slug], links=links, mermaid=mermaid,
-                              sources=sources, en=parse_guide(folder / f"{guide}.html"),
+                              sources=sources, verified=verified, en=parse_guide(folder / f"{guide}.html"),
                               loc=parse_guide(folder / f"{guide}-{local}.html")))
         state_routers[sid] = routers(folder)
     order = [c[0] for c in CATS]
     posts.sort(key=lambda p: ([s[0] for s in STATES].index(p["state"]), order.index(p["cat"])))
     data = dict(cats=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k in CATS],
                 states=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k, _, _ in STATES],
-                posts=posts, routers=state_routers)
+                posts=posts, routers=state_routers, repo=REPO)
     js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (ROOT / "template.html").read_text().replace("/*__DATA__*/null", js)
     # index.html: page fragment for the claude.ai artifact host, which adds the document skeleton.
@@ -151,10 +153,21 @@ def build():
 
 
 SITE_URL = "https://sanjeevk20.github.io/sarkariyojna/"
+REPO = "sanjeevk20/sarkariyojna"  # "Report an error" opens .github/ISSUE_TEMPLATE/guide-error.yml here
+# Privacy-friendly visit and "Did this help?" counts via GoatCounter (no cookies). Off unless a site code is set,
+# e.g. the GOATCOUNTER_CODE repository variable passed in by the Pages workflow. Only the standalone copy loads it.
+GOATCOUNTER = os.environ.get("SATHI_GOATCOUNTER", "").strip()
 DESC = "Step-by-step guides to Maharashtra, Uttar Pradesh, Karnataka and central government schemes, in English, Marathi, Hindi and Kannada, with official links."
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
            "%3Ccircle cx='16' cy='16' r='16' fill='%232d6a39'/%3E%3Cpath d='M9 21c0-7 5-11 14-12-1 9-5 14-12 14' "
            "fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E")
+
+
+def analytics():
+    if not re.fullmatch(r"[a-z0-9-]+", GOATCOUNTER):
+        return ""
+    return ("<script>window.goatcounter = { path: function () { return location.pathname + location.hash; } };</script>\n"
+            f'<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>\n')
 
 
 def standalone(page):
@@ -171,7 +184,7 @@ def standalone(page):
 <meta property="og:url" content="{SITE_URL}">
 <link rel="canonical" href="{SITE_URL}">
 <link rel="icon" href="{FAVICON}">
-{head}
+{analytics()}{head}
 /* Reset normally supplied by the artifact host. */
 :root {{ padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }}
 body {{ margin: 0; -webkit-text-size-adjust: 100%; }}
