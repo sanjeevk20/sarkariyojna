@@ -1,6 +1,17 @@
 # PM-KISAN - End-to-End Workflow
 
 Official site: https://pmkisan.gov.in (Operational Guidelines PDF + "Know Your Status").
+
+## For farmers: step by step
+
+Blue = you do this. Purple = government does this (you wait). Green = money received. Red = what to do if stuck.
+
+![PM-KISAN farmer guide](pm-kisan-farmer-guide.png)
+
+Source to edit: [`pm-kisan-farmer-guide.html`](pm-kisan-farmer-guide.html)
+
+## For the Sathi team: system workflow
+
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.
 
 ![PM-KISAN end-to-end workflow](pm-kisan.png)
