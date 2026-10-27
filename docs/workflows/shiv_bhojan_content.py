@@ -1,0 +1,63 @@
+"""Shiv Bhojan Thali guide content (EN + MR)."""
+
+OUT = "shiv-bhojan-guide"
+PHASE_BREAK = 4
+
+T = {
+ "en": dict(
+  lang="en", font="'Noto Sans','FreeSans',sans-serif",
+  h1="Shiv Bhojan Thali: A full meal for ₹10",
+  sub="शिवभोजन थाळी: ₹10 मध्ये पूर्ण जेवण",
+  benefit="Subsidised hot meal at government-approved centres across Maharashtra",
+  legend=["You do this", "Centre does this", "Meal served"],
+  phases=["Before you go", "At the centre"],
+  who={"you": "You", "gov": "Centre", "done": "Done"},
+  stuck="Stuck?", tip="Tip:",
+  steps=[
+   ("you", "Know what you get", "थाळीत काय मिळते",
+    "A thali with <b>chapatis, a vegetable, dal and rice</b> for about <b>₹10</b>.<br><b>Anyone</b> can eat. <b>No ration card or document</b> is needed.", None),
+   ("you", "Find a Shiv Bhojan centre", "शिवभोजन केंद्र शोधा",
+    "Centres are usually near <b>hospitals, bus stands, markets and government offices</b> in towns and taluka places. Ask locally or at the <b>Tahsil / District Supply Office</b>.",
+    ("tip", "The scheme is running, but individual centres can close. Check the centre is open before you travel.")),
+   ("you", "Go at meal time", "जेवणाच्या वेळी जा",
+    "Centres serve mainly at <b>lunch time</b> (around midday). Each centre has a <b>limited number of plates</b> per day.",
+    ("tip", "<b>Go early.</b> Plates often run out.")),
+   ("gov", "Pay ₹10, centre records you", "₹10 द्या, केंद्र नोंद करते",
+    "Pay the fixed amount. The centre takes your <b>name and photo</b> in the Shiv Bhojan app. This is how the government counts plates and pays the centre.",
+    ("tip", "The photo is <b>normal and required</b>. It is not a charge and does not stop you from other schemes.")),
+   ("done", "Enjoy your meal", "जेवणाचा आस्वाद घ्या",
+    "Eat at the centre. Food should be <b>fresh, hot and clean</b>.", None),
+  ],
+  rights_t="Charged more, poor food or refused? Complain.",
+  rights="Note the <b>centre name, date and time</b>. Complain to the <b>Tahsil / District Supply Officer</b> in writing, or on <b>Aaple Sarkar</b> grievances.",
+  help="<b>Want to run a centre?</b> NGOs, self-help groups and mess owners can apply to the <b>District Supply Office</b><br><b>Pay only the fixed price</b> · No document needed to eat",
+ ),
+ "mr": dict(
+  lang="mr", font="'Noto Sans Devanagari','Noto Sans','FreeSans',sans-serif",
+  h1="शिवभोजन थाळी: ₹10 मध्ये पूर्ण जेवण",
+  sub=None,
+  benefit="महाराष्ट्रातील शासनमान्य केंद्रांवर सवलतीच्या दरात गरम जेवण",
+  legend=["हे तुम्ही करायचे", "हे केंद्र करते", "जेवण मिळाले"],
+  phases=["जाण्यापूर्वी", "केंद्रावर"],
+  who={"you": "तुम्ही", "gov": "केंद्र", "done": "पूर्ण"},
+  stuck="अडचण?", tip="सूचना:",
+  steps=[
+   ("you", "थाळीत काय मिळते", None,
+    "सुमारे <b>₹10</b> मध्ये <b>चपाती, भाजी, वरण आणि भात</b> असलेली थाळी.<br><b>कोणीही</b> जेवू शकतो. <b>रेशन कार्ड किंवा कोणतेही कागदपत्र</b> लागत नाही.", None),
+   ("you", "शिवभोजन केंद्र शोधा", None,
+    "केंद्रे सहसा शहरे व तालुक्याच्या ठिकाणी <b>रुग्णालये, बस स्थानके, बाजार आणि सरकारी कार्यालयांजवळ</b> असतात. स्थानिक लोकांना किंवा <b>तहसील / जिल्हा पुरवठा कार्यालयात</b> विचारा.",
+    ("tip", "योजना सुरू आहे, पण एखादे केंद्र बंद होऊ शकते. जाण्यापूर्वी केंद्र सुरू आहे का ते तपासा.")),
+   ("you", "जेवणाच्या वेळी जा", None,
+    "केंद्रे मुख्यतः <b>दुपारच्या जेवणाच्या वेळी</b> जेवण देतात. प्रत्येक केंद्राला दररोज <b>ठराविक थाळ्या</b> असतात.",
+    ("tip", "<b>लवकर जा.</b> थाळ्या अनेकदा संपतात.")),
+   ("gov", "₹10 द्या, केंद्र नोंद करते", None,
+    "ठरलेली रक्कम द्या. केंद्र शिवभोजन ॲपमध्ये तुमचे <b>नाव आणि फोटो</b> घेते. यावरूनच सरकार थाळ्या मोजून केंद्राला पैसे देते.",
+    ("tip", "फोटो घेणे <b>सामान्य आणि आवश्यक</b> आहे. त्यासाठी पैसे लागत नाहीत आणि इतर योजनांवर परिणाम होत नाही.")),
+   ("done", "जेवणाचा आस्वाद घ्या", None,
+    "केंद्रावर जेवा. जेवण <b>ताजे, गरम आणि स्वच्छ</b> असले पाहिजे.", None),
+  ],
+  rights_t="जास्त पैसे, खराब जेवण किंवा नकार? तक्रार करा.",
+  rights="<b>केंद्राचे नाव, तारीख आणि वेळ</b> नोंदवा. <b>तहसील / जिल्हा पुरवठा अधिकाऱ्यांकडे</b> लेखी तक्रार द्या, किंवा <b>आपले सरकार</b> तक्रार पोर्टल वापरा.",
+  help="<b>केंद्र चालवायचे आहे?</b> स्वयंसेवी संस्था, बचत गट आणि खानावळ चालक <b>जिल्हा पुरवठा कार्यालयाकडे</b> अर्ज करू शकतात<br><b>फक्त ठरलेली किंमत द्या</b> · जेवण्यासाठी कोणतेही कागदपत्र लागत नाही",
+ ),
+}

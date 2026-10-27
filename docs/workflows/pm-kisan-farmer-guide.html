@@ -1,0 +1,112 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#fff; font-family:'Noto Sans','FreeSans',sans-serif; color:#1f2937; }
+  #page { width:900px; padding:36px 40px 40px; box-sizing:border-box; }
+  h1 { margin:0; font-size:34px; }
+  .mr { font-family:'Noto Sans Devanagari','FreeSans',sans-serif; }
+  .sub { font-size:19px; color:#4b5563; margin:6px 0 4px; }
+  .benefit { display:inline-block; margin:14px 0 26px; background:#ecfdf5; border:2px solid #10b981; border-radius:12px; padding:10px 18px; font-size:20px; font-weight:600; }
+  .phase { font-size:15px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#6b7280; margin:22px 0 10px 70px; }
+  .step { display:flex; gap:18px; }
+  .rail { display:flex; flex-direction:column; align-items:center; width:52px; flex:none; }
+  .num { width:52px; height:52px; border-radius:50%; color:#fff; font-size:24px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .you .num { background:#2563eb; } .gov .num { background:#7c3aed; } .done .num { background:#059669; }
+  .line { flex:1; width:4px; background:#d1d5db; margin:4px 0; min-height:18px; }
+  .card { flex:1; border-radius:14px; padding:14px 18px; margin-bottom:14px; border:2px solid; }
+  .you .card { background:#eff6ff; border-color:#bfdbfe; } .gov .card { background:#f5f3ff; border-color:#ddd6fe; } .done .card { background:#ecfdf5; border-color:#a7f3d0; }
+  .who { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:#6b7280; }
+  .title { font-size:23px; font-weight:700; margin:2px 0; }
+  .title .mr { font-size:19px; font-weight:500; color:#4b5563; margin-left:8px; }
+  .body { font-size:17px; line-height:1.5; }
+  .body ul { margin:4px 0 0; padding-left:22px; }
+  .stuck { margin-top:10px; background:#fef2f2; border-left:5px solid #dc2626; border-radius:8px; padding:8px 12px; font-size:16px; line-height:1.45; }
+  .stuck b { color:#b91c1c; }
+  .status { display:inline-block; font-family:monospace; background:#fff; border:1px solid #c4b5fd; border-radius:6px; padding:1px 7px; font-size:15px; }
+  .help { margin-top:20px; background:#fffbeb; border:2px solid #f59e0b; border-radius:14px; padding:14px 18px; font-size:17px; line-height:1.6; }
+  .legend { display:flex; gap:22px; font-size:15px; margin-bottom:6px; color:#374151; }
+  .dot { display:inline-block; width:14px; height:14px; border-radius:50%; margin-right:6px; vertical-align:-2px; }
+</style></head>
+<body><div id="page">
+  <h1>PM-KISAN: How to get ₹6,000 a year</h1>
+  <div class="sub mr">पीएम-किसान: वर्षाला ₹6,000 कसे मिळवायचे</div>
+  <div class="benefit">₹2,000 straight into your bank account, 3 times a year</div>
+  <div class="legend">
+    <span><span class="dot" style="background:#2563eb"></span>You do this</span>
+    <span><span class="dot" style="background:#7c3aed"></span>Government does this (you wait)</span>
+    <span><span class="dot" style="background:#059669"></span>Money received</span>
+  </div>
+
+  <div class="phase">Before you apply</div>
+  <div class="step you"><div class="rail"><div class="num">1</div><div class="line"></div></div><div class="card">
+    <div class="who">You</div>
+    <div class="title">Check if you can get it <span class="mr">पात्रता तपासा</span></div>
+    <div class="body">You can apply if <b>farmland is in your name</b> on the 7/12.<br>You <b>cannot</b> apply if anyone in your family pays income tax, is a government employee, is a doctor / lawyer / CA / engineer in practice, or gets a pension of ₹10,000+ a month.</div>
+  </div></div>
+
+  <div class="step you"><div class="rail"><div class="num">2</div><div class="line"></div></div><div class="card">
+    <div class="who">You</div>
+    <div class="title">Keep these papers ready <span class="mr">कागदपत्रे तयार ठेवा</span></div>
+    <div class="body"><ul>
+      <li>Aadhaar card, with your mobile number linked</li>
+      <li>7/12 extract showing <b>your</b> name</li>
+      <li>Bank passbook (account must be <b>linked to Aadhaar</b>)</li>
+    </ul></div>
+    <div class="stuck"><b>Stuck?</b> Land still in your father's name? Get the <b>ferfar (mutation)</b> done at the Talathi office first.</div>
+  </div></div>
+
+  <div class="step you"><div class="rail"><div class="num">3</div><div class="line"></div></div><div class="card">
+    <div class="who">You</div>
+    <div class="title">Apply <span class="mr">अर्ज करा</span></div>
+    <div class="body">Choose any one:
+      <ul><li>Website <b>pmkisan.gov.in</b> → "New Farmer Registration"</li>
+      <li>PM-KISAN mobile app</li>
+      <li>Nearest CSC / e-Seva Kendra, or ask your Talathi / Krushi Sahayak</li></ul>
+      Note down your <b>registration number</b>.</div>
+  </div></div>
+
+  <div class="phase">After you apply</div>
+  <div class="step gov"><div class="rail"><div class="num">4</div><div class="line"></div></div><div class="card">
+    <div class="who">Government</div>
+    <div class="title">Your land is checked <span class="mr">जमिनीची तपासणी</span></div>
+    <div class="body">Revenue officials match your name with the 7/12 record.</div>
+    <div class="stuck"><b>Stuck?</b> Name or Gat number does not match → visit the Talathi with your 7/12 and Aadhaar.</div>
+  </div></div>
+
+  <div class="step gov"><div class="rail"><div class="num">5</div><div class="line"></div></div><div class="card">
+    <div class="who">Government</div>
+    <div class="title">Your Aadhaar and bank are checked <span class="mr">आधार व बँक तपासणी</span></div>
+    <div class="body">Your name must be spelled the same on Aadhaar, 7/12 and bank account.</div>
+    <div class="stuck"><b>Stuck?</b> Spelling differs → correct it. Bank not linked → go to your bank and ask for <b>"Aadhaar seeding and DBT on"</b>.</div>
+  </div></div>
+
+  <div class="step you"><div class="rail"><div class="num">6</div><div class="line"></div></div><div class="card">
+    <div class="who">You</div>
+    <div class="title">Do eKYC <span class="mr">ई-केवायसी करा</span></div>
+    <div class="body">On pmkisan.gov.in (OTP on your Aadhaar mobile) or face scan in the app. Takes 2 minutes.</div>
+    <div class="stuck"><b>Important:</b> Without eKYC, your money <b>stops</b>.</div>
+  </div></div>
+
+  <div class="step gov"><div class="rail"><div class="num">7</div><div class="line"></div></div><div class="card">
+    <div class="who">Government</div>
+    <div class="title">State approves you <span class="mr">राज्य सरकारची मंजुरी</span></div>
+    <div class="body">Your status shows <span class="status">RFT signed by State Govt</span><br>This means: <b>Maharashtra has approved you.</b> Just wait.</div>
+  </div></div>
+
+  <div class="step gov"><div class="rail"><div class="num">8</div><div class="line"></div></div><div class="card">
+    <div class="who">Government</div>
+    <div class="title">Money is being sent <span class="mr">पैसे पाठवले जात आहेत</span></div>
+    <div class="body">Your status shows <span class="status">FTO generated, payment confirmation pending</span><br>This means: <b>payment order has gone to your bank.</b></div>
+    <div class="stuck"><b>Stuck?</b> Money not received → bank account closed or not linked. Fix at bank (see step 5).</div>
+  </div></div>
+
+  <div class="step done"><div class="rail"><div class="num">9</div></div><div class="card">
+    <div class="who">Done</div>
+    <div class="title">₹2,000 in your account <span class="mr">पैसे खात्यात जमा</span></div>
+    <div class="body">You get an SMS. This repeats every 4 months, as long as your <b>eKYC, bank link and land record</b> stay correct.</div>
+  </div></div>
+
+  <div class="help"><b>Check your status anytime:</b> pmkisan.gov.in → "Know Your Status" (registration number or Aadhaar)<br>
+  <b>Helpline:</b> 155261 / 011-24300606 &nbsp;·&nbsp; <b>Use only .gov.in websites</b>, never pay an agent for this.</div>
+</div></body></html>
