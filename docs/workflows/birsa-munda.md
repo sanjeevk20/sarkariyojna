@@ -2,7 +2,7 @@
 
 100% state-funded scheme giving **Scheduled Tribe** farmers (inside and outside tribal sub-plan areas, including forest-rights / वनपट्टा holders) grants for a new well, well repair, borewell (forest-rights holders), in-well boring, pump set, electric connection, farm-pond lining and drip / sprinkler. Applied for on the MahaDBT farmer portal; selection by lottery. The SC / Nav-Bauddha counterpart is [Krushi Swavalamban Yojana](krushi-swavalamban.md).
 
-Related: [Ferfar](ferfar.md), [Caste certificate](caste-certificate.md), [Caste validity](caste-validity.md) (ST validity via eTribe Validity).
+Related: [Ferfar](ferfar.md), [Caste certificate](caste-certificate.md), [Caste validity](caste-validity.md) (ST validity via eTribe Validity). To dig the farm pond itself (open to all categories), see [Magel Tyala Shettale](magel-tyala-shettale.md).
 
 ## For farmers: step by step
 
