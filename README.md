@@ -31,3 +31,4 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/workflows/annasaheb-patil.md` | Annasaheb Patil interest-refund loan: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/mahatma-phule-mahamandal.md` | Mahatma Phule Mahamandal loans (SC / Nav-Bauddha): citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/gen_guide.py` | Renders citizen guides from a `*_content.py` file |
+| `docs/workflows/render.js` | Renders guide HTML and Mermaid diagrams to PNG (Playwright) |
