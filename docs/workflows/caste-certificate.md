@@ -71,4 +71,11 @@ flowchart TD
 
 **Why this matters for Sathi:** step 2 (finding pre-cut-off proof) is the hardest part for families and where agents charge the most. A guided "old-proof finder" plus family-tree builder is a strong, defensible feature and a candidate for narrow patent claims (linking applicant lineage to historical records).
 
-> Note: Working assumptions, not yet verified: the cut-off dates by category, paternal-side rule, SDO as issuing authority, lifetime validity, that caste certificate is a notified service under the MH Right to Public Services Act, menu path and status wording. Verify against the Maharashtra Caste Certificate Act, 2000, its rules, current GRs and the live portal before building.
+## Verification (27 Oct 2026, batch 2)
+
+- **Confirmed (Caste Certificate Rules, 2012, via secondary text):** "deemed date" cut-offs **SC 10 Aug 1950**, **VJ/NT 21 Nov 1961**, **OBC/SBC 13 Oct 1967**. Governing law: Maharashtra Caste Certificate Act, 2000 (Act 23 of 2001) and Rules, 2012.
+- **Not confirmed:** **ST 6 Sep 1950** (date of the Constitution (Scheduled Tribes) Order; no search result stated it as the Maharashtra cut-off). Kept in guide; confirm against Rule text.
+- **Changed in guide:** issuing officer now reads "SDO, or the competent officer in your taluka", since sources say Tehsildar / SDO.
+- **Still unverified:** paternal-side rule wording, lifetime validity, RTS notification, Aaple Sarkar menu path.
+
+Sources: [Indian Kanoon: Caste Certificate Act, 2000](https://indiankanoon.org/doc/95388956/) · [SJSA Maharashtra: Acts & Rules](https://sjsa.maharashtra.gov.in/en/document-category/acts-rules/) · [BARTI: Caste Certificate Verification](https://www.barti.in/department/cast-certificate-verification) · [mahadocguide: caste certificate documents](https://mahadocguide.in/documents-required-caste-certificate-maharashtra/)

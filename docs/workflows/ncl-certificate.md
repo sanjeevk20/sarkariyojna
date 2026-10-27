@@ -70,4 +70,10 @@ flowchart TD
 
 **Why this matters for Sathi:** NCL sits at the end of a dependency chain (caste certificate → 3 years of income proof → NCL → scholarship / admission) and it expires. That chain is exactly what a "readiness" engine is for: one family profile, every certificate's expiry tracked, the next missing link flagged before a deadline.
 
-> Note: Working assumptions, not yet verified: the ₹8 lakh limit and which income is counted, parental-post rules, categories covered, SDO as issuing authority, validity period, state vs central format rules, menu path, status wording, and RTS notification. Verify against current central (DoPT) and Maharashtra GRs and the live portal before building.
+## Verification (27 Oct 2026, batch 2)
+
+- **Confirmed (consistent across sources):** ₹8 lakh family income ceiling (from the central 2017 memorandum); applied via Aaple Sarkar under Revenue Department; Class-I / Group A parental posts are excluded while lower government cadres are judged by cadre, not income.
+- **Unclear, so guide kept general:** which income counts (agricultural income excluded under central norms but Maharashtra practice may differ); **validity period** (sources say 1 year or 3 years). Guide tells users to check the validity date printed on the certificate.
+- **Changed in guide:** issuing officer now reads "SDO, or the competent officer in your taluka".
+
+Sources: [mahadocguide: NCL Maharashtra](https://mahadocguide.in/non-creamy-layer-certificate-maharashtra/) · [navimumbai.com: NCL](https://navimumbai.com/non-creamy-layer-certificate-maharashtra/) · [LegalRaasta: NCL Maharashtra](https://www.legalraasta.com/blog/maharashtra-non-creamy-layer-certificate/) · [IndiaFilings: NCL Maharashtra](https://www.indiafilings.com/learn/maharashtra-non-creamy-layer-certificate)

@@ -66,4 +66,10 @@ flowchart TD
 | 5 | Certification | Circle Officer | Pending after window, or rejected | Draft written application to Tahsildar; appeal guidance (SDO) |
 | 6 | 7/12 updated | System | Wrong name / old encumbrance still shown | 7/12 Health Report |
 
-> Note: Working assumptions, not yet verified: the 15-day notice period, e-Hakk as the online channel for inheritance, Mahabhumi as the status-check portal, Circle Officer as certifying authority, appeal to SDO, and digitalsatbara.mahabhumi.gov.in for signed 7/12. Verify against the Maharashtra Land Revenue Code and live portals before building.
+## Verification (27 Oct 2026, batch 2)
+
+- **Confirmed:** **15-day notice** before a ferfar entry is decided (Rule 24, Record of Rights Rules, 1971); anyone interested can object within 15 days; with no objection the **Circle Officer certifies**; with an objection the Circle Officer hears both sides and certifies or cancels.
+- **Changed in guide:** status check now points to **Aapli Chawadi / pending ferfar on bhulekh.mahabhumi.gov.in** (shows ferfar number, type and last objection date). e-Hakk softened to "where available" as it was not confirmed.
+- **Still unverified:** auto e-mutation flow from IGR, appeal to SDO, typical timelines (sources quote 15-60 days).
+
+Sources: [bhume.in: Ferfar status](https://www.bhume.in/maharashtra/ferfar) · [bhume.in: Aapli Chawadi](https://www.bhume.in/maharashtra/e-chawadi) · [1acre: Mutation Ferfar Maharashtra](https://1acre.in/guides/maharashtra/mutation-ferfar-maharashtra) · [Landeed: Ferfar Maharashtra](https://web.landeed.com/maharashtra/ferfar) · [RTI wiki: 7/12 and ferfar correction](https://righttoinformation.wiki/practical-guides/maharashtra-712-extract-ferfar-mutation-correction-talathi)

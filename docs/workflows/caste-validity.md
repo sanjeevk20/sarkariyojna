@@ -1,6 +1,6 @@
 # Caste Validity Certificate (Maharashtra) - End-to-End Workflow
 
-Issued by the **District Caste Certificate Scrutiny Committee** (जिल्हा जात प्रमाणपत्र पडताळणी समिती). Applied for online on the state's caste validity portal (CCVIS). Requires a [caste certificate](caste-certificate.md) first.
+Issued by the **District Caste Certificate Scrutiny Committee** (जिल्हा जात प्रमाणपत्र पडताळणी समिती). Applied for online on BARTI's **cvc.barti.in** (SC, VJ/NT, OBC, SBC, SEBC; replaced CCVIS in Oct 2026) or the **eTribe Validity** portal (ST). Requires a [caste certificate](caste-certificate.md) first.
 
 ## For citizens: step by step
 
@@ -33,7 +33,7 @@ flowchart TD
     C --> BR{Blood relative already has validity?}
     BR -- Yes --> BRY[Attach relative's validity<br/>strongest proof, fast track]
     BR -- No --> D
-    BRY --> D[3. Apply online on CCVIS<br/>print + submit to District Caste<br/>Certificate Scrutiny Committee]
+    BRY --> D[3. Apply online: cvc.barti.in for SC, VJNT, OBC, SBC, SEBC<br/>or eTribe Validity for ST, then submit to<br/>District Caste Certificate Scrutiny Committee]
     D --> K[Acknowledgement / token<br/>used for provisional admission]
     K --> E[4. Committee scrutiny]
     E -- Proof weak --> V[Vigilance cell inquiry<br/>local / village visit]
@@ -73,4 +73,10 @@ flowchart TD
 
 **Why this matters for Sathi:** caste validity is the slowest, highest-stakes certificate in the chain (caste → validity → admission / job), and a blood relative's validity is the single biggest accelerator. A family-level vault that knows "your cousin already has validity" turns a months-long process into a fast one. Combined with the caste certificate's old-proof finder, this is a strong candidate for narrow patent claims around lineage-linked document reuse.
 
-> Note: Working assumptions, not yet verified: portal name (CCVIS) and URL, online + physical submission flow, prescribed affidavit / form numbers, vigilance and hearing process, provisional-admission practice, lifetime validity, blood-relative rule, and the High Court remedy. Verify against the Maharashtra Caste Certificate Act, 2000, the 2012 Rules, current GRs and the live portal before building.
+## Verification (27 Oct 2026, batch 2)
+
+- **Changed in guide (important):** BARTI has moved applications to a **new portal, cvc.barti.in** (announced on CCVIS, effective 13 Oct 2026) for SC, VJ/NT, OBC, SBC and SEBC. **ST** applicants use the separate **eTribe Validity** portal (TRTI). Guide and diagram updated.
+- **Confirmed:** validity issued by **District Caste Certificate Scrutiny Committees** (36 districts; BARTI DG is chief coordinator); committee should decide within **3 months** (plus 2 in exceptional cases). Added to the escalation box.
+- **Still unverified:** vigilance-cell process, hearing procedure, blood-relative validity rule, provisional-admission practice, High Court remedy wording, offline submission details.
+
+Sources: [CCVIS (BARTI) home with new-portal notice](https://ccvis.barti.in/home_menu.php) · [CVC BARTI: About](https://cvc.barti.in/home/pages/about) · [e-Tribe Validity Portal (TRTI)](https://etribevalidity.trti-maha.in/) · [BARTI: Caste Certificate Verification](https://www.barti.in/department/cast-certificate-verification)
