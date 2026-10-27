@@ -1,6 +1,6 @@
 # Dr. Babasaheb Ambedkar Krushi Swavalamban Yojana - End-to-End Workflow
 
-100% state-funded scheme (Agriculture Department, implemented through Zilla Parishad / Panchayat Samiti) giving Scheduled Caste and Nav-Bauddha farmers grants for a new well, well repair, in-well boring, pump set, electric connection, farm-pond lining, drip / sprinkler, solar pump and farm machinery. Applied for on the MahaDBT farmer portal. ST farmers have the separate Birsa Munda Krushi Kranti Yojana.
+100% state-funded scheme (Agriculture Department, implemented through Zilla Parishad / Panchayat Samiti) giving Scheduled Caste and Nav-Bauddha farmers grants for a new well, well repair, in-well boring, pump set, electric connection, farm-pond lining, drip / sprinkler, solar pump and farm machinery. Applied for on the MahaDBT farmer portal. ST farmers have the separate [Birsa Munda Krushi Kranti Yojana](birsa-munda.md).
 
 Related: [Ferfar](ferfar.md) (land must be in the farmer's name), [Caste certificate](caste-certificate.md), [PM-KISAN](pm-kisan.md).
 
