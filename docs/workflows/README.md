@@ -89,3 +89,12 @@ Most schemes depend on these. Typical student chain: income → domicile → cas
 After adding or changing a guide, rebuild the website: `python3 ../site/build_site.py`.
 
 To rebuild every guide after a content change: `for f in *_content.py; do python3 gen_guide.py "$f"; done`, then re-render the PNGs.
+
+## Feedback from readers
+
+Every guide on the website ends with **Did this guide help you? Yes / No** and **Report an error**.
+
+- **Report an error** opens the [guide error form](../../.github/ISSUE_TEMPLATE/guide-error.yml) as a GitHub issue labelled `guide-error`, with the guide filled in. Fix the guide, re-check its sources, update its Verification date, and close the issue.
+- **Yes / No counts** use [GoatCounter](https://www.goatcounter.com) (free for non-commercial use, no cookies, no personal data). They are off until you create a GoatCounter site and add its code as the repository variable `GOATCOUNTER_CODE` (Settings → Secrets and variables → Actions → Variables). The next deploy turns counting on: page views per guide, plus events `/feedback/<guide>/yes` and `/feedback/<guide>/no`.
+- The page shows each guide's **Verification** date and how many of its official links are confirmed on government pages, so readers can judge how much to trust it.
+

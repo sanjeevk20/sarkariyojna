@@ -1,0 +1,37 @@
+name: Report an error in a guide
+description: Something in a Sathi guide is wrong, out of date, or missing.
+title: "[guide] Error report"
+labels: ["guide-error"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping keep the guides correct. Please do not share Aadhaar, phone or bank numbers here; this page is public.
+  - type: input
+    id: guide
+    attributes:
+      label: Guide
+      description: Filled in for you when you come from the website.
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Language you were reading
+      description: en, mr, hi or kn
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: Quote the step or line, and say what is wrong (amount, website, office, document, deadline).
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What is correct?
+  - type: input
+    id: source
+    attributes:
+      label: Where did you see the correct information?
+      description: Link to a government order, official website or notice, or the office you visited.

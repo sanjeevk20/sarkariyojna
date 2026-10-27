@@ -120,6 +120,14 @@ h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.3; }
 .diagram pre { white-space: pre; font-size: 13px; margin: 0; }
 .sources { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 15px; }
 .sources a { overflow-wrap: anywhere; }
+.trust { display: flex; align-items: center; gap: 8px; font-size: 15px; margin: 10px 0 0; }
+.feedback { margin-top: 36px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--raised); }
+.feedback h2 { margin: 0 0 10px; font-size: 19px; }
+.vote { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.vote button { font: 500 16px var(--body); min-height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; }
+.vote button[aria-pressed="true"] { background: var(--leaf); border-color: var(--leaf); color: var(--on-leaf); }
+.report { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
+.report.emph { background: var(--stop-soft); color: var(--stop); padding: 0 14px; border-radius: 10px; text-decoration: none; }
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; }
 .pager a { display: block; min-width: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-decoration: none; color: var(--fg); }
 .pager a.next { text-align: right; grid-column: 2; }
@@ -205,6 +213,50 @@ const UI = {
     prev: "ಹಿಂದಿನದು", next: "ಮುಂದಿನದು", checked: "27 ಅಕ್ಟೋಬರ್ 2026 ರಂದು ಪರಿಶೀಲಿಸಲಾಗಿದೆ", langNote: "ಮಹಾರಾಷ್ಟ್ರದ ಮಾರ್ಗದರ್ಶಿಗಳು ಮರಾಠಿಯಲ್ಲಿ ಮತ್ತು ಉತ್ತರ ಪ್ರದೇಶದವು ಹಿಂದಿಯಲ್ಲಿ ಇವೆ.",
     foot: "ಸಾಥಿ ಮಾರ್ಗದರ್ಶಿಗಳು ನಾಗರಿಕರ ಸಹಾಯಕ್ಕಾಗಿ; ಇದು ಅಧಿಕೃತ ಸರ್ಕಾರಿ ವೆಬ್‌ಸೈಟ್ ಅಲ್ಲ. ಪ್ರತಿ ಮಾರ್ಗದರ್ಶಿಯಲ್ಲಿರುವ ಅಧಿಕೃತ ಲಿಂಕ್‌ಗಳನ್ನು ಮಾತ್ರ ಬಳಸಿ ಮತ್ತು ಅರ್ಜಿಗಾಗಿ ಏಜೆಂಟ್‌ಗೆ ಹಣ ಕೊಡಬೇಡಿ. ಮರಾಠಿ, ಹಿಂದಿ ಮತ್ತು ಕನ್ನಡ ಪಠ್ಯದ ಸ್ಥಳೀಯ ಭಾಷಿಕರ ಪರಿಶೀಲನೆ ಬಾಕಿ ಇದೆ." },
 };
+const FB = {
+  en: { checkedOn: d => `Facts checked ${d}`, trust: (g, t) => `${g} of ${t} official links confirmed on government pages`,
+    fbTitle: "Help keep this guide right", fbQ: "Did this guide help you?", yes: "Yes", no: "No",
+    thanksYes: "Thank you. Your answer shows us which guides work.", thanksNo: "Sorry it did not help. Tell us what was missing or wrong so we can fix it.",
+    report: "Report an error", reportNote: "Opens a short form on GitHub (free account needed). Write the correct information and where you saw it." },
+  mr: { checkedOn: d => `माहिती तपासली: ${d}`, trust: (g, t) => `${t} पैकी ${g} अधिकृत लिंक सरकारी पानावर तपासलेल्या`,
+    fbTitle: "हा मार्गदर्शक अचूक ठेवण्यास मदत करा", fbQ: "या मार्गदर्शकाची मदत झाली का?", yes: "हो", no: "नाही",
+    thanksYes: "धन्यवाद. कोणते मार्गदर्शक उपयोगी आहेत हे यावरून कळते.", thanksNo: "क्षमस्व. काय कमी किंवा चुकीचे होते ते कळवा, आम्ही दुरुस्त करू.",
+    report: "चूक कळवा", reportNote: "GitHub वर छोटा फॉर्म उघडतो (मोफत खाते लागते). बरोबर माहिती आणि ती कुठे पाहिली ते लिहा." },
+  hi: { checkedOn: d => `जानकारी जांची गई: ${d}`, trust: (g, t) => `${t} में से ${g} आधिकारिक लिंक सरकारी पेज पर पुष्ट`,
+    fbTitle: "इस मार्गदर्शिका को सही रखने में मदद करें", fbQ: "क्या इस मार्गदर्शिका से मदद मिली?", yes: "हां", no: "नहीं",
+    thanksYes: "धन्यवाद। इससे पता चलता है कि कौन सी मार्गदर्शिकाएं काम आ रही हैं।", thanksNo: "माफ़ करें। बताइए क्या कमी या गलती थी, हम ठीक करेंगे।",
+    report: "गलती बताएं", reportNote: "GitHub पर छोटा फॉर्म खुलता है (मुफ़्त खाता चाहिए)। सही जानकारी और उसका स्रोत लिखें।" },
+  kn: { checkedOn: d => `ಮಾಹಿತಿ ಪರಿಶೀಲಿಸಿದ್ದು: ${d}`, trust: (g, t) => `${t} ರಲ್ಲಿ ${g} ಅಧಿಕೃತ ಲಿಂಕ್‌ಗಳು ಸರ್ಕಾರಿ ಪುಟದಲ್ಲಿ ದೃಢಪಟ್ಟಿವೆ`,
+    fbTitle: "ಈ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಸರಿಯಾಗಿಡಲು ಸಹಾಯ ಮಾಡಿ", fbQ: "ಈ ಮಾರ್ಗದರ್ಶಿ ನಿಮಗೆ ಸಹಾಯ ಮಾಡಿತೇ?", yes: "ಹೌದು", no: "ಇಲ್ಲ",
+    thanksYes: "ಧನ್ಯವಾದಗಳು. ಯಾವ ಮಾರ್ಗದರ್ಶಿಗಳು ಉಪಯುಕ್ತ ಎಂದು ಇದರಿಂದ ತಿಳಿಯುತ್ತದೆ.", thanksNo: "ಕ್ಷಮಿಸಿ. ಏನು ಕೊರತೆ ಅಥವಾ ತಪ್ಪಿತ್ತು ಎಂದು ತಿಳಿಸಿ, ನಾವು ಸರಿಪಡಿಸುತ್ತೇವೆ.",
+    report: "ತಪ್ಪು ವರದಿ ಮಾಡಿ", reportNote: "GitHub ನಲ್ಲಿ ಸಣ್ಣ ಫಾರ್ಮ್ ತೆರೆಯುತ್ತದೆ (ಉಚಿತ ಖಾತೆ ಬೇಕು). ಸರಿಯಾದ ಮಾಹಿತಿ ಮತ್ತು ಅದನ್ನು ಎಲ್ಲಿ ನೋಡಿದಿರಿ ಎಂದು ಬರೆಯಿರಿ." },
+};
+const LOCALE = { en: "en-IN", mr: "mr-IN", hi: "hi-IN", kn: "kn-IN" };
+const fmtDate = iso => { try { return new Date(iso + "T00:00:00").toLocaleDateString(LOCALE[state.lang], { day: "numeric", month: "short", year: "numeric" }); } catch (e) { return iso; } };
+// Counts visits and votes only when the standalone site loads GoatCounter (see build_site.py); otherwise a no-op.
+function track(path, title, event) {
+  try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path, title: title || document.title, event: !!event }); } catch (e) {}
+}
+function reportURL(p) {
+  const q = new URLSearchParams({ template: "guide-error.yml", title: `[${p.slug}] Error report`, guide: `${p.title} (#${p.slug})`, language: state.lang });
+  return `https://github.com/${DATA.repo}/issues/new?${q}`;
+}
+function wireFeedback(p) {
+  const key = "sathi-vote-" + p.slug, F = FB[state.lang];
+  const show = v => {
+    document.querySelectorAll("[data-vote]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.vote === v)));
+    $("#fb-msg").textContent = v === "yes" ? F.thanksYes : v === "no" ? F.thanksNo : "";
+    $("#fb-report").classList.toggle("emph", v === "no");
+  };
+  let prior = null; try { prior = localStorage.getItem(key); } catch (e) {}
+  if (prior) show(prior);
+  document.querySelectorAll("[data-vote]").forEach(b => b.addEventListener("click", () => {
+    const v = b.dataset.vote;
+    if (prior !== v) track(`/feedback/${p.slug}/${v}`, `${v === "yes" ? "Helpful" : "Not helpful"}: ${p.title}`, true);
+    prior = v; save(key, v); show(v);
+  }));
+}
+
 const POSTS = DATA.posts, BY = Object.fromEntries(POSTS.map(p => [p.slug, p]));
 const state = { lang: "en", st: "all", cat: "all", q: "" };
 try {
@@ -323,6 +375,7 @@ function renderPost(p) {
   const prev = sib[i - 1], next = sib[i + 1];
   const links = p.links.map(l => `<li><span class="what">${l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.url.replace(/^https?:\/\//, "").replace(/\/$/, ""))}</a>` : `<b>${esc(l.label.split(":").slice(1).join(":").trim() || l.label)}</b>`}<span class="lbl">${esc(l.label)}</span></span>
       <span class="tag ${l.gov ? "g" : "x"}">${l.gov ? u.gov : u.third}</span></li>`).join("");
+  const govN = p.links.filter(l => l.gov).length;
   const sources = p.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("");
   $("#main").innerHTML = `
   <article class="gutter"><div class="post">
@@ -331,7 +384,7 @@ function renderPost(p) {
     <h1 id="post-title" tabindex="-1" lang="${L}">${esc(g.h1)}</h1>
     <p class="mrn" lang="${state.lang === "en" ? p.local : "en"}">${esc(altTitle(p))}</p>
     <p class="benefit" lang="${L}">${g.benefit}</p>
-    <div class="post-meta"><span><b>${u.forw}:</b> ${esc(p.audience)}</span><span>${u.steps(g.steps.length)}</span><span>${u.checked}</span></div>
+    <div class="post-meta"><span><b>${u.forw}:</b> ${esc(p.audience)}</span><span>${u.steps(g.steps.length)}</span>${p.verified ? `<span>${FB[state.lang].checkedOn(fmtDate(p.verified))}</span>` : ""}</div>
     <ul class="toc">${[["s-steps", u.tocSteps], ["s-links", u.tocLinks], ["s-flow", u.tocFlow], ["s-src", u.tocSrc]].map(([id, t]) => `<li><button type="button" data-go="${id}">${t}</button></li>`).join("")}</ul>
 
     <section lang="${L}">
@@ -345,6 +398,7 @@ function renderPost(p) {
     <section>
       <h2 id="s-links" tabindex="-1">${u.hLinks}</h2>
       <ul class="links">${links}</ul>
+      <p class="trust"><span class="tag ${govN === p.links.length ? "g" : "x"}">${govN}/${p.links.length}</span> ${FB[state.lang].trust(govN, p.links.length)}</p>
       <p class="small">${u.linksNote}</p>
     </section>
 
@@ -360,6 +414,18 @@ function renderPost(p) {
       <p class="small">${u.srcNote}</p>
     </section>
 
+    <section class="feedback" aria-labelledby="fb-title">
+      <h2 id="fb-title">${FB[state.lang].fbTitle}</h2>
+      <div class="vote" role="group" aria-label="${FB[state.lang].fbQ}">
+        <span>${FB[state.lang].fbQ}</span>
+        <button type="button" id="vote-yes" data-vote="yes" aria-pressed="false">${FB[state.lang].yes}</button>
+        <button type="button" id="vote-no" data-vote="no" aria-pressed="false">${FB[state.lang].no}</button>
+      </div>
+      <p id="fb-msg" class="small" aria-live="polite"></p>
+      <a id="fb-report" class="report" href="${esc(reportURL(p))}" target="_blank" rel="noopener">${FB[state.lang].report} ↗</a>
+      <p class="small">${FB[state.lang].reportNote}</p>
+    </section>
+
     <nav class="pager" aria-label="${u.prev} / ${u.next}">
       ${prev ? `<a class="prev" href="#${prev.slug}"><small>← ${u.prev}</small>${esc(title(prev))}</a>` : ""}
       ${next ? `<a class="next" href="#${next.slug}"><small>${u.next} →</small>${esc(title(next))}</a>` : ""}
@@ -370,6 +436,7 @@ function renderPost(p) {
   }));
   document.title = `${p.title} · Sathi Yojana Guides`;
   drawDiagram(p);
+  wireFeedback(p);
 }
 
 const svgCache = {};
@@ -418,6 +485,6 @@ document.querySelectorAll(".toggle button").forEach(b => b.addEventListener("cli
   const y = window.scrollY; route(false); window.scrollTo(0, y);
 }));
 $("#skip").addEventListener("click", e => { e.preventDefault(); $("#main").focus(); });
-window.addEventListener("hashchange", () => route(true));
+window.addEventListener("hashchange", () => { route(true); track(location.pathname + location.hash); });
 route(false);
 </script>
