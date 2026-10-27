@@ -2,7 +2,7 @@
 
 Step-by-step citizen guides (English + Marathi) and team system workflows for Maharashtra and central government services. Each page has a citizen guide image, a Marathi version, a Mermaid system diagram with Sathi touchpoints, and a stage table.
 
-> **Status:** **all 25 guides checked on 27 Oct 2026** (3 batches) against news, district/central government pages and secondary sources, with corrections applied; see each page's *Verification* section. Maharashtra state portals were not reachable from the research environment, so final confirmation against current GRs is still needed, and **Marathi text still needs native-speaker review**.
+> **Status:** **all 26 guides checked on 27 Oct 2026** (3 batches) against news, district/central government pages and secondary sources, with corrections applied; see each page's *Verification* section. Maharashtra state portals were not reachable from the research environment, so final confirmation against current GRs is still needed, and **Marathi text still needs native-speaker review**.
 
 ## Certificates (the document chain)
 
@@ -27,6 +27,7 @@ Most schemes depend on these. Typical student chain: income → domicile → cas
 | Guide | Marathi name | For | English | Marathi |
 |---|---|---|---|---|
 | [PM-KISAN](pm-kisan.md) | पीएम-किसान | Landholding farmers | [EN](pm-kisan-farmer-guide.png) | [MR](pm-kisan-farmer-guide-mr.png) |
+| [Namo Shetkari Mahasanman Nidhi](namo-shetkari.md) | नमो शेतकरी महासन्मान निधी | PM-KISAN farmers in Maharashtra (automatic top-up) | [EN](namo-shetkari-guide.png) | [MR](namo-shetkari-guide-mr.png) |
 | [Crop insurance (PM Fasal Bima)](pik-vima.md) | पीक विमा | Farmers growing notified crops (AgriStack ID + e-Pik Pahani) | [EN](pik-vima-guide.png) | [MR](pik-vima-guide-mr.png) |
 | [Krushi Swavalamban Yojana](krushi-swavalamban.md) | डॉ. बाबासाहेब आंबेडकर कृषी स्वावलंबन योजना | SC / Nav-Bauddha farmers (wells, irrigation) | [EN](krushi-swavalamban-guide.png) | [MR](krushi-swavalamban-guide-mr.png) |
 | [Birsa Munda Krushi Kranti Yojana](birsa-munda.md) | बिरसा मुंडा कृषी क्रांती योजना | ST farmers incl. forest-rights holders (wells, irrigation) | [EN](birsa-munda-guide.png) | [MR](birsa-munda-guide-mr.png) |

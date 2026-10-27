@@ -1,6 +1,7 @@
 # PM-KISAN - End-to-End Workflow
 
 Official site: https://pmkisan.gov.in (Operational Guidelines PDF + "Know Your Status").
+Maharashtra adds ₹6,000 a year on top automatically: see [Namo Shetkari Mahasanman Nidhi](namo-shetkari.md).
 
 ## For farmers: step by step
 
