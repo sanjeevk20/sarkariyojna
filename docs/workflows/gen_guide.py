@@ -16,12 +16,14 @@ style += """  .rights { margin-top:20px; background:#fff7ed; border:2px solid #e
   .rights .t { font-size:21px; font-weight:700; color:#c2410c; }
 </style>"""
 
+FONT_LINK = '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">'
+
 COLORS = {"you": "#2563eb", "gov": "#7c3aed", "done": "#059669"}
 
 for key, t in T.items():
     st = style.replace("font-family:'Noto Sans','FreeSans',sans-serif;", f"font-family:{t['font']};")
     out = [f'<!doctype html>\n<html lang="{t["lang"]}"><head><meta charset="utf-8">',
-           '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">',
+           FONT_LINK.replace("&display", "&family=Noto+Sans+Kannada:wght@400;500;600;700&display") if "Kannada" in t["font"] else FONT_LINK,
            st, "</head>", '<body><div id="page">', f"  <h1>{t['h1']}</h1>"]
     if t["sub"]:
         out.append(f'  <div class="sub mr">{t["sub"]}</div>')

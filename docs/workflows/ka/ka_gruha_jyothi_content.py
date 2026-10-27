@@ -1,0 +1,108 @@
+"""Gruha Jyothi (free electricity) guide content (EN + KN)."""
+
+OUT = "ka-gruha-jyothi-guide"
+PHASE_BREAK = 4
+
+T = {'en': {'lang': 'en',
+        'font': "'Noto Sans','FreeSans',sans-serif",
+        'h1': 'Gruha Jyothi: Free electricity up to 200 units a month',
+        'sub': 'ಗೃಹಜ್ಯೋತಿ: ತಿಂಗಳಿಗೆ 200 ಯೂನಿಟ್\u200cವರೆಗೆ ಉಚಿತ ವಿದ್ಯುತ್',
+        'benefit': 'Zero bill for units within your entitlement, up to 200 units a month',
+        'legend': ['You do this', 'Government does this (you wait)', 'Zero bill'],
+        'phases': ['Before you apply', 'After you apply'],
+        'who': {'you': 'You', 'gov': 'Government', 'done': 'Done'},
+        'stuck': 'Stuck?',
+        'tip': 'Tip:',
+        'steps': [('you',
+                   'Check if you can get it',
+                   'ಅರ್ಹತೆ ಪರಿಶೀಲಿಸಿ',
+                   '<ul><li>A <b>domestic (home)</b> connection in Karnataka; commercial connections are '
+                   'excluded</li><li>One meter per household</li><li>Your average use must be <b>under 200 units</b> a '
+                   'month</li></ul>',
+                   None),
+                  ('you',
+                   'Know your free units',
+                   'ನಿಮ್ಮ ಉಚಿತ ಯೂನಿಟ್ ತಿಳಿಯಿರಿ',
+                   'Your free limit is based on your <b>average monthly use in the past year plus about 10%</b>. Very '
+                   'low users were reported to get a fixed top-up instead.',
+                   ('tip', 'Units above your limit are billed. Keep use near your average to keep a zero bill.')),
+                  ('you',
+                   'Keep your bill ready',
+                   'ನಿಮ್ಮ ಬಿಲ್ ಸಿದ್ಧವಾಗಿಡಿ',
+                   'You need the <b>account ID / customer ID</b> from your electricity bill, and Aadhaar. Tenants can '
+                   'apply with a rent agreement or address proof.',
+                   None),
+                  ('you',
+                   'Apply',
+                   'ಅರ್ಜಿ ಸಲ್ಲಿಸಿ',
+                   'Apply on <b>Seva Sindhu</b> or at a Grama One / Karnataka One / Bangalore One centre. Keep the '
+                   '<b>acknowledgement</b>.',
+                   ('tip', 'Applying is <b>free</b>.')),
+                  ('gov',
+                   'Linked to your connection',
+                   'ನಿಮ್ಮ ಸಂಪರ್ಕಕ್ಕೆ ಜೋಡಣೆ',
+                   'Your ESCOM (BESCOM, MESCOM, HESCOM, GESCOM or CESC) links the scheme to your account.',
+                   None),
+                  ('done',
+                   'Zero bill',
+                   'ಶೂನ್ಯ ಬಿಲ್',
+                   'Your bill shows the Gruha Jyothi benefit and <b>₹0</b> when you stay within your limit.',
+                   ('stuck',
+                    'Still getting a full bill? Check that the application is linked to the right account ID; ask the '
+                    'ESCOM sub-division office.'))],
+        'rights_t': 'Wrong bill? Complain.',
+        'rights': 'Complain to your <b>ESCOM</b> sub-division office or helpline <b>1912</b>, or on <b>IPGRS</b>.',
+        'help': '<b>Apply:</b> sevasindhugs.karnataka.gov.in · Free-unit rule as reported; check your ESCOM '
+                'notice<br><b>Applying is free</b> · <b>Use only official websites</b>'},
+ 'kn': {'lang': 'kn',
+        'font': "'Noto Sans Kannada','Noto Sans','FreeSans',sans-serif",
+        'h1': 'ಗೃಹಜ್ಯೋತಿ: ತಿಂಗಳಿಗೆ 200 ಯೂನಿಟ್\u200cವರೆಗೆ ಉಚಿತ ವಿದ್ಯುತ್',
+        'sub': None,
+        'benefit': 'ನಿಮ್ಮ ಅರ್ಹ ಮಿತಿಯೊಳಗಿನ ಯೂನಿಟ್\u200cಗಳಿಗೆ ಶೂನ್ಯ ಬಿಲ್, ತಿಂಗಳಿಗೆ 200 ಯೂನಿಟ್\u200cವರೆಗೆ',
+        'legend': ['ಇದನ್ನು ನೀವು ಮಾಡಿ', 'ಇದನ್ನು ಸರ್ಕಾರ ಮಾಡುತ್ತದೆ (ನೀವು ಕಾಯಿರಿ)', 'ಶೂನ್ಯ ಬಿಲ್'],
+        'phases': ['ಅರ್ಜಿ ಸಲ್ಲಿಸುವ ಮೊದಲು', 'ಅರ್ಜಿ ಸಲ್ಲಿಸಿದ ನಂತರ'],
+        'who': {'you': 'ನೀವು', 'gov': 'ಸರ್ಕಾರ', 'done': 'ಪೂರ್ಣ'},
+        'stuck': 'ತೊಂದರೆಯೇ?',
+        'tip': 'ಸಲಹೆ:',
+        'steps': [('you',
+                   'ಅರ್ಹತೆ ಪರಿಶೀಲಿಸಿ',
+                   None,
+                   '<ul><li>ಕರ್ನಾಟಕದಲ್ಲಿ <b>ಗೃಹ ಬಳಕೆ</b> ಸಂಪರ್ಕ; ವಾಣಿಜ್ಯ ಸಂಪರ್ಕಗಳಿಗೆ ಇಲ್ಲ</li><li>ಪ್ರತಿ ಮನೆಗೆ ಒಂದು '
+                   'ಮೀಟರ್</li><li>ನಿಮ್ಮ ಸರಾಸರಿ ಬಳಕೆ ತಿಂಗಳಿಗೆ <b>200 ಯೂನಿಟ್\u200cಗಿಂತ ಕಡಿಮೆ</b> ಇರಬೇಕು</li></ul>',
+                   None),
+                  ('you',
+                   'ನಿಮ್ಮ ಉಚಿತ ಯೂನಿಟ್ ತಿಳಿಯಿರಿ',
+                   None,
+                   'ನಿಮ್ಮ ಉಚಿತ ಮಿತಿ <b>ಕಳೆದ ವರ್ಷದ ಸರಾಸರಿ ಮಾಸಿಕ ಬಳಕೆ ಜೊತೆಗೆ ಸುಮಾರು 10%</b> ಆಧರಿಸಿದೆ. ತುಂಬಾ ಕಡಿಮೆ '
+                   'ಬಳಸುವವರಿಗೆ ನಿಗದಿತ ಹೆಚ್ಚುವರಿ ಯೂನಿಟ್ ನೀಡಲಾಗುತ್ತದೆ ಎಂದು ವರದಿಯಾಗಿದೆ.',
+                   ('tip',
+                    'ಮಿತಿಗಿಂತ ಹೆಚ್ಚಿನ ಯೂನಿಟ್\u200cಗಳಿಗೆ ಬಿಲ್ ಬರುತ್ತದೆ. ಶೂನ್ಯ ಬಿಲ್\u200cಗಾಗಿ ಬಳಕೆಯನ್ನು ಸರಾಸರಿಯ ಹತ್ತಿರ '
+                    'ಇಡಿ.')),
+                  ('you',
+                   'ನಿಮ್ಮ ಬಿಲ್ ಸಿದ್ಧವಾಗಿಡಿ',
+                   None,
+                   'ವಿದ್ಯುತ್ ಬಿಲ್\u200cನಲ್ಲಿರುವ <b>ಖಾತೆ ಐಡಿ / ಗ್ರಾಹಕ ಐಡಿ</b> ಮತ್ತು ಆಧಾರ್ ಬೇಕು. ಬಾಡಿಗೆದಾರರು ಬಾಡಿಗೆ '
+                   'ಒಪ್ಪಂದ ಅಥವಾ ವಿಳಾಸ ಪುರಾವೆಯೊಂದಿಗೆ ಅರ್ಜಿ ಸಲ್ಲಿಸಬಹುದು.',
+                   None),
+                  ('you',
+                   'ಅರ್ಜಿ ಸಲ್ಲಿಸಿ',
+                   None,
+                   '<b>ಸೇವಾ ಸಿಂಧು</b>ವಿನಲ್ಲಿ ಅಥವಾ ಗ್ರಾಮ ಒನ್ / ಕರ್ನಾಟಕ ಒನ್ / ಬೆಂಗಳೂರು ಒನ್ ಕೇಂದ್ರದಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ. '
+                   '<b>ಸ್ವೀಕೃತಿ</b> ಜೋಪಾನವಾಗಿಡಿ.',
+                   ('tip', 'ಅರ್ಜಿ <b>ಉಚಿತ</b>.')),
+                  ('gov',
+                   'ನಿಮ್ಮ ಸಂಪರ್ಕಕ್ಕೆ ಜೋಡಣೆ',
+                   None,
+                   'ನಿಮ್ಮ ಎಸ್ಕಾಂ (ಬೆಸ್ಕಾಂ, ಮೆಸ್ಕಾಂ, ಹೆಸ್ಕಾಂ, ಜೆಸ್ಕಾಂ ಅಥವಾ ಸೆಸ್ಕ್) ಯೋಜನೆಯನ್ನು ನಿಮ್ಮ ಖಾತೆಗೆ ಜೋಡಿಸುತ್ತದೆ.',
+                   None),
+                  ('done',
+                   'ಶೂನ್ಯ ಬಿಲ್',
+                   None,
+                   'ಮಿತಿಯೊಳಗೆ ಬಳಸಿದರೆ ನಿಮ್ಮ ಬಿಲ್\u200cನಲ್ಲಿ ಗೃಹಜ್ಯೋತಿ ಸೌಲಭ್ಯ ಮತ್ತು <b>₹0</b> ತೋರಿಸುತ್ತದೆ.',
+                   ('stuck',
+                    'ಇನ್ನೂ ಪೂರ್ಣ ಬಿಲ್ ಬರುತ್ತಿದೆಯೇ? ಅರ್ಜಿ ಸರಿಯಾದ ಖಾತೆ ಐಡಿಗೆ ಜೋಡಣೆಯಾಗಿದೆಯೇ ನೋಡಿ; ಎಸ್ಕಾಂ ಉಪವಿಭಾಗ '
+                    'ಕಚೇರಿಯಲ್ಲಿ ಕೇಳಿ.'))],
+        'rights_t': 'ಬಿಲ್ ತಪ್ಪಾಗಿದೆಯೇ? ದೂರು ನೀಡಿ.',
+        'rights': 'ನಿಮ್ಮ <b>ಎಸ್ಕಾಂ</b> ಉಪವಿಭಾಗ ಕಚೇರಿ ಅಥವಾ ಸಹಾಯವಾಣಿ <b>1912</b> ಗೆ, ಅಥವಾ <b>IPGRS</b> ನಲ್ಲಿ ದೂರು ನೀಡಿ.',
+        'help': '<b>ಅರ್ಜಿ:</b> sevasindhugs.karnataka.gov.in · ಉಚಿತ ಯೂನಿಟ್ ನಿಯಮ ವರದಿಯಂತೆ; ನಿಮ್ಮ ಎಸ್ಕಾಂ ಸೂಚನೆ '
+                'ನೋಡಿ<br><b>ಅರ್ಜಿ ಉಚಿತ</b> · <b>ಅಧಿಕೃತ ವೆಬ್\u200cಸೈಟ್ ಮಾತ್ರ ಬಳಸಿ</b>'}}

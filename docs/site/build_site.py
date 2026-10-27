@@ -30,19 +30,26 @@ CATEGORY = {
     "up-dakhil-kharij": "docs", "up-old-age-pension": "pension", "up-widow-pension": "pension",
     "up-ration-card": "pension", "up-kanya-sumangala": "women", "up-samuhik-vivah": "women",
     "up-scholarship": "edu", "up-cm-yuva": "loan", "up-pm-kisan": "farm",
+    "ka-caste-income-certificate": "docs", "ka-land-mutation": "docs", "ka-gruha-lakshmi": "women",
+    "ka-shakti": "women", "ka-gruha-jyothi": "home", "ka-ration-card": "pension", "ka-social-pensions": "pension",
+    "ka-yuva-nidhi": "edu", "ka-ssp-scholarship": "edu", "ka-pm-kisan": "farm",
 }
-# (id, English, Marathi, Hindi, folder, local language of its guides)
+# (id, English, Marathi, Hindi, Kannada, folder, local language of its guides)
 STATES = [
-    ("mh", "Maharashtra", "महाराष्ट्र", "महाराष्ट्र", WF, "mr"),
-    ("up", "Uttar Pradesh", "उत्तर प्रदेश", "उत्तर प्रदेश", WF / "up", "hi"),
+    ("mh", "Maharashtra", "महाराष्ट्र", "महाराष्ट्र", "ಮಹಾರಾಷ್ಟ್ರ", WF, "mr"),
+    ("up", "Uttar Pradesh", "उत्तर प्रदेश", "उत्तर प्रदेश", "ಉತ್ತರ ಪ್ರದೇಶ", WF / "up", "hi"),
+    ("ka", "Karnataka", "कर्नाटक", "कर्नाटक", "ಕರ್ನಾಟಕ", WF / "ka", "kn"),
 ]
+# (id, English, Marathi, Hindi, Kannada)
 CATS = [
-    ("farm", "Farming", "शेती", "खेती"), ("docs", "Certificates & land", "दाखले व जमीन", "प्रमाण पत्र व भूमि"),
-    ("edu", "Education", "शिक्षण", "शिक्षा"), ("women", "Women & family", "महिला व कुटुंब", "महिला व परिवार"),
-    ("home", "Housing", "घरकुल", "आवास"), ("pension", "Pensions & food", "निवृत्तीवेतन व अन्न", "पेंशन व खाद्य"),
-    ("health", "Health", "आरोग्य", "स्वास्थ्य"), ("loan", "Business loans", "व्यवसाय कर्ज", "व्यवसाय ऋण"),
+    ("farm", "Farming", "शेती", "खेती", "ಕೃಷಿ"), ("docs", "Certificates & land", "दाखले व जमीन", "प्रमाण पत्र व भूमि", "ಪ್ರಮಾಣ ಪತ್ರ ಮತ್ತು ಭೂಮಿ"),
+    ("edu", "Education & youth", "शिक्षण व युवा", "शिक्षा व युवा", "ಶಿಕ್ಷಣ ಮತ್ತು ಯುವಜನ"),
+    ("women", "Women & family", "महिला व कुटुंब", "महिला व परिवार", "ಮಹಿಳೆ ಮತ್ತು ಕುಟುಂಬ"),
+    ("home", "Housing & utilities", "घरकुल व वीज", "आवास व बिजली", "ವಸತಿ ಮತ್ತು ವಿದ್ಯುತ್"),
+    ("pension", "Pensions & food", "निवृत्तीवेतन व अन्न", "पेंशन व खाद्य", "ಪಿಂಚಣಿ ಮತ್ತು ಆಹಾರ"),
+    ("health", "Health", "आरोग्य", "स्वास्थ्य", "ಆರೋಗ್ಯ"), ("loan", "Business loans", "व्यवसाय कर्ज", "व्यवसाय ऋण", "ವ್ಯವಹಾರ ಸಾಲ"),
 ]
-TIP_LABELS = ("Tip:", "सूचना:", "सुझाव:")
+TIP_LABELS = ("Tip:", "सूचना:", "सुझाव:", "ಸಲಹೆ:")
 
 
 def index_rows(folder):
@@ -120,7 +127,7 @@ def parse_md(path):
 
 def build():
     posts, state_routers = [], {}
-    for sid, _, _, _, folder, local in STATES:
+    for sid, _, _, _, _, folder, local in STATES:
         for row in index_rows(folder):
             slug = row["slug"]
             guide, links, mermaid, sources = parse_md(folder / f"{slug}.md")
@@ -130,8 +137,8 @@ def build():
         state_routers[sid] = routers(folder)
     order = [c[0] for c in CATS]
     posts.sort(key=lambda p: ([s[0] for s in STATES].index(p["state"]), order.index(p["cat"])))
-    data = dict(cats=[dict(id=i, en=e, mr=m, hi=h) for i, e, m, h in CATS],
-                states=[dict(id=i, en=e, mr=m, hi=h) for i, e, m, h, _, _ in STATES],
+    data = dict(cats=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k in CATS],
+                states=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k, _, _ in STATES],
                 posts=posts, routers=state_routers)
     js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (ROOT / "template.html").read_text().replace("/*__DATA__*/null", js)
@@ -144,7 +151,7 @@ def build():
 
 
 SITE_URL = "https://sanjeevk20.github.io/sarkariyojna/"
-DESC = "Step-by-step guides to Maharashtra, Uttar Pradesh and central government schemes, in English, Marathi and Hindi, with official links."
+DESC = "Step-by-step guides to Maharashtra, Uttar Pradesh, Karnataka and central government schemes, in English, Marathi, Hindi and Kannada, with official links."
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
            "%3Ccircle cx='16' cy='16' r='16' fill='%232d6a39'/%3E%3Cpath d='M9 21c0-7 5-11 14-12-1 9-5 14-12 14' "
            "fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E")

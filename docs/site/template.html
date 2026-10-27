@@ -1,7 +1,7 @@
 <title>Sathi Yojana Guides</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Step-by-step guides to Maharashtra, Uttar Pradesh and central government schemes, in English, Marathi and Hindi.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel:wght@700;800&family=Mukta:wght@400;500;700&display=swap">
+<meta name="description" content="Step-by-step guides to Maharashtra, Uttar Pradesh, Karnataka and central government schemes, in English, Marathi, Hindi and Kannada.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel:wght@700;800&family=Mukta:wght@400;500;700&family=Noto+Sans+Kannada:wght@400;500;700&display=swap">
 <style>
 /* Layout: a field-notebook blog. Sticky masthead, filterable card index, and long-form guide posts with a numbered step rail. */
 :root {
@@ -9,8 +9,8 @@
   --leaf: #2d6a39; --leaf-soft: #e1eee0; --on-leaf: #ffffff;
   --you: #2357a6; --you-soft: #e7eef9; --gov: #67479f; --gov-soft: #efe9f8; --done: #2d6a39; --done-soft: #e1eee0;
   --haldi: #9a6512; --haldi-soft: #faf0dc; --stop: #b42318; --stop-soft: #fcebe9;
-  --display: "Martel", "Noto Serif Devanagari", Georgia, serif;
-  --body: "Mukta", "Noto Sans Devanagari", "Noto Sans", system-ui, sans-serif;
+  --display: "Martel", "Noto Serif Devanagari", "Noto Sans Kannada", Georgia, serif;
+  --body: "Mukta", "Noto Sans Devanagari", "Noto Sans Kannada", "Noto Sans", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #111712; --surface: #19211a; --raised: #202a21; --fg: #e3eae2; --muted: #9db09f; --line: #2d3a2f;
@@ -126,18 +126,19 @@ h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.3; }
 .pager small { display: block; color: var(--muted); }
 .foot { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 .foot .gutter { padding-block: 18px 28px; }
-@media (max-width: 520px) { .brand span { display: none; } .toggle button { padding: 0 9px; font-size: 14px; } .pager { grid-template-columns: 1fr; } .pager a.next { grid-column: 1; } }
+@media (max-width: 520px) { .brand span { display: none; } .toggle { gap: 2px; } .toggle button { padding: 0 7px; font-size: 13px; } .pager { grid-template-columns: 1fr; } .pager a.next { grid-column: 1; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 
 <a class="skip" href="#main" id="skip">Skip to content</a>
 <header class="mast">
   <div class="gutter">
-    <a class="brand" href="#" id="brand"><b>Sathi</b><span id="brand-sub">Yojana guides for Maharashtra and Uttar Pradesh</span></a>
+    <a class="brand" href="#" id="brand"><b>Sathi</b><span id="brand-sub">Yojana guides for Maharashtra, Uttar Pradesh and Karnataka</span></a>
     <div class="toggle" role="group" aria-label="Language / भाषा">
       <button id="lang-en" type="button" data-lang="en" aria-pressed="true">English</button>
       <button id="lang-mr" type="button" data-lang="mr" aria-pressed="false" lang="mr">मराठी</button>
       <button id="lang-hi" type="button" data-lang="hi" aria-pressed="false" lang="hi">हिंदी</button>
+      <button id="lang-kn" type="button" data-lang="kn" aria-pressed="false" lang="kn">ಕನ್ನಡ</button>
     </div>
   </div>
 </header>
@@ -147,7 +148,7 @@ h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.3; }
 <script>
 const DATA = /*__DATA__*/null;
 const UI = {
-  en: { sub: "Yojana guides for Maharashtra and Uttar Pradesh", skip: "Skip to content", eyebrow: "Maharashtra · Uttar Pradesh · Central schemes",
+  en: { sub: "Yojana guides for Maharashtra, Uttar Pradesh and Karnataka", skip: "Skip to content", eyebrow: "Maharashtra · Uttar Pradesh · Karnataka · Central schemes",
     h1: "Get your government file unstuck", lead: n => `Step-by-step guides for ${n} schemes and certificates: what to do, what the office does, what to do when stuck, and the official links.`,
     search: "Search schemes, e.g. pension, farm pond, caste", all: "All", allStates: "All states", stateLbl: "State", catLbl: "Topic",
     shown: n => `${n} guide${n === 1 ? "" : "s"}`, none: "No guide matches. Try another word, or pick All.",
@@ -160,8 +161,8 @@ const UI = {
     flowLoading: "Drawing the diagram…", flowFail: "The diagram could not be drawn here. Its source is below.",
     srcNote: "Facts checked on 27 Oct 2026 against these sources. Confirm against the current government order before relying on them.",
     prev: "Previous", next: "Next", checked: "Checked 27 Oct 2026", langNote: "",
-    foot: "Sathi guides are written to help citizens; they are not an official government website. Use only the official links shown on each guide, and never pay an agent to apply. Marathi and Hindi text are awaiting native-speaker review." },
-  mr: { sub: "महाराष्ट्र व उत्तर प्रदेशासाठी योजना मार्गदर्शक", skip: "मुख्य मजकुराकडे जा", eyebrow: "महाराष्ट्र · उत्तर प्रदेश · केंद्र सरकारच्या योजना",
+    foot: "Sathi guides are written to help citizens; they are not an official government website. Use only the official links shown on each guide, and never pay an agent to apply. Marathi, Hindi and Kannada text are awaiting native-speaker review." },
+  mr: { sub: "महाराष्ट्र, उत्तर प्रदेश व कर्नाटकसाठी योजना मार्गदर्शक", skip: "मुख्य मजकुराकडे जा", eyebrow: "महाराष्ट्र · उत्तर प्रदेश · कर्नाटक · केंद्र सरकारच्या योजना",
     h1: "तुमचे सरकारी काम अडकले? पुढे न्या", lead: n => `${n} योजना व दाखल्यांसाठी टप्प्याटप्प्याने मार्गदर्शक: तुम्ही काय करायचे, कार्यालय काय करते, अडकल्यास काय करायचे, आणि अधिकृत लिंक.`,
     search: "योजना शोधा, उदा. पेन्शन, शेततळे, जात", all: "सर्व", allStates: "सर्व राज्ये", stateLbl: "राज्य", catLbl: "विषय",
     shown: n => `${n} मार्गदर्शक`, none: "कोणताही मार्गदर्शक जुळला नाही. दुसरा शब्द वापरा किंवा सर्व निवडा.",
@@ -173,9 +174,9 @@ const UI = {
     gov: "सरकारी पान", third: "फक्त इतर साइट्स", flowNote: "पिवळे बॉक्स: साथी कुठे मदत करतो. लाल बॉक्स: काम अडकण्याची नेहमीची कारणे. (आकृती इंग्रजीत)",
     flowLoading: "आकृती तयार होत आहे…", flowFail: "येथे आकृती दाखवता आली नाही. तिचा मजकूर खाली आहे.",
     srcNote: "27 ऑक्टो 2026 रोजी या स्रोतांवरून माहिती तपासली. अवलंबून राहण्यापूर्वी चालू शासन निर्णय तपासा. (स्रोत मुख्यतः इंग्रजीत)",
-    prev: "मागील", next: "पुढील", checked: "27 ऑक्टो 2026 रोजी तपासले", langNote: "उत्तर प्रदेशचे मार्गदर्शक हिंदीत आहेत.",
-    foot: "साथी मार्गदर्शक नागरिकांच्या मदतीसाठी आहेत; ही अधिकृत सरकारी वेबसाइट नाही. प्रत्येक मार्गदर्शकातील अधिकृत लिंकच वापरा आणि अर्जासाठी एजंटला पैसे देऊ नका. मराठी व हिंदी मजकुराचे मूळ भाषिकांकडून पुनरावलोकन बाकी आहे." },
-  hi: { sub: "महाराष्ट्र और उत्तर प्रदेश के लिए योजना मार्गदर्शिका", skip: "मुख्य सामग्री पर जाएं", eyebrow: "महाराष्ट्र · उत्तर प्रदेश · केंद्र सरकार की योजनाएं",
+    prev: "मागील", next: "पुढील", checked: "27 ऑक्टो 2026 रोजी तपासले", langNote: "उत्तर प्रदेशचे मार्गदर्शक हिंदीत आणि कर्नाटकचे कन्नडमध्ये आहेत.",
+    foot: "साथी मार्गदर्शक नागरिकांच्या मदतीसाठी आहेत; ही अधिकृत सरकारी वेबसाइट नाही. प्रत्येक मार्गदर्शकातील अधिकृत लिंकच वापरा आणि अर्जासाठी एजंटला पैसे देऊ नका. मराठी, हिंदी व कन्नड मजकुराचे मूळ भाषिकांकडून पुनरावलोकन बाकी आहे." },
+  hi: { sub: "महाराष्ट्र, उत्तर प्रदेश और कर्नाटक के लिए योजना मार्गदर्शिका", skip: "मुख्य सामग्री पर जाएं", eyebrow: "महाराष्ट्र · उत्तर प्रदेश · कर्नाटक · केंद्र सरकार की योजनाएं",
     h1: "आपका सरकारी काम अटका है? आगे बढ़ाएं", lead: n => `${n} योजनाओं और प्रमाण पत्रों के लिए चरण-दर-चरण मार्गदर्शिका: आपको क्या करना है, दफ़्तर क्या करता है, अटकने पर क्या करें, और आधिकारिक लिंक।`,
     search: "योजना खोजें, जैसे पेंशन, राशन कार्ड, जाति", all: "सभी", allStates: "सभी राज्य", stateLbl: "राज्य", catLbl: "विषय",
     shown: n => `${n} मार्गदर्शिकाएं`, none: "कोई मार्गदर्शिका नहीं मिली। दूसरा शब्द आज़माएं या सभी चुनें।",
@@ -187,8 +188,22 @@ const UI = {
     gov: "सरकारी पेज", third: "केवल अन्य साइटें", flowNote: "पीले बॉक्स: साथी कहां मदद करता है। लाल बॉक्स: काम अटकने के आम कारण। (आरेख अंग्रेज़ी में)",
     flowLoading: "आरेख बन रहा है…", flowFail: "यहां आरेख नहीं दिखाया जा सका। उसका पाठ नीचे है।",
     srcNote: "27 अक्टूबर 2026 को इन स्रोतों से जानकारी जांची गई। भरोसा करने से पहले वर्तमान शासनादेश देखें। (स्रोत अधिकतर अंग्रेज़ी में)",
-    prev: "पिछला", next: "अगला", checked: "27 अक्टूबर 2026 को जांचा गया", langNote: "महाराष्ट्र की मार्गदर्शिकाएं मराठी में हैं।",
-    foot: "साथी मार्गदर्शिकाएं नागरिकों की मदद के लिए हैं; यह आधिकारिक सरकारी वेबसाइट नहीं है। हर मार्गदर्शिका में दिए आधिकारिक लिंक ही इस्तेमाल करें और आवेदन के लिए किसी एजेंट को पैसे न दें। मराठी और हिंदी पाठ की मूल भाषियों से समीक्षा बाकी है।" },
+    prev: "पिछला", next: "अगला", checked: "27 अक्टूबर 2026 को जांचा गया", langNote: "महाराष्ट्र की मार्गदर्शिकाएं मराठी में और कर्नाटक की कन्नड़ में हैं।",
+    foot: "साथी मार्गदर्शिकाएं नागरिकों की मदद के लिए हैं; यह आधिकारिक सरकारी वेबसाइट नहीं है। हर मार्गदर्शिका में दिए आधिकारिक लिंक ही इस्तेमाल करें और आवेदन के लिए किसी एजेंट को पैसे न दें। मराठी, हिंदी और कन्नड़ पाठ की मूल भाषियों से समीक्षा बाकी है।" },
+  kn: { sub: "ಮಹಾರಾಷ್ಟ್ರ, ಉತ್ತರ ಪ್ರದೇಶ ಮತ್ತು ಕರ್ನಾಟಕಕ್ಕೆ ಯೋಜನಾ ಮಾರ್ಗದರ್ಶಿ", skip: "ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ಹೋಗಿ", eyebrow: "ಮಹಾರಾಷ್ಟ್ರ · ಉತ್ತರ ಪ್ರದೇಶ · ಕರ್ನಾಟಕ · ಕೇಂದ್ರ ಸರ್ಕಾರದ ಯೋಜನೆಗಳು",
+    h1: "ನಿಮ್ಮ ಸರ್ಕಾರಿ ಕೆಲಸ ಸಿಲುಕಿದೆಯೇ? ಮುಂದೆ ಸಾಗಿಸಿ", lead: n => `${n} ಯೋಜನೆಗಳು ಮತ್ತು ಪ್ರಮಾಣ ಪತ್ರಗಳಿಗೆ ಹಂತ ಹಂತದ ಮಾರ್ಗದರ್ಶಿ: ನೀವು ಏನು ಮಾಡಬೇಕು, ಕಚೇರಿ ಏನು ಮಾಡುತ್ತದೆ, ಸಿಲುಕಿದಾಗ ಏನು ಮಾಡಬೇಕು, ಮತ್ತು ಅಧಿಕೃತ ಲಿಂಕ್‌ಗಳು.`,
+    search: "ಯೋಜನೆ ಹುಡುಕಿ, ಉದಾ. ಪಿಂಚಣಿ, ಪಡಿತರ, ಗೃಹಲಕ್ಷ್ಮಿ", all: "ಎಲ್ಲಾ", allStates: "ಎಲ್ಲಾ ರಾಜ್ಯಗಳು", stateLbl: "ರಾಜ್ಯ", catLbl: "ವಿಷಯ",
+    shown: n => `${n} ಮಾರ್ಗದರ್ಶಿಗಳು`, none: "ಯಾವ ಮಾರ್ಗದರ್ಶಿಯೂ ಸಿಗಲಿಲ್ಲ. ಬೇರೆ ಪದ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಆಯ್ಕೆಮಾಡಿ.",
+    steps: n => `${n} ಹಂತಗಳು`, links: n => `${n} ಅಧಿಕೃತ ಲಿಂಕ್‌ಗಳು`, forw: "ಯಾರಿಗೆ", routes: "ತ್ವರಿತ ದಾರಿಗಳು", legend: "ಮಾರ್ಗದರ್ಶಿ ಓದುವುದು ಹೇಗೆ",
+    lg: ["ಇದನ್ನು ನೀವು ಮಾಡಿ", "ಇದನ್ನು ಸರ್ಕಾರ ಮಾಡುತ್ತದೆ (ನೀವು ಕಾಯಿರಿ)", "ಪೂರ್ಣ / ಹಣ ಬಂದಿದೆ"],
+    back: "ಎಲ್ಲಾ ಮಾರ್ಗದರ್ಶಿಗಳು", tocSteps: "ಹಂತಗಳು", tocLinks: "ಅಧಿಕೃತ ಲಿಂಕ್", tocFlow: "ವ್ಯವಸ್ಥೆಯ ಹರಿವು", tocSrc: "ಮೂಲಗಳು",
+    hSteps: "ಹಂತ ಹಂತವಾಗಿ", hLinks: "ಅಧಿಕೃತ ಲಿಂಕ್‌ಗಳು", hFlow: "ತೆರೆಮರೆಯಲ್ಲಿ ಪ್ರಕ್ರಿಯೆ ಹೇಗೆ ನಡೆಯುತ್ತದೆ", hSrc: "ಮೂಲಗಳು ಮತ್ತು ಉಲ್ಲೇಖಗಳು",
+    linksNote: "ಸರ್ಕಾರಿ ಪುಟ: ಸರ್ಕಾರಿ ಸೈಟ್‌ನಲ್ಲಿ ದೃಢಪಟ್ಟಿದೆ. ಇತರ ಸೈಟ್‌ಗಳು ಮಾತ್ರ: ಅನೇಕ ಸೈಟ್‌ಗಳು ಇದೇ ವಿಳಾಸ ಹೇಳುತ್ತವೆ ಆದರೆ ಸರ್ಕಾರಿ ಪುಟದಿಂದ ದೃಢಪಟ್ಟಿಲ್ಲ; ಹಂಚುವ ಮೊದಲು ಪರಿಶೀಲಿಸಿ.",
+    gov: "ಸರ್ಕಾರಿ ಪುಟ", third: "ಇತರ ಸೈಟ್‌ಗಳು ಮಾತ್ರ", flowNote: "ಹಳದಿ ಪೆಟ್ಟಿಗೆ: ಸಾಥಿ ಎಲ್ಲಿ ಸಹಾಯ ಮಾಡುತ್ತದೆ. ಕೆಂಪು ಪೆಟ್ಟಿಗೆ: ಕೆಲಸ ಸಿಲುಕುವ ಸಾಮಾನ್ಯ ಕಾರಣಗಳು. (ಚಿತ್ರ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ)",
+    flowLoading: "ಚಿತ್ರ ತಯಾರಾಗುತ್ತಿದೆ…", flowFail: "ಇಲ್ಲಿ ಚಿತ್ರ ತೋರಿಸಲು ಆಗಲಿಲ್ಲ. ಅದರ ಪಠ್ಯ ಕೆಳಗಿದೆ.",
+    srcNote: "27 ಅಕ್ಟೋಬರ್ 2026 ರಂದು ಈ ಮೂಲಗಳಿಂದ ಮಾಹಿತಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ. ಅವಲಂಬಿಸುವ ಮೊದಲು ಚಾಲ್ತಿ ಸರ್ಕಾರಿ ಆದೇಶ ನೋಡಿ. (ಮೂಲಗಳು ಹೆಚ್ಚಾಗಿ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ)",
+    prev: "ಹಿಂದಿನದು", next: "ಮುಂದಿನದು", checked: "27 ಅಕ್ಟೋಬರ್ 2026 ರಂದು ಪರಿಶೀಲಿಸಲಾಗಿದೆ", langNote: "ಮಹಾರಾಷ್ಟ್ರದ ಮಾರ್ಗದರ್ಶಿಗಳು ಮರಾಠಿಯಲ್ಲಿ ಮತ್ತು ಉತ್ತರ ಪ್ರದೇಶದವು ಹಿಂದಿಯಲ್ಲಿ ಇವೆ.",
+    foot: "ಸಾಥಿ ಮಾರ್ಗದರ್ಶಿಗಳು ನಾಗರಿಕರ ಸಹಾಯಕ್ಕಾಗಿ; ಇದು ಅಧಿಕೃತ ಸರ್ಕಾರಿ ವೆಬ್‌ಸೈಟ್ ಅಲ್ಲ. ಪ್ರತಿ ಮಾರ್ಗದರ್ಶಿಯಲ್ಲಿರುವ ಅಧಿಕೃತ ಲಿಂಕ್‌ಗಳನ್ನು ಮಾತ್ರ ಬಳಸಿ ಮತ್ತು ಅರ್ಜಿಗಾಗಿ ಏಜೆಂಟ್‌ಗೆ ಹಣ ಕೊಡಬೇಡಿ. ಮರಾಠಿ, ಹಿಂದಿ ಮತ್ತು ಕನ್ನಡ ಪಠ್ಯದ ಸ್ಥಳೀಯ ಭಾಷಿಕರ ಪರಿಶೀಲನೆ ಬಾಕಿ ಇದೆ." },
 };
 const POSTS = DATA.posts, BY = Object.fromEntries(POSTS.map(p => [p.slug, p]));
 const state = { lang: "en", st: "all", cat: "all", q: "" };

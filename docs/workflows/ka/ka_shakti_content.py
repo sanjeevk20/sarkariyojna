@@ -1,0 +1,93 @@
+"""Shakti (free bus travel for women) guide content (EN + KN)."""
+
+OUT = "ka-shakti-guide"
+PHASE_BREAK = 3
+
+T = {'en': {'lang': 'en',
+        'font': "'Noto Sans','FreeSans',sans-serif",
+        'h1': 'Shakti: Free bus travel for women in Karnataka',
+        'sub': 'ಶಕ್ತಿ ಯೋಜನೆ: ಮಹಿಳೆಯರಿಗೆ ಉಚಿತ ಬಸ್ ಪ್ರಯಾಣ',
+        'benefit': 'Free travel in non-AC government buses within Karnataka',
+        'legend': ['You do this', 'Government does this (you wait)', 'Free ride'],
+        'phases': ['Before you travel', 'On the bus'],
+        'who': {'you': 'You', 'gov': 'Government', 'done': 'Done'},
+        'stuck': 'Stuck?',
+        'tip': 'Tip:',
+        'steps': [('you',
+                   'Check if you can use it',
+                   'ಅರ್ಹತೆ ಪರಿಶೀಲಿಸಿ',
+                   '<ul><li><b>Women and transgender persons</b> living in Karnataka</li><li>Ordinary and express '
+                   '<b>non-AC</b> buses of KSRTC, BMTC, KKRTC and NWKRTC</li><li>Travel <b>within Karnataka</b> only; '
+                   'AC and luxury buses are not free</li></ul>',
+                   None),
+                  ('you',
+                   'Carry a valid ID',
+                   'ಮಾನ್ಯ ಗುರುತಿನ ಚೀಟಿ ಇಟ್ಟುಕೊಳ್ಳಿ',
+                   'Carry a <b>government photo ID with a Karnataka address</b> (Aadhaar, voter ID and similar), or '
+                   'your <b>Shakti smart card</b> if one has been issued to you through Seva Sindhu.',
+                   ('tip',
+                    'A photocopy or phone photo may be refused. Keep the original ID or DigiLocker copy handy.')),
+                  ('you',
+                   'Board and show your ID',
+                   'ಬಸ್ ಹತ್ತಿ ಗುರುತಿನ ಚೀಟಿ ತೋರಿಸಿ',
+                   'Tell the conductor you are travelling under Shakti and show your ID or card.',
+                   None),
+                  ('gov',
+                   'Zero-value ticket',
+                   'ಶೂನ್ಯ ಮೌಲ್ಯದ ಟಿಕೆಟ್',
+                   "The conductor gives a <b>zero-value 'Shakti' ticket</b>. Keep it until you get off.",
+                   ('stuck', 'Conductor refuses or asks for money? Note the bus number, time and route.')),
+                  ('done',
+                   'Free ride',
+                   'ಉಚಿತ ಪ್ರಯಾಣ',
+                   'You travel free. Interstate and AC journeys are charged as usual.',
+                   None)],
+        'rights_t': 'Refused a free ticket? Complain.',
+        'rights': "Complain to the corporation's depot or helpline (numbers are printed in the bus), or on "
+                  '<b>IPGRS</b>, with the bus number and time.',
+        'help': '<b>Smart card:</b> sevasindhu.karnataka.gov.in · Covered buses as reported; check the transport '
+                "department notice<br><b>The ride is free; never pay for a 'Shakti pass'</b>"},
+ 'kn': {'lang': 'kn',
+        'font': "'Noto Sans Kannada','Noto Sans','FreeSans',sans-serif",
+        'h1': 'ಶಕ್ತಿ: ಕರ್ನಾಟಕದಲ್ಲಿ ಮಹಿಳೆಯರಿಗೆ ಉಚಿತ ಬಸ್ ಪ್ರಯಾಣ',
+        'sub': None,
+        'benefit': 'ಕರ್ನಾಟಕದೊಳಗೆ ಹವಾನಿಯಂತ್ರಿತವಲ್ಲದ ಸರ್ಕಾರಿ ಬಸ್\u200cಗಳಲ್ಲಿ ಉಚಿತ ಪ್ರಯಾಣ',
+        'legend': ['ಇದನ್ನು ನೀವು ಮಾಡಿ', 'ಇದನ್ನು ಸರ್ಕಾರ ಮಾಡುತ್ತದೆ (ನೀವು ಕಾಯಿರಿ)', 'ಉಚಿತ ಪ್ರಯಾಣ'],
+        'phases': ['ಪ್ರಯಾಣದ ಮೊದಲು', 'ಬಸ್\u200cನಲ್ಲಿ'],
+        'who': {'you': 'ನೀವು', 'gov': 'ಸರ್ಕಾರ', 'done': 'ಪೂರ್ಣ'},
+        'stuck': 'ತೊಂದರೆಯೇ?',
+        'tip': 'ಸಲಹೆ:',
+        'steps': [('you',
+                   'ಅರ್ಹತೆ ಪರಿಶೀಲಿಸಿ',
+                   None,
+                   '<ul><li>ಕರ್ನಾಟಕದಲ್ಲಿ ವಾಸಿಸುವ <b>ಮಹಿಳೆಯರು ಮತ್ತು ತೃತೀಯ '
+                   'ಲಿಂಗಿಗಳು</b></li><li>ಕೆಎಸ್\u200cಆರ್\u200cಟಿಸಿ, ಬಿಎಂಟಿಸಿ, ಕೆಕೆಆರ್\u200cಟಿಸಿ ಮತ್ತು '
+                   'ಎನ್\u200cಡಬ್ಲ್ಯೂಕೆಆರ್\u200cಟಿಸಿಯ ಸಾಮಾನ್ಯ ಮತ್ತು ಎಕ್ಸ್\u200cಪ್ರೆಸ್ <b>ಎಸಿ ಅಲ್ಲದ</b> '
+                   'ಬಸ್\u200cಗಳು</li><li><b>ಕರ್ನಾಟಕದೊಳಗೆ</b> ಮಾತ್ರ; ಎಸಿ ಮತ್ತು ಐಷಾರಾಮಿ ಬಸ್\u200cಗಳು ಉಚಿತವಲ್ಲ</li></ul>',
+                   None),
+                  ('you',
+                   'ಮಾನ್ಯ ಗುರುತಿನ ಚೀಟಿ ಇಟ್ಟುಕೊಳ್ಳಿ',
+                   None,
+                   '<b>ಕರ್ನಾಟಕದ ವಿಳಾಸವಿರುವ ಸರ್ಕಾರಿ ಫೋಟೋ ಗುರುತಿನ ಚೀಟಿ</b> (ಆಧಾರ್, ಮತದಾರರ ಚೀಟಿ ಇತ್ಯಾದಿ), ಅಥವಾ ಸೇವಾ ಸಿಂಧು '
+                   'ಮೂಲಕ ನಿಮಗೆ ನೀಡಿದ್ದರೆ <b>ಶಕ್ತಿ ಸ್ಮಾರ್ಟ್ ಕಾರ್ಡ್</b> ಇಟ್ಟುಕೊಳ್ಳಿ.',
+                   ('tip', 'ಫೋಟೋಕಾಪಿ ಅಥವಾ ಫೋನ್ ಫೋಟೋ ನಿರಾಕರಿಸಬಹುದು. ಮೂಲ ಗುರುತಿನ ಚೀಟಿ ಅಥವಾ ಡಿಜಿಲಾಕರ್ ಪ್ರತಿ ಕೈಯಲ್ಲಿರಲಿ.')),
+                  ('you',
+                   'ಬಸ್ ಹತ್ತಿ ಗುರುತಿನ ಚೀಟಿ ತೋರಿಸಿ',
+                   None,
+                   'ಶಕ್ತಿ ಯೋಜನೆಯಡಿ ಪ್ರಯಾಣಿಸುತ್ತಿದ್ದೀರಿ ಎಂದು ನಿರ್ವಾಹಕರಿಗೆ ತಿಳಿಸಿ ಮತ್ತು ಗುರುತಿನ ಚೀಟಿ ಅಥವಾ ಕಾರ್ಡ್ ತೋರಿಸಿ.',
+                   None),
+                  ('gov',
+                   'ಶೂನ್ಯ ಮೌಲ್ಯದ ಟಿಕೆಟ್',
+                   None,
+                   "ನಿರ್ವಾಹಕರು <b>ಶೂನ್ಯ ಮೌಲ್ಯದ 'ಶಕ್ತಿ' ಟಿಕೆಟ್</b> ನೀಡುತ್ತಾರೆ. ಇಳಿಯುವವರೆಗೆ ಅದನ್ನು ಇಟ್ಟುಕೊಳ್ಳಿ.",
+                   ('stuck', 'ನಿರ್ವಾಹಕರು ನಿರಾಕರಿಸಿದರೆ ಅಥವಾ ಹಣ ಕೇಳಿದರೆ? ಬಸ್ ಸಂಖ್ಯೆ, ಸಮಯ ಮತ್ತು ಮಾರ್ಗ ಬರೆದುಕೊಳ್ಳಿ.')),
+                  ('done',
+                   'ಉಚಿತ ಪ್ರಯಾಣ',
+                   None,
+                   'ನೀವು ಉಚಿತವಾಗಿ ಪ್ರಯಾಣಿಸುತ್ತೀರಿ. ಅಂತರರಾಜ್ಯ ಮತ್ತು ಎಸಿ ಪ್ರಯಾಣಕ್ಕೆ ಎಂದಿನಂತೆ ಶುಲ್ಕವಿದೆ.',
+                   None)],
+        'rights_t': 'ಉಚಿತ ಟಿಕೆಟ್ ನಿರಾಕರಿಸಿದರೆ? ದೂರು ನೀಡಿ.',
+        'rights': 'ಬಸ್ ಸಂಖ್ಯೆ ಮತ್ತು ಸಮಯದೊಂದಿಗೆ ನಿಗಮದ ಡಿಪೋ ಅಥವಾ ಸಹಾಯವಾಣಿಗೆ (ಸಂಖ್ಯೆಗಳು ಬಸ್\u200cನಲ್ಲಿ ಮುದ್ರಿತ), ಅಥವಾ '
+                  '<b>IPGRS</b> ನಲ್ಲಿ ದೂರು ನೀಡಿ.',
+        'help': '<b>ಸ್ಮಾರ್ಟ್ ಕಾರ್ಡ್:</b> sevasindhu.karnataka.gov.in · ಒಳಗೊಂಡ ಬಸ್\u200cಗಳು ವರದಿಯಂತೆ; ಸಾರಿಗೆ ಇಲಾಖೆಯ '
+                "ಸೂಚನೆ ನೋಡಿ<br><b>ಪ್ರಯಾಣ ಉಚಿತ; 'ಶಕ್ತಿ ಪಾಸ್'ಗಾಗಿ ಹಣ ಕೊಡಬೇಡಿ</b>"}}
