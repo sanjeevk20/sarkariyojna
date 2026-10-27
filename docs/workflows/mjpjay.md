@@ -1,6 +1,6 @@
 # Mahatma Jyotiba Phule Jan Arogya Yojana (MJPJAY) - End-to-End Workflow
 
-Maharashtra's cashless health assurance scheme, run together with Ayushman Bharat PM-JAY. Covered families get cashless treatment for listed procedures at empanelled (network) hospitals. Official site: https://jeevandayee.gov.in. Health card via the Ayushman app / https://beneficiary.nha.gov.in.
+Maharashtra's cashless health assurance scheme, run together with Ayushman Bharat PM-JAY. Covered families get cashless treatment for listed procedures at empanelled (network) hospitals. Official site: https://jeevandayee.gov.in. Health card via the Ayushman app / https://beneficiary.nha.gov.in (see [Ayushman card guide](ayushman-card.md)).
 
 ## For citizens: step by step
 
