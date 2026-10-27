@@ -17,4 +17,5 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/workflows/domicile-certificate.md` | Domicile certificate: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/ncl-certificate.md` | Non-Creamy Layer certificate: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/caste-validity.md` | Caste validity certificate: citizen guide (EN + Marathi) + system workflow |
+| `docs/workflows/ladki-bahin.md` | Ladki Bahin Yojana: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/gen_guide.py` | Renders citizen guides from a `*_content.py` file |
