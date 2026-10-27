@@ -10,6 +10,12 @@ Blue = you do this. Purple = government does this (you wait). Green = money rece
 
 Source to edit: [`pm-kisan-farmer-guide.html`](pm-kisan-farmer-guide.html)
 
+### मराठी (Marathi)
+
+![पीएम-किसान मार्गदर्शक](pm-kisan-farmer-guide-mr.png)
+
+Source to edit: [`pm-kisan-farmer-guide-mr.html`](pm-kisan-farmer-guide-mr.html). Marathi text pending native-speaker review.
+
 ## For the Sathi team: system workflow
 
 Yellow boxes = where Sathi plugs in. Red boxes = common blockers.
