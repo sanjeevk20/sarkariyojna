@@ -2,13 +2,14 @@
 
 **MyScheme tells you what you're eligible for. Haqdarshak helps you apply. Sathi gets you unstuck.**
 
-Sathi tells common citizens in Maharashtra exactly what's blocking their government file, what to do next, and what the law says the office owes them, in Marathi, Hindi or English, with the source GR shown. It starts with land (7/12, Ferfar) and Maharashtra + Central schemes.
+Sathi tells common citizens in Maharashtra and Uttar Pradesh exactly what's blocking their government file, what to do next, and what the law says the office owes them, in Marathi, Hindi or English, with the source GR shown. It starts with land (7/12, Ferfar) and Maharashtra + Central schemes.
 
 ## Repo layout
 
 | Path | What |
 | :--- | :--- |
-| `docs/site/index.html` | **Sathi guides website**: all guides as a searchable blog (EN + Marathi, steps, official links, system diagrams, sources). Rebuild with `python3 docs/site/build_site.py`; `docs/site/dist/index.html` is the standalone copy for GitHub Pages |
+| `docs/site/index.html` | **Sathi guides website**: all guides as a searchable blog with a state filter (EN + Marathi + Hindi, steps, official links, system diagrams, sources). Rebuild with `python3 docs/site/build_site.py`; `docs/site/dist/index.html` is the standalone copy for GitHub Pages |
+| `docs/workflows/up/README.md` | **Uttar Pradesh guides** (12, English + Hindi): certificates, dakhil-kharij, pensions, Kanya Sumangala, Samuhik Vivah, scholarship, ration card, CM-YUVA, PM-KISAN |
 | `docs/workflows/README.md` | **Index of all workflow guides**, grouped by category, with quick routers |
 | `docs/product-brief.md` | Product brief: pain points, differentiator, 12 concepts, Scheme Finder deep dive, MVP plan, tech stack |
 | `docs/workflows/pm-kisan.md` | PM-KISAN: step-by-step farmer guide + system workflow with Sathi touchpoints |

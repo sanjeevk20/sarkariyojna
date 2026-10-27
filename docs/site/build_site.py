@@ -1,8 +1,10 @@
 """Build the Sathi guides website (one page, hash-routed) from docs/workflows.
 
-Reads the index (docs/workflows/README.md) for titles and categories, each guide's
-generated EN / MR HTML for the citizen steps, and each guide's .md for the
-Official links table, the Mermaid system workflow and the sources.
+For each state it reads the index (docs/workflows/README.md for Maharashtra,
+docs/workflows/up/README.md for Uttar Pradesh) for titles and quick routes, each
+guide's generated English and local-language HTML (Marathi / Hindi) for the citizen
+steps, and each guide's .md for the Official links table, the Mermaid system
+workflow and the sources.
 
     python3 docs/site/build_site.py   ->   docs/site/index.html
 """
@@ -24,27 +26,36 @@ CATEGORY = {
     "sanjay-gandhi": "pension", "shravanbal": "pension", "shiv-bhojan": "pension",
     "ayushman-card": "health", "mjpjay": "health",
     "annasaheb-patil": "loan", "mahatma-phule-mahamandal": "loan",
+    "up-income-certificate": "docs", "up-caste-certificate": "docs", "up-domicile-certificate": "docs",
+    "up-dakhil-kharij": "docs", "up-old-age-pension": "pension", "up-widow-pension": "pension",
+    "up-ration-card": "pension", "up-kanya-sumangala": "women", "up-samuhik-vivah": "women",
+    "up-scholarship": "edu", "up-cm-yuva": "loan", "up-pm-kisan": "farm",
 }
-CATS = [
-    ("farm", "Farming", "शेती"), ("docs", "Certificates & land", "दाखले व जमीन"),
-    ("edu", "Education", "शिक्षण"), ("women", "Women & family", "महिला व कुटुंब"),
-    ("home", "Housing", "घरकुल"), ("pension", "Pensions & food", "निवृत्तीवेतन व अन्न"),
-    ("health", "Health", "आरोग्य"), ("loan", "Business loans", "व्यवसाय कर्ज"),
+# (id, English, Marathi, Hindi, folder, local language of its guides)
+STATES = [
+    ("mh", "Maharashtra", "महाराष्ट्र", "महाराष्ट्र", WF, "mr"),
+    ("up", "Uttar Pradesh", "उत्तर प्रदेश", "उत्तर प्रदेश", WF / "up", "hi"),
 ]
-TIP_LABELS = ("Tip:", "सूचना:")
+CATS = [
+    ("farm", "Farming", "शेती", "खेती"), ("docs", "Certificates & land", "दाखले व जमीन", "प्रमाण पत्र व भूमि"),
+    ("edu", "Education", "शिक्षण", "शिक्षा"), ("women", "Women & family", "महिला व कुटुंब", "महिला व परिवार"),
+    ("home", "Housing", "घरकुल", "आवास"), ("pension", "Pensions & food", "निवृत्तीवेतन व अन्न", "पेंशन व खाद्य"),
+    ("health", "Health", "आरोग्य", "स्वास्थ्य"), ("loan", "Business loans", "व्यवसाय कर्ज", "व्यवसाय ऋण"),
+]
+TIP_LABELS = ("Tip:", "सूचना:", "सुझाव:")
 
 
-def index_rows():
+def index_rows(folder):
     rows = []
-    for line in (WF / "README.md").read_text().splitlines():
+    for line in (folder / "README.md").read_text().splitlines():
         m = re.match(r"\| \[([^\]]+)\]\(([a-z0-9-]+)\.md\) \| ([^|]+) \| ([^|]+) \|", line)
         if m:
-            rows.append(dict(slug=m[2], title=m[1].strip(), mr_name=m[3].strip(), audience=m[4].strip()))
+            rows.append(dict(slug=m[2], title=m[1].strip(), local_name=m[3].strip(), audience=m[4].strip()))
     return rows
 
 
-def routers():
-    text = (WF / "README.md").read_text().split("## Quick routers", 1)[1].split("\n## ", 1)[0]
+def routers(folder):
+    text = (folder / "README.md").read_text().split("## Quick routers", 1)[1].split("\n## ", 1)[0]
     out = []
     for line in text.strip().splitlines():
         line = re.sub(r"\[([^\]]+)\]\(([a-z0-9-]+)\.md\)", r'<a href="#\2">\1</a>', line.lstrip("- "))
@@ -108,15 +119,20 @@ def parse_md(path):
 
 
 def build():
-    posts = []
-    for row in index_rows():
-        slug = row["slug"]
-        guide, links, mermaid, sources = parse_md(WF / f"{slug}.md")
-        posts.append(dict(row, cat=CATEGORY[slug], links=links, mermaid=mermaid, sources=sources,
-                          en=parse_guide(WF / f"{guide}.html"), mr=parse_guide(WF / f"{guide}-mr.html")))
+    posts, state_routers = [], {}
+    for sid, _, _, _, folder, local in STATES:
+        for row in index_rows(folder):
+            slug = row["slug"]
+            guide, links, mermaid, sources = parse_md(folder / f"{slug}.md")
+            posts.append(dict(row, state=sid, local=local, cat=CATEGORY[slug], links=links, mermaid=mermaid,
+                              sources=sources, en=parse_guide(folder / f"{guide}.html"),
+                              loc=parse_guide(folder / f"{guide}-{local}.html")))
+        state_routers[sid] = routers(folder)
     order = [c[0] for c in CATS]
-    posts.sort(key=lambda p: order.index(p["cat"]))
-    data = dict(cats=[dict(id=i, en=e, mr=m) for i, e, m in CATS], posts=posts, routers=routers())
+    posts.sort(key=lambda p: ([s[0] for s in STATES].index(p["state"]), order.index(p["cat"])))
+    data = dict(cats=[dict(id=i, en=e, mr=m, hi=h) for i, e, m, h in CATS],
+                states=[dict(id=i, en=e, mr=m, hi=h) for i, e, m, h, _, _ in STATES],
+                posts=posts, routers=state_routers)
     js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (ROOT / "template.html").read_text().replace("/*__DATA__*/null", js)
     # index.html: page fragment for the claude.ai artifact host, which adds the document skeleton.
@@ -128,7 +144,7 @@ def build():
 
 
 SITE_URL = "https://sanjeevk20.github.io/sarkariyojna/"
-DESC = "Step-by-step guides to 26 Maharashtra and central government schemes, in English and Marathi, with official links."
+DESC = "Step-by-step guides to Maharashtra, Uttar Pradesh and central government schemes, in English, Marathi and Hindi, with official links."
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
            "%3Ccircle cx='16' cy='16' r='16' fill='%232d6a39'/%3E%3Cpath d='M9 21c0-7 5-11 14-12-1 9-5 14-12 14' "
            "fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E")

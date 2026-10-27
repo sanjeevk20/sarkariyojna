@@ -1,4 +1,4 @@
-"""Render EN + MR step-by-step citizen guides from a content file.
+"""Render EN + local-language (MR, HI) step-by-step citizen guides from a content file.
 
 Usage: python3 gen_guide.py <content.py>
 """
@@ -8,6 +8,7 @@ import sys
 
 here = os.path.dirname(os.path.abspath(__file__))
 c = runpy.run_path(sys.argv[1])
+out_dir = os.path.dirname(os.path.abspath(sys.argv[1]))
 T, OUT, PHASE_BREAK = c["T"], c["OUT"], c["PHASE_BREAK"]
 base = open(f"{here}/pm-kisan-farmer-guide.html").read()
 style = base[base.index("<style>"):base.index("</style>")]
@@ -46,5 +47,5 @@ for key, t in T.items():
     out.append(f'  <div class="rights"><div class="t">{t["rights_t"]}</div>{t["rights"]}</div>')
     out.append(f'  <div class="help">{t["help"]}</div>')
     out.append("</div></body></html>\n")
-    suffix = "" if key == "en" else "-mr"
-    open(f"{here}/{OUT}{suffix}.html", "w").write("\n".join(out))
+    suffix = "" if key == "en" else f"-{key}"
+    open(f"{out_dir}/{OUT}{suffix}.html", "w").write("\n".join(out))
