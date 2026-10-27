@@ -20,4 +20,5 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/workflows/ladki-bahin.md` | Ladki Bahin Yojana: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/pmay-gramin.md` | PM Awas Yojana - Gramin: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/pmay-urban.md` | PM Awas Yojana - Urban 2.0: citizen guide (EN + Marathi) + system workflow |
+| `docs/workflows/ujjwala.md` | PM Ujjwala Yojana: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/gen_guide.py` | Renders citizen guides from a `*_content.py` file |
