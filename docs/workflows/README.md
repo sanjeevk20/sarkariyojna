@@ -84,4 +84,6 @@ Most schemes depend on these. Typical student chain: income → domicile → cas
 4. Render the Mermaid system diagram to an SVG page (e.g. via Mermaid Live or mermaid-cli), then `node render.js <diagram>.html <name>.png svg`.
 5. Add a `<name>.md` page (guide images, Official links table, diagram, stage table, Verification section) and add a row here.
 
+After adding or changing a guide, rebuild the website: `python3 ../site/build_site.py`.
+
 To rebuild every guide after a content change: `for f in *_content.py; do python3 gen_guide.py "$f"; done`, then re-render the PNGs.
