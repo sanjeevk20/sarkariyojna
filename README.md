@@ -22,4 +22,5 @@ Sathi tells common citizens in Maharashtra exactly what's blocking their governm
 | `docs/workflows/pmay-urban.md` | PM Awas Yojana - Urban 2.0: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/ujjwala.md` | PM Ujjwala Yojana: citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/sanjay-gandhi.md` | Sanjay Gandhi Niradhar Yojana: citizen guide (EN + Marathi) + system workflow |
+| `docs/workflows/shravanbal.md` | Shravanbal Yojana (senior citizen pension): citizen guide (EN + Marathi) + system workflow |
 | `docs/workflows/gen_guide.py` | Renders citizen guides from a `*_content.py` file |

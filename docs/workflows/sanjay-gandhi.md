@@ -1,6 +1,6 @@
 # Sanjay Gandhi Niradhar Anudan Yojana (SGNY) - End-to-End Workflow
 
-Maharashtra state scheme: monthly financial support for destitute persons below 65 (widows, persons with disabilities, persons with serious illness, orphans and other destitute categories). Applied through Aaple Sarkar or the Sanjay Gandhi Yojana branch at the Tahsil office; approved by a taluka-level committee.
+Maharashtra state scheme: monthly financial support for destitute persons below 65 (widows, persons with disabilities, persons with serious illness, orphans and other destitute categories). Applied through Aaple Sarkar or the Sanjay Gandhi Yojana branch at the Tahsil office; approved by a taluka-level committee. Aged 65+, see [Shravanbal Yojana](shravanbal.md).
 
 ## For citizens: step by step
 
