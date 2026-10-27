@@ -39,7 +39,7 @@ T = {
   ],
   rights_t="Stuck for long? Escalate.",
   rights="Give a written application to the corporation's <b>district manager</b> with your application number and take an <b>acknowledgement (पोच)</b>. If not solved, write to the <b>regional / head office</b>. For bank delays, contact the district <b>Lead Bank Manager</b>.",
-  help="<b>Apply at:</b> Mahatma Phule Mahamandal district office · Keep all receipts and EMI records<br><b>Applying is free</b> · <b>Use only .gov.in websites</b>",
+  help="<b>Apply at:</b> Mahatma Phule Mahamandal district office · <b>Website:</b> mpbcdc.maharashtra.gov.in · Keep all receipts and EMI records<br><b>Applying is free</b> · <b>Use only .gov.in websites</b>",
  ),
  "mr": dict(
   lang="mr", font="'Noto Sans Devanagari','Noto Sans','FreeSans',sans-serif",
@@ -76,6 +76,6 @@ T = {
   ],
   rights_t="खूप दिवस अडकले? पाठपुरावा करा.",
   rights="अर्ज क्रमांकासह महामंडळाच्या <b>जिल्हा व्यवस्थापकांना</b> लेखी अर्ज द्या आणि <b>पोच</b> घ्या. निराकरण न झाल्यास <b>प्रादेशिक / मुख्य कार्यालयाला</b> लिहा. बँकेच्या उशिरासाठी जिल्ह्याच्या <b>अग्रणी बँक व्यवस्थापकांशी</b> संपर्क करा.",
-  help="<b>अर्ज कुठे:</b> महात्मा फुले महामंडळ जिल्हा कार्यालय · सर्व पावत्या व हप्त्यांच्या नोंदी जपून ठेवा<br><b>अर्ज मोफत आहे</b> · <b>फक्त .gov.in वेबसाइट वापरा</b>",
+  help="<b>अर्ज कुठे:</b> महात्मा फुले महामंडळ जिल्हा कार्यालय · <b>वेबसाइट:</b> mpbcdc.maharashtra.gov.in · सर्व पावत्या व हप्त्यांच्या नोंदी जपून ठेवा<br><b>अर्ज मोफत आहे</b> · <b>फक्त .gov.in वेबसाइट वापरा</b>",
  ),
 }

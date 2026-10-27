@@ -71,4 +71,10 @@ flowchart TD
 | 7 | Download | Citizen | Expires before next scheme deadline | Expiry alert |
 | - | Late beyond time limit | Citizen | Doesn't know about appeal | Auto-draft First Appeal (MH Right to Public Services Act, 2015) |
 
-> Note: Working assumptions, not yet verified against the live portal: the exact menu path, status wording ("Sent back"), "Track your application" label, fee amount, the notified time limit for this service, whether a Talathi report is needed, and that a self-declaration replaces an affidavit. Verify before building.
+## Verification (27 Oct 2026, batch 3)
+
+- **Confirmed (district list of notified Revenue services):** income certificate time limit **15 days**, designated officer **Tehsildar**.
+- **Changed in guide:** "self-declaration is enough" softened to "ask whether a self-declaration is accepted", since a "with affidavit" service variant still exists and the replacement rule was not confirmed.
+- **Still unverified:** fee amount, validity period, Talathi report requirement, exact status wording.
+
+Sources: [Chanda district: notified services list](https://chanda.nic.in/?p=30380) · [India.gov.in: Maharashtra income certificate with affidavit](https://services.india.gov.in/service/detail/maharashtra-income-certificate-with-affidavit) · [Wikiprocedure: Maharashtra income certificate](https://wikiprocedure.com/index.php/Maharashtra_-_Apply_for_Income_Certificate)

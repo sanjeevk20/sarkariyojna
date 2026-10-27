@@ -26,9 +26,9 @@ Yellow boxes = where Sathi plugs in. Red boxes = common blockers.
 
 ```mermaid
 flowchart TD
-    A([Citizen needs domicile certificate]) --> B{1. Eligible?<br/>10+ years residence in Maharashtra}
+    A([Citizen needs domicile certificate]) --> B{1. Eligible?<br/>15+ years residence in Maharashtra}
     B -- No --> X([Not eligible yet])
-    B -- Yes --> C[2. Gather documents<br/>age proof, ID, 10 years residence proof,<br/>self-declaration, photo]
+    B -- Yes --> C[2. Gather documents<br/>age proof, ID, 15 years residence proof,<br/>self-declaration, photo]
     C -- Gap in residence years --> F0[Blocked: residence gap]
     F0 -- Combine bonafide, bills, tax receipts --> C
     C --> D[3. Apply on Aaple Sarkar<br/>Portal or Seva Kendra, pay fee<br/>Application ID + RTS time limit]
@@ -58,7 +58,7 @@ flowchart TD
 
 | # | Stage | Owner | Common blocker | Sathi action |
 |---|---|---|---|---|
-| 1 | Eligibility (10+ years residence) | Citizen | Applies during admission rush | Admission-season alert |
+| 1 | Eligibility (15+ years residence) | Citizen | Applies during admission rush | Admission-season alert |
 | 2 | Documents | Citizen | Gaps in residence years | Residence-year calculator: which documents cover which years |
 | 3 | Apply | Citizen / Seva Kendra | Agent overcharging | Official fee, Application ID, time limit |
 | 4 | Scrutiny | Tahsil office | Sent back: residence gap or unclear scan | Decode remark in Marathi |
@@ -66,4 +66,10 @@ flowchart TD
 | 6 | Download | Citizen | Lost / not handy at admission rounds | Family vault; feeds [MahaDBT scholarship](mahadbt-scholarship.md) |
 | - | Late beyond time limit | Citizen | Doesn't know about appeal | Auto-draft First Appeal |
 
-> Note: Working assumptions, not yet verified: the 10-year residence rule, accepted residence documents, Tahsildar as issuing authority, no-expiry validity, menu path, status wording, and that this is a notified service under the MH Right to Public Services Act. Verify against current GRs and the live portal before building.
+## Verification (27 Oct 2026, batch 3)
+
+- **Corrected in guide (important):** residence requirement is **15 years**, not 10 (all sources that state a figure say 15). Alternative routes reported: a parent who is a long-term resident, or marriage to a Maharashtra resident. Guide, Marathi version, diagram and stage table updated.
+- **Reported (secondary):** apply on Aaple Sarkar or at Tahsildar / SDO / Collector office; fee around ₹50; about 15 working days; validity lifetime unless cancelled.
+- **Still unverified:** exact alternative-route rules, notified RTS time limit.
+
+Sources: [ClearTax: Domicile certificate Maharashtra](https://cleartax.in/s/domicile-certificate-maharashtra) · [TaxBuddy: Domicile certificate Maharashtra](https://www.taxbuddy.com/blog/domicile-certificate-maharashtra) · [Corpseed: Domicile certificate Maharashtra](https://www.corpseed.com/knowledge-centre/domicile-certificate-maharashtra) · [Advocate Gandhi: Maharashtra domicile guide](https://advocategandhi.com/understanding-the-maharashtra-domicile-certificate-a-complete-legal-guide-for-residents-and-students/)
