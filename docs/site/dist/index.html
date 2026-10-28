@@ -34,6 +34,19 @@
   --leaf: #82c48e; --leaf-soft: #1e3122; --on-leaf: #0f1a11;
   --you: #91b5f0; --you-soft: #1a2537; --gov: #bba4ea; --gov-soft: #251e35; --done: #82c48e; --done-soft: #1e3122;
   --haldi: #e6b65c; --haldi-soft: #2e2514; --stop: #f29b90; --stop-soft: #351b18; color-scheme: dark; }
+/* Black & white: no hue, maximum contrast, for low vision and bright sunlight. Differences carry in text, borders and grey levels. */
+:root[data-theme="contrast"] {
+  --bg: #ffffff; --surface: #ffffff; --raised: #f0f0f0; --fg: #000000; --muted: #222222; --line: #000000;
+  --leaf: #000000; --leaf-soft: #ffffff; --on-leaf: #ffffff;
+  --you: #000000; --you-soft: #ffffff; --gov: #000000; --gov-soft: #f0f0f0; --done: #000000; --done-soft: #ffffff;
+  --haldi: #5a5a5a; --haldi-soft: #f0f0f0; --stop: #000000; --stop-soft: #e6e6e6; color-scheme: light; }
+:root[data-theme="contrast"] a { text-decoration-thickness: 2px; }
+:root[data-theme="contrast"] .map .s1, :root[data-theme="contrast"] .map .r1 { fill: #c8c8c8; fill-opacity: 1; }
+:root[data-theme="contrast"] .sw.s1, :root[data-theme="contrast"] .sw.r1 { background: #c8c8c8; }
+:root[data-theme="contrast"] .map .s2, :root[data-theme="contrast"] .map .s3, :root[data-theme="contrast"] .map .r3 { fill: #000; fill-opacity: 1; }
+:root[data-theme="contrast"] .map path.sel { stroke: #fff; stroke-width: 3; stroke-dasharray: 5 3; }
+:root[data-theme="contrast"] .map .r2 { fill: #6e6e6e; } :root[data-theme="contrast"] .sw.r2 { background: #6e6e6e; }
+:root[data-theme="contrast"] .note, :root[data-theme="contrast"] .verdict, :root[data-theme="contrast"] .benefit, :root[data-theme="contrast"] .tag { border: 2px solid #000; }
 
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; }
@@ -914,15 +927,16 @@ function wireShare(t, s, v) {
   ["#sh-d", "#sh-o", "#sh-m"].forEach(sel => $(sel).addEventListener("change", update));
 }
 
-// Theme button: Light -> Dark -> Phone setting. Light is the default.
-const THEMES = ["light", "dark", "auto"];
-const TH = { en: { t: "Theme", light: "Light", dark: "Dark", auto: "Phone setting" },
-  mr: { t: "थीम", light: "उजळ", dark: "गडद", auto: "फोनप्रमाणे" },
-  hi: { t: "थीम", light: "हल्का", dark: "गहरा", auto: "फ़ोन के अनुसार" },
-  kn: { t: "ಥೀಮ್", light: "ತಿಳಿ", dark: "ಗಾಢ", auto: "ಫೋನ್ ಪ್ರಕಾರ" } };
+// Theme button: Light -> Dark -> Black & white -> Phone setting. Light is the default.
+const THEMES = ["light", "dark", "contrast", "auto"];
+const TH = { en: { t: "Theme", light: "Light", dark: "Dark", contrast: "Black & white", auto: "Phone setting" },
+  mr: { t: "थीम", light: "उजळ", dark: "गडद", contrast: "काळा-पांढरा", auto: "फोनप्रमाणे" },
+  hi: { t: "थीम", light: "हल्का", dark: "गहरा", contrast: "काला-सफ़ेद", auto: "फ़ोन के अनुसार" },
+  kn: { t: "ಥೀಮ್", light: "ತಿಳಿ", dark: "ಗಾಢ", contrast: "ಕಪ್ಪು-ಬಿಳುಪು", auto: "ಫೋನ್ ಪ್ರಕಾರ" } };
 const THEME_ICON = {
   light: '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>',
   dark: '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/></svg>',
+  contrast: '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>',
   auto: '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6.5a5.5 5.5 0 0 1 0 11z" fill="currentColor"/></svg>' };
 let theme = "light";
 try { const t = localStorage.getItem("sathi-theme"); if (THEMES.includes(t)) theme = t; } catch (e) {}
