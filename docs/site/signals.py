@@ -10,7 +10,8 @@ stuck payments or services). district=None marks a state-wide signal, listed but
 
 ALIASES = {"Aurangabad": "Chhatrapati Sambhajinagar", "Raigarh": "Raigad", "Bid": "Beed",
            "Mysore": "Mysuru", "Belgaum": "Belagavi", "Gulbarga": "Kalaburagi", "Bangalore": "Bengaluru",
-           "Allahabad": "Prayagraj", "Faizabad": "Ayodhya"}
+           "Allahabad": "Prayagraj", "Faizabad": "Ayodhya",
+           "Hoshangabad": "Narmadapuram", "East Nimar": "Khandwa", "West Nimar": "Khargone", "Narsimhapur": "Narsinghpur"}
 
 
 def sig(state, district, month, kind, service, summary, src, url):
@@ -61,4 +62,20 @@ SIGNALS = [
     sig("ka", None, "2026-05", "delay", "Gruha Lakshmi",
         "The High Court issued notice to the state on a petition over delayed Gruha Lakshmi payments.",
         "Organiser", "https://organiser.org/2026/05/22/354656/bharat/karnataka-high-court-issues-notice-to-siddaramaiah-govt-over-delay-in-gruhalakshmi-payments/"),
+    # ---------------- Madhya Pradesh
+    sig("mp", "Sagar", "2026-07", "bribe-arrest", "Land mutation (namantaran)",
+        "Lokayukta caught a patwari taking ₹10,000 from a farmer to complete a land mutation.",
+        "Patrika", "https://www.patrika.com/sagar-news/lokayukta-trap-patwari-caught-taking-bribe-10000-rs-20662268"),
+    sig("mp", "Rajgarh", "2026-08", "bribe-arrest", "Land mutation (namantaran)",
+        "Bhopal Lokayukta caught a patwari and an aide taking ₹7,000 for a land mutation in Jirapur.",
+        "Free Press Journal", "https://www.freepressjournal.in/bhopal/bhopal-lokayukta-catches-patwari-aide-taking-7k-bribe-for-land-mutation-in-mps-rajgarh"),
+    sig("mp", "Mandsaur", "2026-02", "bribe-arrest", "Land transfer",
+        "Ujjain Lokayukta trapped a patwari in Suwasra tehsil taking ₹30,000 of a ₹40,000 demand for a land transfer.",
+        "Free Press Journal", "https://www.freepressjournal.in/indore/mp-news-patwari-caught-taking-30k-bribe-in-mandsaur-lokayukta-caught-him-red-handed"),
+    sig("mp", "Dhar", "2026-03", "bribe-arrest", "Land lease (patta)",
+        "A patwari in Sardarpur was caught taking ₹5,000 to speed up a land lease (patta) case.",
+        "Free Press Journal", "https://www.freepressjournal.in/indore/mp-news-woman-patwari-caught-accepting-5k-bribe-in-dhar"),
+    sig("mp", "Chhatarpur", "2026-03", "bribe-arrest", "Land compensation",
+        "A patwari was arrested taking ₹50,000 (₹1.5 lakh allegedly demanded) to release Ken-Betwa project compensation; he denies the charge.",
+        "Free Press Journal", "https://www.freepressjournal.in/bhopal/mp-news-patwari-caught-red-handed-accepting-50k-bribe-in-exchange-of-releasing-compensation-under-ken-betwa-link-project-in-chhatarpur"),
 ]

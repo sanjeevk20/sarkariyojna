@@ -2,7 +2,7 @@
 
 **MyScheme tells you what you're eligible for. Haqdarshak helps you apply. Sathi gets you unstuck.**
 
-Sathi tells common citizens in Maharashtra, Uttar Pradesh and Karnataka exactly what's blocking their government file, what to do next, and what the law says the office owes them, in Marathi, Hindi or English, with the source GR shown. It starts with land (7/12, Ferfar) and Maharashtra + Central schemes.
+Sathi tells common citizens in Maharashtra, Uttar Pradesh, Karnataka and Madhya Pradesh exactly what's blocking their government file, what to do next, and what the law says the office owes them, in Marathi, Hindi or English, with the source GR shown. It starts with land (7/12, Ferfar) and Maharashtra + Central schemes.
 
 ## Repo layout
 
@@ -11,6 +11,7 @@ Sathi tells common citizens in Maharashtra, Uttar Pradesh and Karnataka exactly 
 | `docs/site/index.html` | **Sathi guides website**: all guides as a searchable blog with a state filter (EN + Marathi + Hindi + Kannada, steps, official links, system diagrams, sources). Rebuild with `python3 docs/site/build_site.py`; `docs/site/dist/index.html` is the standalone copy for GitHub Pages |
 | `docs/workflows/up/README.md` | **Uttar Pradesh guides** (12, English + Hindi): certificates, dakhil-kharij, pensions, Kanya Sumangala, Samuhik Vivah, scholarship, ration card, CM-YUVA, PM-KISAN |
 | `docs/workflows/ka/README.md` | **Karnataka guides** (10, English + Kannada): five guarantees (Gruha Lakshmi, Gruha Jyothi, Shakti, Anna Bhagya, Yuva Nidhi), caste and income certificate, land mutation, pensions, SSP scholarship, PM-KISAN (FRUITS) |
+| `docs/workflows/mp/README.md` | **Madhya Pradesh guides** (10, English + Hindi): Ladli Behna, Ladli Laxmi, Samagra ID, income / domicile / caste certificates, land mutation (Cyber Tehsil), CM Kisan Kalyan, social security pension, ration card |
 | `docs/workflows/README.md` | **Index of all workflow guides**, grouped by category, with quick routers |
 | `docs/product-brief.md` | Product brief: pain points, differentiator, 12 concepts, Scheme Finder deep dive, MVP plan, tech stack |
 | `docs/workflows/pm-kisan.md` | PM-KISAN: step-by-step farmer guide + system workflow with Sathi touchpoints |

@@ -4,7 +4,7 @@ Step-by-step citizen guides (English + Marathi) and team system workflows for Ma
 
 > **Status:** **all 26 guides checked on 27 Oct 2026** (3 batches) against news, district/central government pages and secondary sources, with corrections applied; see each page's *Verification* section. Maharashtra state portals were not reachable from the research environment, so final confirmation against current GRs is still needed, and **Marathi text still needs native-speaker review**.
 
-> **Other states:** Uttar Pradesh, 12 guides (English + Hindi) in [`up/`](up/README.md); Karnataka, 10 guides (English + Kannada) in [`ka/`](ka/README.md).
+> **Other states:** Uttar Pradesh, 12 guides (English + Hindi) in [`up/`](up/README.md); Karnataka, 10 guides (English + Kannada) in [`ka/`](ka/README.md); Madhya Pradesh, 10 guides (English + Hindi) in [`mp/`](mp/README.md).
 
 ## Certificates (the document chain)
 
@@ -104,11 +104,11 @@ The website's **Am I stuck?** page (`#check`) lets a citizen pick a scheme and t
 
 Citizens can also **paste their status text or SMS**. Sathi then picks the matching stage and the latest date in the text. Each stage's `match` phrases in `tracker.py` drive this. Add the exact wording people see on the portal or in SMSes, in English and the local language.
 
-It currently covers PM-KISAN, Income certificate (UP), Ladki Bahin and Gruha Lakshmi. To add a scheme, add an entry to [`../site/tracker.py`](../site/tracker.py). Take its stages, time limits and offices from that scheme's guide and Verification notes. Then run `python3 ../site/build_site.py`. The build fails if a tracker points at a guide that does not exist.
+It currently covers PM-KISAN, Income certificate (UP), Ladki Bahin, Gruha Lakshmi and Ladli Behna (MP). To add a scheme, add an entry to [`../site/tracker.py`](../site/tracker.py). Take its stages, time limits and offices from that scheme's guide and Verification notes. Then run `python3 ../site/build_site.py`. The build fails if a tracker points at a guide that does not exist.
 
 ## "Where are people stuck?" map
 
-The website's map page (`#map`) shows, by district, for Maharashtra, Uttar Pradesh and Karnataka:
+The website's map page (`#map`) shows, by district, for Maharashtra, Uttar Pradesh, Karnataka and Madhya Pradesh:
 
 - **News signals** from [`../site/signals.py`](../site/signals.py): news reports of anti-corruption bribe arrests and of stuck payments, each with its source link. State-wide signals are listed under the map. Add new ones there; the build fails if a district name does not match the boundaries.
 - **Citizen reports.** After an "Am I stuck?" result, a citizen can choose district, office and whether money was asked, then send it. This opens the prefilled [status report form](../../.github/ISSUE_TEMPLATE/status-report.yml), which becomes a GitHub issue labelled `status-report` with no name or numbers. On every deploy the Pages workflow totals these issues per district. A district's figures (reports, % overdue, % asked for money) appear only from **10 reports**, so no single person's case can be picked out.

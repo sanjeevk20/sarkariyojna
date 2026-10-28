@@ -9,7 +9,7 @@ Run once when boundaries or states change (needs the pure-Python `pyshp` package
 import json, pathlib, sys
 import shapefile  # pyshp
 
-STATES = {"Maharashtra": "mh", "Uttar Pradesh": "up", "Karnataka": "ka"}
+STATES = {"Maharashtra": "mh", "Uttar Pradesh": "up", "Karnataka": "ka", "Madhya Pradesh": "mp"}
 TOL = 0.012      # simplification tolerance in degrees (about 1 km)
 DIGITS = 3       # coordinate rounding (about 100 m)
 OUT = pathlib.Path(__file__).resolve().parent / "geo" / "districts.json"
