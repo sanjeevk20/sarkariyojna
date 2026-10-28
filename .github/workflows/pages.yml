@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  issues: read  # status-report issues are totalled per district for the map
   pages: write
   id-token: write
 
@@ -29,6 +30,7 @@ jobs:
         env:
           # Optional: set the GOATCOUNTER_CODE repository variable to turn on visit and "Did this help?" counts.
           SATHI_GOATCOUNTER: ${{ vars.GOATCOUNTER_CODE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install beautifulsoup4==4.12.3
           python3 docs/site/build_site.py

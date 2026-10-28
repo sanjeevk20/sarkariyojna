@@ -106,3 +106,13 @@ Citizens can also **paste their status text or SMS**. Sathi then picks the match
 
 It currently covers PM-KISAN, Income certificate (UP), Ladki Bahin and Gruha Lakshmi. To add a scheme, add an entry to [`../site/tracker.py`](../site/tracker.py). Take its stages, time limits and offices from that scheme's guide and Verification notes. Then run `python3 ../site/build_site.py`. The build fails if a tracker points at a guide that does not exist.
 
+## "Where are people stuck?" map
+
+The website's map page (`#map`) shows, by district, for Maharashtra, Uttar Pradesh and Karnataka:
+
+- **News signals** from [`../site/signals.py`](../site/signals.py): news reports of anti-corruption bribe arrests and of stuck payments, each with its source link. State-wide signals are listed under the map. Add new ones there; the build fails if a district name does not match the boundaries.
+- **Citizen reports.** After an "Am I stuck?" result, a citizen can choose district, office and whether money was asked, then send it. This opens the prefilled [status report form](../../.github/ISSUE_TEMPLATE/status-report.yml), which becomes a GitHub issue labelled `status-report` with no name or numbers. On every deploy the Pages workflow totals these issues per district. A district's figures (reports, % overdue, % asked for money) appear only from **10 reports**, so no single person's case can be picked out.
+- **Boundaries:** Census 2011 districts from [DataMeet](https://github.com/datameet/maps) (CC BY 4.0), simplified by [`../site/build_geo.py`](../site/build_geo.py) into `../site/geo/districts.json` (182 KB). Re-run it only to change states or boundaries.
+
+These are signals, not proof. An arrest is an allegation until a court decides. Officers are never named on the map.
+

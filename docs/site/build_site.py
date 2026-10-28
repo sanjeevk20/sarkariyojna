@@ -138,6 +138,48 @@ def trackers(slugs):
     return dict(trackers=t["TRACKERS"], bodies=t["BODY"])
 
 
+K_ANON = 10  # a district's citizen-report figures are shown only from this many reports
+
+
+def map_data():
+    """District outlines, news signals and citizen-report totals for the 'Where are people stuck?' map."""
+    geo = json.loads((ROOT / "geo" / "districts.json").read_text())["districts"]
+    names = {(d["state"], d["name"]) for d in geo}
+    sig = runpy.run_path(str(ROOT / "signals.py"))
+    for s in sig["SIGNALS"]:
+        assert s["district"] is None or (s["state"], s["district"]) in names, f"signal for unknown district {s['district']}"
+    return dict(geo=geo, signals=sig["SIGNALS"], aliases=sig["ALIASES"], reports=citizen_reports(names))
+
+
+def citizen_reports(names):
+    """Total the status-report issues per district. Read from the GitHub API when GITHUB_TOKEN is set
+    (the Pages workflow), otherwise there are none. Districts under K_ANON reports keep only the fact
+    that some exist (n=None), so a single report cannot be picked out."""
+    issues, token = [], os.environ.get("GITHUB_TOKEN")
+    if token:
+        import urllib.request
+        for page in range(1, 11):
+            req = urllib.request.Request(
+                f"https://api.github.com/repos/{REPO}/issues?labels=status-report&state=all&per_page=100&page={page}",
+                headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"})
+            batch = json.load(urllib.request.urlopen(req, timeout=30))
+            issues += [i for i in batch if "pull_request" not in i]
+            if len(batch) < 100:
+                break
+    tot = {}
+    for i in issues:
+        f = dict(re.findall(r"### (.+?)\n\n(.*?)(?=\n\n### |\Z)", i.get("body") or "", re.S))
+        st, d = f.get("State", "").strip(), f.get("District", "").strip()
+        if (st, d) not in names:
+            continue
+        t = tot.setdefault(f"{st}:{d}", dict(n=0, overdue=0, money=0))
+        t["n"] += 1
+        t["overdue"] += f.get("Overdue", "").strip().lower() == "yes"
+        t["money"] += f.get("Money asked", "").strip().startswith("Yes")
+    shown = {k: (v if v["n"] >= K_ANON else dict(n=None)) for k, v in tot.items()}
+    return dict(k=K_ANON, total=len(issues), districts=shown)
+
+
 def build():
     posts, state_routers = [], {}
     for sid, _, _, _, _, folder, local in STATES:
@@ -152,7 +194,7 @@ def build():
     posts.sort(key=lambda p: ([s[0] for s in STATES].index(p["state"]), order.index(p["cat"])))
     data = dict(cats=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k in CATS],
                 states=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k, _, _ in STATES],
-                posts=posts, routers=state_routers, repo=REPO, **trackers({p["slug"] for p in posts}))
+                posts=posts, routers=state_routers, repo=REPO, **trackers({p["slug"] for p in posts}), **map_data())
     js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (ROOT / "template.html").read_text().replace("/*__DATA__*/null", js)
     # index.html: page fragment for the claude.ai artifact host, which adds the document skeleton.

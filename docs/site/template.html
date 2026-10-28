@@ -120,6 +120,37 @@ h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.3; }
 .diagram pre { white-space: pre; font-size: 13px; margin: 0; }
 .sources { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 15px; }
 .sources a { overflow-wrap: anywhere; }
+.cta.alt { background: var(--surface); color: var(--leaf); border: 1px solid var(--leaf); margin-top: 10px; }
+.mapwrap { max-width: 1100px; padding-block: 20px 56px; }
+.mapwrap h1 { font-size: clamp(26px, 4.6vw, 38px); margin: 6px 0 4px; }
+.map-tools { display: grid; gap: 10px; margin: 16px 0; }
+.map-grid { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 860px) { .map-grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); } }
+.map { margin: 0; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); min-width: 0; }
+.map svg { display: block; width: 100%; height: auto; max-height: 70vh; }
+.map path { stroke: var(--surface); stroke-width: 1.4; cursor: pointer; vector-effect: non-scaling-stroke; }
+.map path:hover, .map path:focus-visible { stroke: var(--fg); stroke-width: 2; outline: none; }
+.map path.sel { stroke: var(--fg); stroke-width: 2.5; }
+.s0, .sw.s0, .r0, .sw.r0 { fill: var(--raised); background: var(--raised); }
+.s1, .sw.s1 { fill: var(--haldi); background: var(--haldi); fill-opacity: .55; }
+.s2, .sw.s2 { fill: var(--stop); background: var(--stop); fill-opacity: .6; } .s3 { fill: var(--stop); fill-opacity: .85; }
+.rf, .sw.rf { fill: var(--line); background: var(--line); }
+.r1, .sw.r1 { fill: var(--haldi-soft); background: var(--haldi-soft); } .r2, .sw.r2 { fill: var(--haldi); background: var(--haldi); }
+.r3, .sw.r3 { fill: var(--stop); background: var(--stop); }
+.legend-map { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 14px; color: var(--muted); }
+.sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; margin-right: 6px; vertical-align: -2px; border: 1px solid var(--line); }
+.map-panel { padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); min-width: 0; }
+.map-panel h2 { margin: 0 0 8px; font-size: 21px; }
+.rep-stats { margin: 0 0 10px; }
+.sig-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 15px; }
+.sig-list li { padding: 10px 12px; border-radius: 10px; background: var(--raised); overflow-wrap: anywhere; }
+.sig-list .tag { margin: 0 6px 4px 0; display: inline-block; }
+.tag.bad { background: var(--stop-soft); color: var(--stop); } .tag.warn { background: var(--haldi-soft); color: var(--haldi); }
+.all-sigs { margin-top: 20px; } .all-sigs summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
+.share { margin-top: 20px; padding: 16px; border: 1px dashed var(--leaf); border-radius: 14px; }
+.share h2 { margin: 0 0 6px; font-size: 19px; }
+.share select { font: 16px var(--body); min-height: 44px; padding: 0 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); max-width: 100%; }
+.share .report[aria-disabled="true"] { opacity: .5; pointer-events: none; }
 .cta { display: grid; gap: 2px; margin-top: 16px; padding: 12px 16px; border-radius: 12px; background: var(--leaf); color: var(--on-leaf); text-decoration: none; max-width: 560px; }
 .cta.big { margin-top: 20px; padding: 14px 18px; } .cta.big b { font-size: 18px; } .cta span { font-size: 15px; opacity: .9; }
 .check fieldset { border: 0; padding: 0; margin: 22px 0 0; min-width: 0; }
@@ -368,6 +399,7 @@ function renderHome() {
       <h1>${u.h1}</h1>
       <p class="lead">${u.lead(POSTS.length)}</p>
       <a class="cta big" href="#check"><b>${CK[state.lang].cta} →</b><span>${CK[state.lang].ctaNote(DATA.trackers.length)}</span></a>
+      <a class="cta alt" href="#map"><b>${MP[state.lang].cta} →</b></a>
     </section>
     <div class="tools">
       <label class="search" for="q">${SEARCH_ICON}<span class="sr-only">${u.search}</span>
@@ -610,7 +642,9 @@ function renderResult() {
       <h3>${c.where}</h3><p lang="${L}">${esc(t.complaint.where[k])}</p>
       <p class="small">${c.privacy}</p>
     </section>` : ""}
+    ${s.kind !== "done" ? shareHTML(t, s, v) : ""}
     <p><a href="#${t.guide}">${c.readGuide} →</a></p>`;
+  if (s.kind !== "done") wireShare(t, s, v);
   if (!v.complain) return;
   const update = () => { $("#ck-draft").value = draft(t, s, v); };
   [["#ck-name", "name"], ["#ck-app", "app"], ["#ck-mobile", "mobile"]].forEach(([sel, key]) =>
@@ -659,6 +693,7 @@ function renderCheck(slug) {
     <a class="back" href="#">← ${UI[state.lang].back}</a>
     <h1 id="post-title" tabindex="-1">${c.h1}</h1>
     <p class="lead">${c.lead}</p>
+    <p><a href="#map">${MP[state.lang].cta} →</a></p>
     <fieldset><legend>${c.s1}</legend><div class="opts">${DATA.trackers.map(t => {
       const p = BY[t.guide];
       return `<label class="opt"><input type="radio" name="ck-scheme" value="${t.guide}"${t.guide === ck.slug ? " checked" : ""}><span><b>${esc(title(p))}</b><small>${esc(stateName(p.state))}</small></span></label>`;
@@ -675,6 +710,179 @@ function renderCheck(slug) {
   document.title = `${c.h1} · Sathi Yojana Guides`;
 }
 
+// ---- "Where are people stuck?" map. Outlines: geo/districts.json (DataMeet, CC BY 4.0). Signals: signals.py.
+// Citizen reports: GitHub issues labelled status-report, totalled per district at build time; districts with
+// fewer than DATA.reports.k reports are not shown, so no single report can be singled out.
+const MP = {
+  en: { cta: "Where are people stuck? See the map", h1: "Where are people stuck?",
+    lead: "News reports of bribe arrests and payment delays, plus anonymous reports shared from the Am I stuck? checker, by district. Tap a district for details.",
+    lSig: "News signals", lRep: "Citizen reports", none: "No signal", delay: "Delay reports", bribe: "Bribe arrest reported",
+    few: k => `Fewer than ${k} reports`, overdue: "Share overdue", pick: "Tap or select a district to see what was reported there.",
+    statewide: "State-wide signals", noRep: k => `No district has ${k} or more citizen reports yet. Share yours from the Am I stuck? checker.`,
+    nRep: n => `${n} citizen reports`, pctOver: p => `${p}% overdue`, pctMoney: p => `${p}% say money was asked`,
+    srcs: "Source", caveat: "Signals, not proof. An arrest is an allegation until a court decides; a news story about delays is not a count. Officers are never named here.",
+    attrib: "District boundaries: Census 2011, DataMeet India community (CC BY 4.0). Newer districts (for example Palghar, Vijayanagara) appear inside their 2011 parent.",
+    list: "All mapped signals", district: "District", noneHere: "Nothing reported for this district yet.",
+    shareT: "Help others: share this anonymously", shareL: "Add your case to the district map. No name, number or application details are included.",
+    sDistrict: "Your district", sOffice: "Where is it stuck?", sMoney: "Did anyone ask you for money or a favour?",
+    offices: ["Tehsil / taluk office", "Block / panchayat office", "Bank", "Service centre (CSC / Seva Kendra)", "Online portal", "Other"],
+    money: ["No", "Yes, an agent", "Yes, an official", "Prefer not to say"], choose: "Choose…",
+    send: "Send report", sendNote: "Opens a short GitHub form with your answers filled in. You need a free GitHub account, and your GitHub username is visible on the report." },
+  mr: { cta: "लोक कुठे अडकले आहेत? नकाशा पाहा", h1: "लोक कुठे अडकले आहेत?",
+    lead: "लाचखोरी अटक आणि रखडलेल्या पैशांच्या बातम्या, आणि 'काम अडकले आहे का?' मधून अनामिकपणे पाठवलेले अहवाल, जिल्ह्यानुसार. तपशीलासाठी जिल्ह्यावर टॅप करा.",
+    lSig: "बातम्यांतील संकेत", lRep: "नागरिकांचे अहवाल", none: "संकेत नाही", delay: "विलंबाच्या बातम्या", bribe: "लाचखोरी अटकेची बातमी",
+    few: k => `${k} पेक्षा कमी अहवाल`, overdue: "उशीर झालेल्यांचे प्रमाण", pick: "तिथे काय नोंदवले गेले ते पाहण्यासाठी जिल्हा निवडा.",
+    statewide: "राज्यस्तरीय संकेत", noRep: k => `अजून कोणत्याही जिल्ह्यात ${k} किंवा अधिक अहवाल नाहीत. 'काम अडकले आहे का?' मधून तुमचा अहवाल पाठवा.`,
+    nRep: n => `${n} नागरिक अहवाल`, pctOver: p => `${p}% उशीर`, pctMoney: p => `${p}% म्हणतात पैसे मागितले`,
+    srcs: "स्रोत", caveat: "हे संकेत आहेत, पुरावा नाही. न्यायालयाचा निर्णय होईपर्यंत अटक हा आरोप आहे; विलंबाची बातमी ही आकडेवारी नाही. येथे कोणत्याही अधिकाऱ्याचे नाव दिले जात नाही.",
+    attrib: "जिल्हा सीमा: जनगणना 2011, DataMeet India community (CC BY 4.0). नवीन जिल्हे (उदा. पालघर) त्यांच्या 2011 च्या मूळ जिल्ह्यात दिसतात.",
+    list: "नकाशावरील सर्व संकेत", district: "जिल्हा", noneHere: "या जिल्ह्यासाठी अजून काही नोंदवलेले नाही.",
+    shareT: "इतरांना मदत करा: अनामिकपणे शेअर करा", shareL: "तुमचे प्रकरण जिल्हा नकाशात जोडा. नाव, क्रमांक किंवा अर्जाचा तपशील जात नाही.",
+    sDistrict: "तुमचा जिल्हा", sOffice: "काम कुठे अडकले आहे?", sMoney: "कोणी पैसे किंवा उपकार मागितला का?",
+    offices: ["तहसील कार्यालय", "पंचायत समिती / ग्रामपंचायत", "बँक", "सेवा केंद्र (CSC / आपले सरकार)", "ऑनलाइन पोर्टल", "इतर"],
+    money: ["नाही", "हो, एजंटने", "हो, अधिकाऱ्याने", "सांगायचे नाही"], choose: "निवडा…",
+    send: "अहवाल पाठवा", sendNote: "तुमची उत्तरे भरलेला छोटा GitHub फॉर्म उघडतो. मोफत GitHub खाते लागते, आणि तुमचे GitHub नाव अहवालावर दिसते." },
+  hi: { cta: "लोग कहां अटके हैं? नक्शा देखें", h1: "लोग कहां अटके हैं?",
+    lead: "रिश्वत गिरफ़्तारी और अटके भुगतान की ख़बरें, और 'क्या काम अटका है?' से गुमनाम भेजी गई रिपोर्टें, ज़िले के अनुसार। विवरण के लिए ज़िले पर टैप करें।",
+    lSig: "ख़बरों के संकेत", lRep: "नागरिक रिपोर्ट", none: "कोई संकेत नहीं", delay: "देरी की ख़बरें", bribe: "रिश्वत गिरफ़्तारी की ख़बर",
+    few: k => `${k} से कम रिपोर्ट`, overdue: "देरी वाले मामलों का हिस्सा", pick: "वहां क्या दर्ज हुआ, यह देखने के लिए ज़िला चुनें।",
+    statewide: "राज्य-स्तरीय संकेत", noRep: k => `अभी किसी ज़िले में ${k} या अधिक रिपोर्ट नहीं हैं। 'क्या काम अटका है?' से अपनी रिपोर्ट भेजें।`,
+    nRep: n => `${n} नागरिक रिपोर्ट`, pctOver: p => `${p}% देरी`, pctMoney: p => `${p}% के अनुसार पैसे मांगे गए`,
+    srcs: "स्रोत", caveat: "ये संकेत हैं, सबूत नहीं। अदालत के फ़ैसले तक गिरफ़्तारी एक आरोप है; देरी की ख़बर कोई गिनती नहीं है। यहां किसी अधिकारी का नाम नहीं दिया जाता।",
+    attrib: "ज़िला सीमाएं: जनगणना 2011, DataMeet India community (CC BY 4.0)। नए ज़िले अपने 2011 के मूल ज़िले में दिखते हैं।",
+    list: "नक्शे पर सभी संकेत", district: "ज़िला", noneHere: "इस ज़िले के लिए अभी कुछ दर्ज नहीं है।",
+    shareT: "दूसरों की मदद करें: गुमनाम रूप से साझा करें", shareL: "अपना मामला ज़िला नक्शे में जोड़ें। नाम, नंबर या आवेदन का विवरण नहीं जाता।",
+    sDistrict: "आपका ज़िला", sOffice: "काम कहां अटका है?", sMoney: "क्या किसी ने पैसे या एहसान मांगा?",
+    offices: ["तहसील कार्यालय", "ब्लॉक / पंचायत कार्यालय", "बैंक", "जन सेवा केंद्र", "ऑनलाइन पोर्टल", "अन्य"],
+    money: ["नहीं", "हां, एजेंट ने", "हां, अधिकारी ने", "नहीं बताना"], choose: "चुनें…",
+    send: "रिपोर्ट भेजें", sendNote: "आपके जवाब भरा छोटा GitHub फ़ॉर्म खुलता है। मुफ़्त GitHub खाता चाहिए, और आपका GitHub नाम रिपोर्ट पर दिखता है।" },
+  kn: { cta: "ಜನರು ಎಲ್ಲಿ ಸಿಲುಕಿದ್ದಾರೆ? ನಕ್ಷೆ ನೋಡಿ", h1: "ಜನರು ಎಲ್ಲಿ ಸಿಲುಕಿದ್ದಾರೆ?",
+    lead: "ಲಂಚದ ಬಂಧನ ಮತ್ತು ಬಾಕಿ ಪಾವತಿಯ ಸುದ್ದಿಗಳು, ಮತ್ತು 'ಕೆಲಸ ಸಿಲುಕಿದೆಯೇ?' ಮೂಲಕ ಅನಾಮಧೇಯವಾಗಿ ಹಂಚಿದ ವರದಿಗಳು, ಜಿಲ್ಲಾವಾರು. ವಿವರಕ್ಕೆ ಜಿಲ್ಲೆಯ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ.",
+    lSig: "ಸುದ್ದಿ ಸಂಕೇತಗಳು", lRep: "ನಾಗರಿಕ ವರದಿಗಳು", none: "ಸಂಕೇತವಿಲ್ಲ", delay: "ವಿಳಂಬದ ಸುದ್ದಿಗಳು", bribe: "ಲಂಚದ ಬಂಧನದ ಸುದ್ದಿ",
+    few: k => `${k} ಕ್ಕಿಂತ ಕಡಿಮೆ ವರದಿಗಳು`, overdue: "ತಡವಾದವುಗಳ ಪ್ರಮಾಣ", pick: "ಅಲ್ಲಿ ಏನು ವರದಿಯಾಗಿದೆ ಎಂದು ನೋಡಲು ಜಿಲ್ಲೆ ಆಯ್ಕೆಮಾಡಿ.",
+    statewide: "ರಾಜ್ಯಮಟ್ಟದ ಸಂಕೇತಗಳು", noRep: k => `ಇನ್ನೂ ಯಾವ ಜಿಲ್ಲೆಯಲ್ಲೂ ${k} ಅಥವಾ ಹೆಚ್ಚು ವರದಿಗಳಿಲ್ಲ. 'ಕೆಲಸ ಸಿಲುಕಿದೆಯೇ?' ಮೂಲಕ ನಿಮ್ಮದನ್ನು ಹಂಚಿ.`,
+    nRep: n => `${n} ನಾಗರಿಕ ವರದಿಗಳು`, pctOver: p => `${p}% ತಡ`, pctMoney: p => `${p}% ಹಣ ಕೇಳಲಾಯಿತು ಎನ್ನುತ್ತಾರೆ`,
+    srcs: "ಮೂಲ", caveat: "ಇವು ಸಂಕೇತಗಳು, ಪುರಾವೆಯಲ್ಲ. ನ್ಯಾಯಾಲಯ ತೀರ್ಮಾನಿಸುವವರೆಗೆ ಬಂಧನ ಒಂದು ಆರೋಪ; ವಿಳಂಬದ ಸುದ್ದಿ ಎಣಿಕೆಯಲ್ಲ. ಇಲ್ಲಿ ಯಾವ ಅಧಿಕಾರಿಯ ಹೆಸರೂ ಇಲ್ಲ.",
+    attrib: "ಜಿಲ್ಲಾ ಗಡಿಗಳು: ಜನಗಣತಿ 2011, DataMeet India community (CC BY 4.0). ಹೊಸ ಜಿಲ್ಲೆಗಳು (ಉದಾ. ವಿಜಯನಗರ) 2011ರ ಮೂಲ ಜಿಲ್ಲೆಯೊಳಗೆ ಕಾಣುತ್ತವೆ.",
+    list: "ನಕ್ಷೆಯ ಎಲ್ಲಾ ಸಂಕೇತಗಳು", district: "ಜಿಲ್ಲೆ", noneHere: "ಈ ಜಿಲ್ಲೆಗೆ ಇನ್ನೂ ಏನೂ ವರದಿಯಾಗಿಲ್ಲ.",
+    shareT: "ಇತರರಿಗೆ ಸಹಾಯ ಮಾಡಿ: ಅನಾಮಧೇಯವಾಗಿ ಹಂಚಿ", shareL: "ನಿಮ್ಮ ಪ್ರಕರಣವನ್ನು ಜಿಲ್ಲಾ ನಕ್ಷೆಗೆ ಸೇರಿಸಿ. ಹೆಸರು, ಸಂಖ್ಯೆ ಅಥವಾ ಅರ್ಜಿ ವಿವರ ಹೋಗುವುದಿಲ್ಲ.",
+    sDistrict: "ನಿಮ್ಮ ಜಿಲ್ಲೆ", sOffice: "ಕೆಲಸ ಎಲ್ಲಿ ಸಿಲುಕಿದೆ?", sMoney: "ಯಾರಾದರೂ ಹಣ ಅಥವಾ ಉಪಕಾರ ಕೇಳಿದರೇ?",
+    offices: ["ತಾಲೂಕು ಕಚೇರಿ", "ಪಂಚಾಯಿತಿ ಕಚೇರಿ", "ಬ್ಯಾಂಕ್", "ಸೇವಾ ಕೇಂದ್ರ (ಗ್ರಾಮ ಒನ್ / ಕರ್ನಾಟಕ ಒನ್)", "ಆನ್‌ಲೈನ್ ಪೋರ್ಟಲ್", "ಇತರೆ"],
+    money: ["ಇಲ್ಲ", "ಹೌದು, ಏಜೆಂಟ್", "ಹೌದು, ಅಧಿಕಾರಿ", "ಹೇಳಲು ಇಷ್ಟವಿಲ್ಲ"], choose: "ಆಯ್ಕೆಮಾಡಿ…",
+    send: "ವರದಿ ಕಳುಹಿಸಿ", sendNote: "ನಿಮ್ಮ ಉತ್ತರಗಳು ತುಂಬಿದ ಸಣ್ಣ GitHub ಫಾರ್ಮ್ ತೆರೆಯುತ್ತದೆ. ಉಚಿತ GitHub ಖಾತೆ ಬೇಕು, ಮತ್ತು ನಿಮ್ಮ GitHub ಹೆಸರು ವರದಿಯಲ್ಲಿ ಕಾಣುತ್ತದೆ." },
+};
+// English office / money labels go into the report so totals do not depend on the reader's language.
+const MONEY_EN = MP.en.money, OFFICE_EN = MP.en.offices;
+const GEO = DATA.geo, dkey = d => `${d.state}:${d.name}`;
+const dName = n => DATA.aliases[n] ? `${DATA.aliases[n]} (${n})` : n;
+const mp = { st: null, layer: "sig", sel: null };
+
+function sigsFor(st, name) { return DATA.signals.filter(s => s.state === st && s.district === name); }
+function sigClass(list) { return !list.length ? "s0" : list.some(s => s.kind === "bribe-arrest") ? (list.length > 1 ? "s3" : "s2") : "s1"; }
+function repClass(r) {
+  if (!r) return "r0";
+  if (r.n == null) return "rf";
+  const p = r.overdue / r.n; return p >= 0.6 ? "r3" : p >= 0.3 ? "r2" : "r1";
+}
+
+function project(st) {
+  const ds = GEO.filter(d => d.state === st);
+  let x0 = 180, x1 = -180, y0 = 90, y1 = -90;
+  ds.forEach(d => d.rings.forEach(r => r.forEach(([x, y]) => { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); })));
+  const k = Math.cos(((y0 + y1) / 2) * Math.PI / 180), W = 1000, s = W / ((x1 - x0) * k), H = Math.round((y1 - y0) * s);
+  const P = ([x, y]) => `${((x - x0) * k * s).toFixed(1)},${((y1 - y) * s).toFixed(1)}`;
+  return { ds, W, H, path: d => d.rings.map(r => "M" + r.map(P).join("L") + "Z").join("") };
+}
+
+function renderMapPanel() {
+  const c = MP[state.lang], box = $("#map-panel");
+  if (!mp.sel) { box.innerHTML = `<p class="small">${c.pick}</p>`; return; }
+  const [st, name] = mp.sel.split(":"), list = sigsFor(st, name), r = DATA.reports.districts[mp.sel];
+  box.innerHTML = `<h2>${esc(dName(name))}</h2>
+    ${r && r.n != null ? `<p class="rep-stats"><b>${c.nRep(r.n)}</b> · ${c.pctOver(Math.round(100 * r.overdue / r.n))} · ${c.pctMoney(Math.round(100 * r.money / r.n))}</p>` : r ? `<p class="small">${c.few(DATA.reports.k)}</p>` : ""}
+    ${list.length ? `<ul class="sig-list">${list.map(sigItem).join("")}</ul>` : `<p class="small">${c.noneHere}</p>`}`;
+}
+function sigItem(s) {
+  const c = MP[state.lang];
+  return `<li class="${s.kind}"><span class="tag ${s.kind === "bribe-arrest" ? "bad" : "warn"}">${s.kind === "bribe-arrest" ? c.bribe : c.delay}</span>
+    <b>${esc(s.service)}</b> · ${esc(s.month)}<br>${esc(s.summary)} <a href="${esc(s.url)}" target="_blank" rel="noopener">${c.srcs}: ${esc(s.source)} ↗</a></li>`;
+}
+
+function renderMap() {
+  const c = MP[state.lang];
+  if (!mp.st) mp.st = state.st !== "all" ? state.st : "mh";
+  const pr = project(mp.st), reps = DATA.reports.districts;
+  const shown = Object.keys(reps).some(k => k.startsWith(mp.st + ":") && reps[k].n != null);
+  const stateWide = DATA.signals.filter(s => s.state === mp.st && !s.district);
+  const mapped = DATA.signals.filter(s => s.state === mp.st && s.district);
+  $("#main").innerHTML = `
+  <article class="gutter"><div class="mapwrap">
+    <a class="back" href="#">← ${UI[state.lang].back}</a>
+    <h1 id="post-title" tabindex="-1">${c.h1}</h1>
+    <p class="lead">${c.lead}</p>
+    <div class="map-tools">
+      <div class="chips" role="group" aria-label="${UI[state.lang].stateLbl}">${DATA.states.map(s => `<button type="button" class="chip" data-mst="${s.id}" aria-pressed="${s.id === mp.st}">${esc(s[state.lang])}</button>`).join("")}</div>
+      <div class="chips" role="group">${[["sig", c.lSig], ["rep", c.lRep]].map(([id, t]) => `<button type="button" class="chip" data-layer="${id}" aria-pressed="${id === mp.layer}">${t}</button>`).join("")}</div>
+    </div>
+    <div class="map-grid">
+      <figure class="map ${mp.layer}">
+        <svg viewBox="0 0 ${pr.W} ${pr.H}" role="group" aria-label="${esc(c.h1)}">${pr.ds.map(d => {
+          const key = dkey(d), cls = mp.layer === "sig" ? sigClass(sigsFor(d.state, d.name)) : repClass(reps[key]);
+          return `<path d="${pr.path(d)}" class="${cls}${key === mp.sel ? " sel" : ""}" data-key="${esc(key)}" tabindex="0" role="button" aria-label="${esc(dName(d.name))}"><title>${esc(dName(d.name))}</title></path>`;
+        }).join("")}</svg>
+        <figcaption class="legend-map">${mp.layer === "sig"
+          ? `<span><i class="sw s0"></i>${c.none}</span><span><i class="sw s1"></i>${c.delay}</span><span><i class="sw s2"></i>${c.bribe}</span>`
+          : `<span><i class="sw r0"></i>${c.none}</span><span><i class="sw rf"></i>${c.few(DATA.reports.k)}</span><span><i class="sw r1"></i>&lt;30%</span><span><i class="sw r2"></i>30–60%</span><span><i class="sw r3"></i>≥60% ${c.overdue}</span>`}</figcaption>
+        ${mp.layer === "rep" && !shown ? `<p class="small">${c.noRep(DATA.reports.k)}</p>` : ""}
+      </figure>
+      <aside id="map-panel" class="map-panel" aria-live="polite"></aside>
+    </div>
+    ${stateWide.length ? `<h2>${c.statewide}</h2><ul class="sig-list">${stateWide.map(sigItem).join("")}</ul>` : ""}
+    <details class="all-sigs"><summary>${c.list} (${mapped.length})</summary>
+      <ul class="sig-list">${mapped.map(s => `<li><b>${esc(dName(s.district))}</b>: ${sigItem(s).replace(/^<li[^>]*>|<\/li>$/g, "")}</li>`).join("")}</ul></details>
+    <p class="small">${c.caveat}</p>
+    <p class="small">${c.attrib}</p>
+  </div></article>`;
+  document.querySelectorAll("[data-mst]").forEach(b => b.addEventListener("click", () => { mp.st = b.dataset.mst; mp.sel = null; renderMap(); }));
+  document.querySelectorAll("[data-layer]").forEach(b => b.addEventListener("click", () => { mp.layer = b.dataset.layer; renderMap(); }));
+  document.querySelectorAll(".map path").forEach(el => {
+    const pick = () => { mp.sel = el.dataset.key; document.querySelectorAll(".map path.sel").forEach(x => x.classList.remove("sel")); el.classList.add("sel"); renderMapPanel(); };
+    el.addEventListener("click", pick);
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+  });
+  renderMapPanel();
+  document.title = `${c.h1} · Sathi Yojana Guides`;
+}
+
+// Share step shown under a checker result: builds a prefilled status-report issue, nothing is stored.
+function shareHTML(t, s, v) {
+  const c = MP[state.lang], p = BY[t.guide];
+  const ds = GEO.filter(d => d.state === p.state).map(d => d.name).sort();
+  const opt = (arr, id) => `<select id="${id}"><option value="">${c.choose}</option>${arr.map((x, i) => `<option value="${i}">${esc(x)}</option>`).join("")}</select>`;
+  return `<section class="share" aria-labelledby="sh-t">
+    <h2 id="sh-t">${c.shareT}</h2><p class="small">${c.shareL}</p>
+    <div class="ck-fields">
+      <label for="sh-d">${c.sDistrict}<select id="sh-d"><option value="">${c.choose}</option>${ds.map(n => `<option value="${esc(n)}">${esc(dName(n))}</option>`).join("")}</select></label>
+      <label for="sh-o">${c.sOffice}${opt(c.offices, "sh-o")}</label>
+      <label for="sh-m">${c.sMoney}${opt(c.money, "sh-m")}</label>
+    </div>
+    <a id="sh-send" class="report" target="_blank" rel="noopener" aria-disabled="true">${c.send} ↗</a>
+    <p class="small">${c.sendNote}</p>
+  </section>`;
+}
+function wireShare(t, s, v) {
+  const p = BY[t.guide], link = $("#sh-send");
+  const update = () => {
+    const d = $("#sh-d").value, o = $("#sh-o").value, m = $("#sh-m").value;
+    if (!d) { link.removeAttribute("href"); link.setAttribute("aria-disabled", "true"); return; }
+    const q = new URLSearchParams({ template: "status-report.yml", title: `[status] ${p.title} · ${d}`,
+      state: p.state, district: d, scheme: t.guide, stage: s.id, days: v.days != null ? String(v.days) : "",
+      overdue: v.cls === "bad" ? "yes" : "no", office: o ? OFFICE_EN[o] : "", money: m ? MONEY_EN[m] : "" });
+    link.href = `https://github.com/${DATA.repo}/issues/new?${q}`; link.removeAttribute("aria-disabled");
+  };
+  ["#sh-d", "#sh-o", "#sh-m"].forEach(sel => $(sel).addEventListener("change", update));
+}
+
 function applyChrome() {
   const u = UI[state.lang];
   document.documentElement.lang = state.lang;
@@ -687,7 +895,8 @@ function applyChrome() {
 function route(focus) {
   applyChrome();
   const h = location.hash.slice(1), p = BY[h];
-  if (h === "check" || h.startsWith("check-")) { renderCheck(h.slice(6)); if (focus) { window.scrollTo(0, 0); $("#post-title").focus({ preventScroll: true }); } }
+  if (h === "map") { renderMap(); if (focus) { window.scrollTo(0, 0); $("#post-title").focus({ preventScroll: true }); } }
+  else if (h === "check" || h.startsWith("check-")) { renderCheck(h.slice(6)); if (focus) { window.scrollTo(0, 0); $("#post-title").focus({ preventScroll: true }); } }
   else if (p) { renderPost(p); if (focus) { window.scrollTo(0, 0); $("#post-title").focus({ preventScroll: true }); } }
   else { renderHome(); if (focus) window.scrollTo(0, 0); }
 }
