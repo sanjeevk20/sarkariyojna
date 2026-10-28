@@ -33,12 +33,16 @@ CATEGORY = {
     "ka-caste-income-certificate": "docs", "ka-land-mutation": "docs", "ka-gruha-lakshmi": "women",
     "ka-shakti": "women", "ka-gruha-jyothi": "home", "ka-ration-card": "pension", "ka-social-pensions": "pension",
     "ka-yuva-nidhi": "edu", "ka-ssp-scholarship": "edu", "ka-pm-kisan": "farm",
+    "mp-ladli-behna": "women", "mp-ladli-laxmi": "women", "mp-samagra-id": "docs", "mp-income-certificate": "docs",
+    "mp-domicile-certificate": "docs", "mp-caste-certificate": "docs", "mp-land-mutation": "docs",
+    "mp-kisan-kalyan": "farm", "mp-social-pension": "pension", "mp-ration-card": "pension",
 }
 # (id, English, Marathi, Hindi, Kannada, folder, local language of its guides)
 STATES = [
     ("mh", "Maharashtra", "महाराष्ट्र", "महाराष्ट्र", "ಮಹಾರಾಷ್ಟ್ರ", WF, "mr"),
     ("up", "Uttar Pradesh", "उत्तर प्रदेश", "उत्तर प्रदेश", "ಉತ್ತರ ಪ್ರದೇಶ", WF / "up", "hi"),
     ("ka", "Karnataka", "कर्नाटक", "कर्नाटक", "ಕರ್ನಾಟಕ", WF / "ka", "kn"),
+    ("mp", "Madhya Pradesh", "मध्य प्रदेश", "मध्य प्रदेश", "ಮಧ್ಯ ಪ್ರದೇಶ", WF / "mp", "hi"),
 ]
 # (id, English, Marathi, Hindi, Kannada)
 CATS = [
