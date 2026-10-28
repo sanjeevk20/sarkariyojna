@@ -52,6 +52,9 @@ h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.3; }
 .brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--fg); min-width: 0; }
 .brand b { font-family: var(--display); font-size: 20px; white-space: nowrap; }
 .brand span { color: var(--muted); font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mast-tools { display: flex; align-items: center; gap: 6px; flex: none; }
+.theme-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; flex: none; }
+.theme-btn:hover { background: var(--raised); }
 .toggle { display: flex; gap: 4px; background: var(--raised); padding: 4px; border-radius: 999px; flex: none; }
 .toggle button { font: 500 15px var(--body); min-height: 36px; padding: 0 12px; border-radius: 999px; border: 0; background: transparent; color: var(--fg); cursor: pointer; }
 .toggle button[aria-pressed="true"] { background: var(--leaf); color: var(--on-leaf); }
@@ -206,6 +209,7 @@ h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.3; }
 .pager small { display: block; color: var(--muted); }
 .foot { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 .foot .gutter { padding-block: 18px 28px; }
+@media (max-width: 400px) { .theme-btn { width: 38px; height: 38px; } .mast .gutter { gap: 6px; } }
 @media (max-width: 520px) { .brand span { display: none; } .toggle { gap: 2px; } .toggle button { padding: 0 7px; font-size: 13px; } .pager { grid-template-columns: 1fr; } .pager a.next { grid-column: 1; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 
@@ -217,15 +221,23 @@ img { max-width: 100%; }
 </style>
 </head>
 <body>
+<script>
+// Apply the saved theme before anything paints. Light is the default; "auto" follows the phone.
+(function () { var t = "light"; try { t = localStorage.getItem("sathi-theme") || "light"; } catch (e) {}
+  if (t === "auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", t); })();
+</script>
 <a class="skip" href="#main" id="skip">Skip to content</a>
 <header class="mast">
   <div class="gutter">
     <a class="brand" href="#" id="brand"><b>Sathi</b><span id="brand-sub">Yojana guides for Maharashtra, Uttar Pradesh and Karnataka</span></a>
+    <div class="mast-tools">
+    <button type="button" id="theme-btn" class="theme-btn"></button>
     <div class="toggle" role="group" aria-label="Language / भाषा">
       <button id="lang-en" type="button" data-lang="en" aria-pressed="true">English</button>
       <button id="lang-mr" type="button" data-lang="mr" aria-pressed="false" lang="mr">मराठी</button>
       <button id="lang-hi" type="button" data-lang="hi" aria-pressed="false" lang="hi">हिंदी</button>
       <button id="lang-kn" type="button" data-lang="kn" aria-pressed="false" lang="kn">ಕನ್ನಡ</button>
+    </div>
     </div>
   </div>
 </header>
@@ -902,7 +914,29 @@ function wireShare(t, s, v) {
   ["#sh-d", "#sh-o", "#sh-m"].forEach(sel => $(sel).addEventListener("change", update));
 }
 
+// Theme button: Light -> Dark -> Phone setting. Light is the default.
+const THEMES = ["light", "dark", "auto"];
+const TH = { en: { t: "Theme", light: "Light", dark: "Dark", auto: "Phone setting" },
+  mr: { t: "थीम", light: "उजळ", dark: "गडद", auto: "फोनप्रमाणे" },
+  hi: { t: "थीम", light: "हल्का", dark: "गहरा", auto: "फ़ोन के अनुसार" },
+  kn: { t: "ಥೀಮ್", light: "ತಿಳಿ", dark: "ಗಾಢ", auto: "ಫೋನ್ ಪ್ರಕಾರ" } };
+const THEME_ICON = {
+  light: '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>',
+  dark: '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/></svg>',
+  auto: '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6.5a5.5 5.5 0 0 1 0 11z" fill="currentColor"/></svg>' };
+let theme = "light";
+try { const t = localStorage.getItem("sathi-theme"); if (THEMES.includes(t)) theme = t; } catch (e) {}
+function applyTheme() {
+  const root = document.documentElement, l = TH[state.lang], next = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+  if (theme === "auto") root.removeAttribute("data-theme"); else root.setAttribute("data-theme", theme);
+  const b = $("#theme-btn");
+  b.innerHTML = THEME_ICON[theme];
+  b.setAttribute("aria-label", `${l.t}: ${l[theme]}. → ${l[next]}`);
+  b.title = `${l.t}: ${l[theme]}`;
+}
+
 function applyChrome() {
+  applyTheme();
   const u = UI[state.lang];
   document.documentElement.lang = state.lang;
   $("#brand-sub").textContent = u.sub;
@@ -920,6 +954,11 @@ function route(focus) {
   else { renderHome(); if (focus) window.scrollTo(0, 0); }
 }
 
+$("#theme-btn").addEventListener("click", () => {
+  theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+  try { localStorage.setItem("sathi-theme", theme); } catch (e) {}
+  applyTheme();
+});
 document.querySelectorAll(".toggle button").forEach(b => b.addEventListener("click", () => {
   state.lang = b.dataset.lang; save("sathi-lang", state.lang);
   const y = window.scrollY; route(false); window.scrollTo(0, y);
