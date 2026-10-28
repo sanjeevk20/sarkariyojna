@@ -1,0 +1,47 @@
+name: Share where my application is stuck (anonymous)
+description: Adds one case to the district map on the Sathi guides site. No names, numbers or application details.
+title: "[status] Report"
+labels: ["status-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Only the district totals are shown on the map, and only once a district has 10 or more reports.
+        **Do not add your name, phone, Aadhaar, bank or application number anywhere on this page. It is public.**
+  - type: input
+    id: state
+    attributes:
+      label: State
+      description: Filled in by the website (mh, up or ka).
+    validations:
+      required: true
+  - type: input
+    id: district
+    attributes:
+      label: District
+    validations:
+      required: true
+  - type: input
+    id: scheme
+    attributes:
+      label: Scheme
+  - type: input
+    id: stage
+    attributes:
+      label: Stage
+  - type: input
+    id: days
+    attributes:
+      label: Days waiting
+  - type: input
+    id: overdue
+    attributes:
+      label: Overdue
+  - type: input
+    id: office
+    attributes:
+      label: Office
+  - type: input
+    id: money
+    attributes:
+      label: Money asked
