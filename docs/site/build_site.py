@@ -152,7 +152,7 @@ def map_data():
 
 
 def citizen_reports(names):
-    """Total the status-report issues per district. Read from the GitHub API when GITHUB_TOKEN is set
+    """Total the status-report issues (form title "[status] ...") per district. Read from the GitHub API when GITHUB_TOKEN is set
     (the Pages workflow), otherwise there are none. Districts under K_ANON reports keep only the fact
     that some exist (n=None), so a single report cannot be picked out."""
     issues, token = [], os.environ.get("GITHUB_TOKEN")
@@ -160,10 +160,12 @@ def citizen_reports(names):
         import urllib.request
         for page in range(1, 11):
             req = urllib.request.Request(
-                f"https://api.github.com/repos/{REPO}/issues?labels=status-report&state=all&per_page=100&page={page}",
+                f"https://api.github.com/repos/{REPO}/issues?state=all&per_page=100&page={page}",
                 headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"})
             batch = json.load(urllib.request.urlopen(req, timeout=30))
-            issues += [i for i in batch if "pull_request" not in i]
+            # The form's label is only applied if it exists in the repo, so match the form's title prefix too.
+            issues += [i for i in batch if "pull_request" not in i and (
+                (i.get("title") or "").startswith("[status]") or any(l.get("name") == "status-report" for l in i.get("labels", [])))]
             if len(batch) < 100:
                 break
     tot = {}
