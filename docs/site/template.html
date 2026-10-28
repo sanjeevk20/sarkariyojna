@@ -120,6 +120,30 @@ h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.3; }
 .diagram pre { white-space: pre; font-size: 13px; margin: 0; }
 .sources { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 15px; }
 .sources a { overflow-wrap: anywhere; }
+.cta { display: grid; gap: 2px; margin-top: 16px; padding: 12px 16px; border-radius: 12px; background: var(--leaf); color: var(--on-leaf); text-decoration: none; max-width: 560px; }
+.cta.big { margin-top: 20px; padding: 14px 18px; } .cta.big b { font-size: 18px; } .cta span { font-size: 15px; opacity: .9; }
+.check fieldset { border: 0; padding: 0; margin: 22px 0 0; min-width: 0; }
+.check legend { font-family: var(--display); font-weight: 700; font-size: 19px; margin-bottom: 10px; padding: 0; }
+.opts { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.opt { display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; min-height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); cursor: pointer; }
+.opt input { margin-top: 5px; accent-color: var(--leaf); flex: none; }
+.opt span { display: grid; min-width: 0; } .opt small { color: var(--muted); font-size: 13px; }
+.opt:has(input:checked) { border-color: var(--leaf); background: var(--leaf-soft); }
+.when { display: grid; gap: 6px; margin-top: 22px; font-family: var(--display); font-weight: 700; font-size: 19px; }
+.when input, .ck-fields input { font: 17px var(--body); min-height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); max-width: 100%; }
+.verdict { margin: 24px 0 0; padding: 12px 16px; border-radius: 12px; font-weight: 700; font-size: 18px; }
+.verdict.ok { background: var(--done-soft); color: var(--done); } .verdict.info { background: var(--you-soft); color: var(--you); }
+.verdict.warn { background: var(--haldi-soft); color: var(--haldi); } .verdict.bad { background: var(--stop-soft); color: var(--stop); }
+.ck-card { margin-top: 12px; padding: 4px 16px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.ck-card h3, .ck-complaint h3 { font-size: 16px; margin: 12px 0 2px; color: var(--muted); }
+.ck-card p { margin: 0; }
+.ck-complaint { margin-top: 20px; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--raised); }
+.ck-complaint h2 { margin: 0 0 12px; font-size: 20px; }
+.ck-fields { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 12px; }
+.ck-fields label { display: grid; gap: 4px; font-size: 15px; font-weight: 500; min-width: 0; }
+.ck-complaint textarea { width: 100%; font: 15px/1.5 var(--body); padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); resize: vertical; }
+.ck-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 8px; }
+.ck-actions button { font: 700 16px var(--body); min-height: 44px; padding: 0 18px; border-radius: 10px; border: 0; background: var(--leaf); color: var(--on-leaf); cursor: pointer; }
 .trust { display: flex; align-items: center; gap: 8px; font-size: 15px; margin: 10px 0 0; }
 .feedback { margin-top: 36px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--raised); }
 .feedback h2 { margin: 0 0 10px; font-size: 19px; }
@@ -338,6 +362,7 @@ function renderHome() {
       <p class="eyebrow">${u.eyebrow}</p>
       <h1>${u.h1}</h1>
       <p class="lead">${u.lead(POSTS.length)}</p>
+      <a class="cta big" href="#check"><b>${CK[state.lang].cta} →</b><span>${CK[state.lang].ctaNote(DATA.trackers.length)}</span></a>
     </section>
     <div class="tools">
       <label class="search" for="q">${SEARCH_ICON}<span class="sr-only">${u.search}</span>
@@ -385,6 +410,7 @@ function renderPost(p) {
     <p class="mrn" lang="${state.lang === "en" ? p.local : "en"}">${esc(altTitle(p))}</p>
     <p class="benefit" lang="${L}">${g.benefit}</p>
     <div class="post-meta"><span><b>${u.forw}:</b> ${esc(p.audience)}</span><span>${u.steps(g.steps.length)}</span>${p.verified ? `<span>${FB[state.lang].checkedOn(fmtDate(p.verified))}</span>` : ""}</div>
+    ${TRK[p.slug] ? `<a class="cta" href="#check-${p.slug}"><b>${CK[state.lang].ctaPost} →</b></a>` : ""}
     <ul class="toc">${[["s-steps", u.tocSteps], ["s-links", u.tocLinks], ["s-flow", u.tocFlow], ["s-src", u.tocSrc]].map(([id, t]) => `<li><button type="button" data-go="${id}">${t}</button></li>`).join("")}</ul>
 
     <section lang="${L}">
@@ -464,6 +490,148 @@ async function drawDiagram(p) {
   }
 }
 
+// ---- "Am I stuck?" status checker. Content: docs/site/tracker.py. Nothing typed here is stored or sent.
+const CK = {
+  en: { cta: "Am I stuck? Check your application", ctaNote: n => `Explains your status, the next step, and drafts the complaint. Ready for ${n} schemes so far.`,
+    ctaPost: "Am I stuck? Check my status", h1: "Am I stuck?", lead: "Pick your scheme and what your status page says. Sathi explains it, tells you the next step, and writes the complaint if the office is late.",
+    s1: "1. Your scheme", s2: "2. What does your status page say?", s3: "3. Since when has it shown this? (optional)", pick: "Choose your scheme to start.",
+    mean: "What it means", next: "What to do now", vDone: "Done", vAct: "You need to do something", vStuck: "Your file is stuck",
+    vWait: d => `Waiting is normal. Check again in ${d} day${d === 1 ? "" : "s"}.`, vWaitAsk: n => `Waiting up to ${n} days is normal. Add the date above to see if you are late.`,
+    vWaitPlain: "Waiting is normal at this stage.", vLate: (d, n) => `It has been ${d} days. More than ${n} days is too long, so you can complain.`,
+    cTitle: "Your complaint, ready to send", fName: "Your name", fApp: "Application / registration number", fMobile: "Mobile (optional)",
+    copy: "Copy complaint", copied: "Copied", copyFail: "Copy did not work here. The text is selected: copy it from your keyboard or long-press.", where: "Where to send it",
+    privacy: "Nothing you type here leaves your phone. Never post Aadhaar or bank numbers in public places.", readGuide: "Read the full guide",
+    ph: { app: "[application number]", name: "[your name]", mobile: "-", date: "[date]", days: "[number of]" } },
+  mr: { cta: "काम अडकले आहे का? अर्जाची स्थिती तपासा", ctaNote: n => `स्थितीचा अर्थ, पुढची पायरी आणि तक्रारीचा मसुदा. सध्या ${n} योजनांसाठी.`,
+    ctaPost: "काम अडकले आहे का? स्थिती तपासा", h1: "काम अडकले आहे का?", lead: "तुमची योजना आणि स्थिती पानावर काय दिसते ते निवडा. साथी त्याचा अर्थ सांगतो, पुढची पायरी सांगतो, आणि कार्यालयाने उशीर केला तर तक्रार लिहून देतो.",
+    s1: "1. तुमची योजना", s2: "2. स्थिती पानावर काय दिसते?", s3: "3. ही स्थिती कधीपासून आहे? (ऐच्छिक)", pick: "सुरू करण्यासाठी योजना निवडा.",
+    mean: "याचा अर्थ", next: "आता काय करायचे", vDone: "पूर्ण", vAct: "तुम्हाला काहीतरी करावे लागेल", vStuck: "तुमचे काम अडकले आहे",
+    vWait: d => `वाट पाहणे सामान्य आहे. ${d} दिवसांनी पुन्हा तपासा.`, vWaitAsk: n => `${n} दिवसांपर्यंत वाट पाहणे सामान्य आहे. उशीर झाला का ते पाहण्यासाठी वर तारीख टाका.`,
+    vWaitPlain: "या टप्प्यावर वाट पाहणे सामान्य आहे.", vLate: (d, n) => `${d} दिवस झाले. ${n} दिवसांपेक्षा जास्त म्हणजे खूप उशीर, तुम्ही तक्रार करू शकता.`,
+    cTitle: "तुमची तक्रार, पाठवण्यासाठी तयार", fName: "तुमचे नाव", fApp: "अर्ज / नोंदणी क्रमांक", fMobile: "मोबाईल (ऐच्छिक)",
+    copy: "तक्रार कॉपी करा", copied: "कॉपी झाली", copyFail: "येथे कॉपी झाली नाही. मजकूर निवडला आहे: दीर्घ दाबून कॉपी करा.", where: "कुठे पाठवायची",
+    privacy: "तुम्ही येथे टाइप केलेले काहीही तुमच्या फोनबाहेर जात नाही. आधार किंवा बँक क्रमांक सार्वजनिक ठिकाणी टाकू नका.", readGuide: "पूर्ण मार्गदर्शक वाचा",
+    ph: { app: "[अर्ज क्रमांक]", name: "[तुमचे नाव]", mobile: "-", date: "[तारीख]", days: "[संख्या]" } },
+  hi: { cta: "क्या काम अटका है? आवेदन की स्थिति जांचें", ctaNote: n => `स्थिति का मतलब, अगला कदम और शिकायत का मसौदा। अभी ${n} योजनाओं के लिए।`,
+    ctaPost: "क्या काम अटका है? स्थिति जांचें", h1: "क्या काम अटका है?", lead: "अपनी योजना और स्थिति पेज पर जो दिखता है वह चुनें। साथी उसका मतलब बताता है, अगला कदम बताता है, और दफ़्तर देर करे तो शिकायत लिख देता है।",
+    s1: "1. आपकी योजना", s2: "2. स्थिति पेज पर क्या दिखता है?", s3: "3. यह स्थिति कब से है? (वैकल्पिक)", pick: "शुरू करने के लिए योजना चुनें।",
+    mean: "इसका मतलब", next: "अब क्या करें", vDone: "पूरा", vAct: "आपको कुछ करना होगा", vStuck: "आपका काम अटका है",
+    vWait: d => `प्रतीक्षा सामान्य है। ${d} दिन बाद फिर जांचें।`, vWaitAsk: n => `${n} दिन तक प्रतीक्षा सामान्य है। देर हुई या नहीं, यह देखने के लिए ऊपर तारीख डालें।`,
+    vWaitPlain: "इस चरण पर प्रतीक्षा सामान्य है।", vLate: (d, n) => `${d} दिन हो गए। ${n} दिन से ज़्यादा बहुत देर है, आप शिकायत कर सकते हैं।`,
+    cTitle: "आपकी शिकायत, भेजने के लिए तैयार", fName: "आपका नाम", fApp: "आवेदन / पंजीकरण संख्या", fMobile: "मोबाइल (वैकल्पिक)",
+    copy: "शिकायत कॉपी करें", copied: "कॉपी हो गई", copyFail: "यहां कॉपी नहीं हुई। पाठ चुना हुआ है: देर तक दबाकर कॉपी करें।", where: "कहां भेजें",
+    privacy: "आप यहां जो लिखते हैं वह आपके फ़ोन से बाहर नहीं जाता। आधार या बैंक नंबर सार्वजनिक जगह पर न डालें।", readGuide: "पूरी मार्गदर्शिका पढ़ें",
+    ph: { app: "[आवेदन संख्या]", name: "[आपका नाम]", mobile: "-", date: "[तारीख]", days: "[संख्या]" } },
+  kn: { cta: "ಕೆಲಸ ಸಿಲುಕಿದೆಯೇ? ಅರ್ಜಿಯ ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ", ctaNote: n => `ಸ್ಥಿತಿಯ ಅರ್ಥ, ಮುಂದಿನ ಹಂತ ಮತ್ತು ದೂರಿನ ಕರಡು. ಸದ್ಯಕ್ಕೆ ${n} ಯೋಜನೆಗಳಿಗೆ.`,
+    ctaPost: "ಕೆಲಸ ಸಿಲುಕಿದೆಯೇ? ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ", h1: "ಕೆಲಸ ಸಿಲುಕಿದೆಯೇ?", lead: "ನಿಮ್ಮ ಯೋಜನೆ ಮತ್ತು ಸ್ಥಿತಿ ಪುಟದಲ್ಲಿ ಏನು ತೋರಿಸುತ್ತಿದೆ ಎಂದು ಆಯ್ಕೆಮಾಡಿ. ಸಾಥಿ ಅದರ ಅರ್ಥ, ಮುಂದಿನ ಹಂತ ತಿಳಿಸುತ್ತದೆ, ಕಚೇರಿ ತಡ ಮಾಡಿದರೆ ದೂರು ಬರೆದು ಕೊಡುತ್ತದೆ.",
+    s1: "1. ನಿಮ್ಮ ಯೋಜನೆ", s2: "2. ಸ್ಥಿತಿ ಪುಟದಲ್ಲಿ ಏನು ತೋರಿಸುತ್ತಿದೆ?", s3: "3. ಈ ಸ್ಥಿತಿ ಯಾವಾಗಿನಿಂದ ಇದೆ? (ಐಚ್ಛಿಕ)", pick: "ಪ್ರಾರಂಭಿಸಲು ಯೋಜನೆ ಆಯ್ಕೆಮಾಡಿ.",
+    mean: "ಇದರ ಅರ್ಥ", next: "ಈಗ ಏನು ಮಾಡಬೇಕು", vDone: "ಪೂರ್ಣ", vAct: "ನೀವು ಏನಾದರೂ ಮಾಡಬೇಕು", vStuck: "ನಿಮ್ಮ ಕೆಲಸ ಸಿಲುಕಿದೆ",
+    vWait: d => `ಕಾಯುವುದು ಸಾಮಾನ್ಯ. ${d} ದಿನಗಳ ನಂತರ ಮತ್ತೆ ಪರಿಶೀಲಿಸಿ.`, vWaitAsk: n => `${n} ದಿನಗಳವರೆಗೆ ಕಾಯುವುದು ಸಾಮಾನ್ಯ. ತಡವಾಗಿದೆಯೇ ನೋಡಲು ಮೇಲೆ ದಿನಾಂಕ ನಮೂದಿಸಿ.`,
+    vWaitPlain: "ಈ ಹಂತದಲ್ಲಿ ಕಾಯುವುದು ಸಾಮಾನ್ಯ.", vLate: (d, n) => `${d} ದಿನಗಳಾಗಿವೆ. ${n} ದಿನಗಳಿಗಿಂತ ಹೆಚ್ಚು ಎಂದರೆ ತುಂಬಾ ತಡ, ನೀವು ದೂರು ನೀಡಬಹುದು.`,
+    cTitle: "ನಿಮ್ಮ ದೂರು, ಕಳುಹಿಸಲು ಸಿದ್ಧ", fName: "ನಿಮ್ಮ ಹೆಸರು", fApp: "ಅರ್ಜಿ / ನೋಂದಣಿ ಸಂಖ್ಯೆ", fMobile: "ಮೊಬೈಲ್ (ಐಚ್ಛಿಕ)",
+    copy: "ದೂರು ನಕಲಿಸಿ", copied: "ನಕಲಿಸಲಾಗಿದೆ", copyFail: "ಇಲ್ಲಿ ನಕಲಿಸಲು ಆಗಲಿಲ್ಲ. ಪಠ್ಯ ಆಯ್ಕೆಯಾಗಿದೆ: ದೀರ್ಘವಾಗಿ ಒತ್ತಿ ನಕಲಿಸಿ.", where: "ಎಲ್ಲಿಗೆ ಕಳುಹಿಸಬೇಕು",
+    privacy: "ನೀವು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡುವುದು ನಿಮ್ಮ ಫೋನಿನಿಂದ ಹೊರಗೆ ಹೋಗುವುದಿಲ್ಲ. ಆಧಾರ್ ಅಥವಾ ಬ್ಯಾಂಕ್ ಸಂಖ್ಯೆಯನ್ನು ಸಾರ್ವಜನಿಕವಾಗಿ ಹಾಕಬೇಡಿ.", readGuide: "ಪೂರ್ಣ ಮಾರ್ಗದರ್ಶಿ ಓದಿ",
+    ph: { app: "[ಅರ್ಜಿ ಸಂಖ್ಯೆ]", name: "[ನಿಮ್ಮ ಹೆಸರು]", mobile: "-", date: "[ದಿನಾಂಕ]", days: "[ಸಂಖ್ಯೆ]" } },
+};
+const TRK = Object.fromEntries(DATA.trackers.map(t => [t.guide, t]));
+const ck = { slug: null, stage: null, date: "", name: "", app: "", mobile: "" };
+// Switching scheme clears what belongs to the old application; name and mobile are kept.
+const resetFor = slug => { if (ck.slug !== slug) Object.assign(ck, { slug, stage: null, date: "", app: "" }); };
+const tl = t => state.lang === "en" ? "en" : "loc";          // tracker text key
+const tLang = t => state.lang === "en" ? "en" : t.local;      // language code of tracker text
+const fill = (tpl, v) => tpl.replace(/\{(\w+)\}/g, (m, k) => v[k] ?? m);
+
+function verdict(t, s) {
+  const c = CK[state.lang], days = ck.date ? Math.floor((Date.now() - new Date(ck.date + "T00:00:00")) / 86400000) : null;
+  const late = s.follow_up != null && days != null && days > s.follow_up;
+  if (s.kind === "done") return { cls: "ok", text: c.vDone, complain: false, days };
+  if (s.kind === "stuck") return { cls: "bad", text: c.vStuck, complain: true, days };
+  if (late) return { cls: "bad", text: c.vLate(days, s.follow_up), complain: true, days };
+  if (s.kind === "act") return { cls: "warn", text: c.vAct, complain: false, days };
+  if (s.follow_up == null) return { cls: "info", text: c.vWaitPlain, complain: false, days };
+  if (days == null) return { cls: "info", text: c.vWaitAsk(s.follow_up), complain: false, days };
+  return { cls: "info", text: c.vWait(Math.max(1, s.follow_up - days)), complain: false, days };
+}
+
+function draft(t, s, v) {
+  const c = CK[state.lang], k = tl(t), p = BY[t.guide];
+  return fill(DATA.bodies[tLang(t)], {
+    to: t.complaint.to[k], subject: t.complaint.subject[k], scheme: state.lang === "en" ? p.title : p.local_name,
+    app: ck.app || c.ph.app, date: ck.date ? fmtDate(ck.date) : c.ph.date, days: v.days != null ? v.days : c.ph.days,
+    status: s.status[k], ask: t.complaint.ask[k], name: ck.name || c.ph.name, mobile: ck.mobile || c.ph.mobile,
+    today: new Date().toLocaleDateString(LOCALE[state.lang], { day: "numeric", month: "short", year: "numeric" }) });
+}
+
+function renderResult() {
+  const box = $("#ck-result"), t = TRK[ck.slug];
+  const s = t && t.stages.find(x => x.id === ck.stage);
+  if (!s) { box.innerHTML = ""; return; }
+  const c = CK[state.lang], k = tl(t), L = tLang(t), v = verdict(t, s);
+  box.innerHTML = `
+    <p class="verdict ${v.cls}" role="status">${esc(v.text)}</p>
+    <div class="ck-card" lang="${L}"><h3>${c.mean}</h3><p>${esc(s.meaning[k])}</p><h3>${c.next}</h3><p>${esc(s.next[k])}</p></div>
+    ${v.complain ? `<section class="ck-complaint" aria-labelledby="ck-c-title">
+      <h2 id="ck-c-title">${c.cTitle}</h2>
+      <div class="ck-fields">
+        <label for="ck-name">${c.fName}<input id="ck-name" autocomplete="name" value="${esc(ck.name)}"></label>
+        <label for="ck-app">${c.fApp}<input id="ck-app" autocomplete="off" value="${esc(ck.app)}"></label>
+        <label for="ck-mobile">${c.fMobile}<input id="ck-mobile" inputmode="tel" autocomplete="tel" value="${esc(ck.mobile)}"></label>
+      </div>
+      <textarea id="ck-draft" lang="${L}" rows="14" readonly aria-label="${esc(c.cTitle)}"></textarea>
+      <div class="ck-actions"><button type="button" id="ck-copy">${c.copy}</button><span id="ck-copied" class="small" aria-live="polite"></span></div>
+      <h3>${c.where}</h3><p lang="${L}">${esc(t.complaint.where[k])}</p>
+      <p class="small">${c.privacy}</p>
+    </section>` : ""}
+    <p><a href="#${t.guide}">${c.readGuide} →</a></p>`;
+  if (!v.complain) return;
+  const update = () => { $("#ck-draft").value = draft(t, s, v); };
+  [["#ck-name", "name"], ["#ck-app", "app"], ["#ck-mobile", "mobile"]].forEach(([sel, key]) =>
+    $(sel).addEventListener("input", e => { ck[key] = e.target.value.trim(); update(); }));
+  update();
+  $("#ck-copy").addEventListener("click", () => {
+    const ta = $("#ck-draft"), done = m => { $("#ck-copied").textContent = m; };
+    const fallback = () => { ta.focus(); ta.select(); done(c.copyFail); };
+    try { navigator.clipboard.writeText(ta.value).then(() => done(c.copied), fallback); } catch (e) { fallback(); }
+  });
+}
+
+function renderStages() {
+  const box = $("#ck-stages"), t = TRK[ck.slug], c = CK[state.lang];
+  if (!t) { box.innerHTML = `<p class="small">${c.pick}</p>`; $("#ck-when").hidden = true; renderResult(); return; }
+  const k = tl(t);
+  if (!t.stages.some(s => s.id === ck.stage)) ck.stage = null;
+  box.innerHTML = `<fieldset><legend>${c.s2}</legend><div class="opts" lang="${tLang(t)}">${t.stages.map(s =>
+    `<label class="opt"><input type="radio" name="ck-stage" value="${s.id}"${s.id === ck.stage ? " checked" : ""}><span>${esc(s.status[k])}</span></label>`).join("")}</div></fieldset>`;
+  $("#ck-when").hidden = false;
+  box.querySelectorAll("input[name=ck-stage]").forEach(r => r.addEventListener("change", () => { ck.stage = r.value; renderResult(); }));
+  renderResult();
+}
+
+function renderCheck(slug) {
+  const c = CK[state.lang];
+  if (slug && TRK[slug]) resetFor(slug);
+  const today = new Date().toISOString().slice(0, 10);
+  $("#main").innerHTML = `
+  <article class="gutter"><div class="post check">
+    <a class="back" href="#">← ${UI[state.lang].back}</a>
+    <h1 id="post-title" tabindex="-1">${c.h1}</h1>
+    <p class="lead">${c.lead}</p>
+    <fieldset><legend>${c.s1}</legend><div class="opts">${DATA.trackers.map(t => {
+      const p = BY[t.guide];
+      return `<label class="opt"><input type="radio" name="ck-scheme" value="${t.guide}"${t.guide === ck.slug ? " checked" : ""}><span><b>${esc(title(p))}</b><small>${esc(stateName(p.state))}</small></span></label>`;
+    }).join("")}</div></fieldset>
+    <div id="ck-stages"></div>
+    <div id="ck-when" hidden><label class="when" for="ck-date">${c.s3}<input id="ck-date" type="date" max="${today}" value="${esc(ck.date)}"></label></div>
+    <div id="ck-result" aria-live="polite"></div>
+  </div></article>`;
+  document.querySelectorAll("input[name=ck-scheme]").forEach(r => r.addEventListener("change", () => {
+    resetFor(r.value); $("#ck-date").value = ""; history.replaceState(null, "", "#check-" + r.value); renderStages();
+  }));
+  $("#ck-date").addEventListener("change", e => { ck.date = e.target.value; renderResult(); });
+  renderStages();
+  document.title = `${c.h1} · Sathi Yojana Guides`;
+}
+
 function applyChrome() {
   const u = UI[state.lang];
   document.documentElement.lang = state.lang;
@@ -475,8 +643,9 @@ function applyChrome() {
 
 function route(focus) {
   applyChrome();
-  const p = BY[location.hash.slice(1)];
-  if (p) { renderPost(p); if (focus) { window.scrollTo(0, 0); $("#post-title").focus({ preventScroll: true }); } }
+  const h = location.hash.slice(1), p = BY[h];
+  if (h === "check" || h.startsWith("check-")) { renderCheck(h.slice(6)); if (focus) { window.scrollTo(0, 0); $("#post-title").focus({ preventScroll: true }); } }
+  else if (p) { renderPost(p); if (focus) { window.scrollTo(0, 0); $("#post-title").focus({ preventScroll: true }); } }
   else { renderHome(); if (focus) window.scrollTo(0, 0); }
 }
 
