@@ -131,6 +131,11 @@ h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.3; }
 .opt:has(input:checked) { border-color: var(--leaf); background: var(--leaf-soft); }
 .when { display: grid; gap: 6px; margin-top: 22px; font-family: var(--display); font-weight: 700; font-size: 19px; }
 .when input, .ck-fields input { font: 17px var(--body); min-height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); max-width: 100%; }
+.paste { display: grid; gap: 6px; margin-top: 22px; padding: 14px 16px; border: 1px dashed var(--line); border-radius: 12px; }
+.paste label { font-family: var(--display); font-weight: 700; font-size: 17px; }
+.paste p { margin: 0; }
+.paste textarea { width: 100%; font: 15px/1.5 var(--body); padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); resize: vertical; }
+.paste button { justify-self: start; font: 700 15px var(--body); min-height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--leaf); background: var(--surface); color: var(--leaf); cursor: pointer; }
 .verdict { margin: 24px 0 0; padding: 12px 16px; border-radius: 12px; font-weight: 700; font-size: 18px; }
 .verdict.ok { background: var(--done-soft); color: var(--done); } .verdict.info { background: var(--you-soft); color: var(--you); }
 .verdict.warn { background: var(--haldi-soft); color: var(--haldi); } .verdict.bad { background: var(--stop-soft); color: var(--stop); }
@@ -501,6 +506,7 @@ const CK = {
     cTitle: "Your complaint, ready to send", fName: "Your name", fApp: "Application / registration number", fMobile: "Mobile (optional)",
     copy: "Copy complaint", copied: "Copied", copyFail: "Copy did not work here. The text is selected: copy it from your keyboard or long-press.", where: "Where to send it",
     privacy: "Nothing you type here leaves your phone. Never post Aadhaar or bank numbers in public places.", readGuide: "Read the full guide",
+    pLbl: "Paste your status (optional)", pHint: "Copy the status lines from the portal, or the SMS you got, and paste them here. It stays on your phone.", pBtn: "Find my stage", pFound: x => `This looks like: “${x}”. It is selected below; change it if it is wrong.`, pNone: "Could not recognise this. Pick the closest option below.", pDate: d => `Date found: ${d}. Change it below if this status started on another day.`,
     ph: { app: "[application number]", name: "[your name]", mobile: "-", date: "[date]", days: "[number of]" } },
   mr: { cta: "काम अडकले आहे का? अर्जाची स्थिती तपासा", ctaNote: n => `स्थितीचा अर्थ, पुढची पायरी आणि तक्रारीचा मसुदा. सध्या ${n} योजनांसाठी.`,
     ctaPost: "काम अडकले आहे का? स्थिती तपासा", h1: "काम अडकले आहे का?", lead: "तुमची योजना आणि स्थिती पानावर काय दिसते ते निवडा. साथी त्याचा अर्थ सांगतो, पुढची पायरी सांगतो, आणि कार्यालयाने उशीर केला तर तक्रार लिहून देतो.",
@@ -511,6 +517,7 @@ const CK = {
     cTitle: "तुमची तक्रार, पाठवण्यासाठी तयार", fName: "तुमचे नाव", fApp: "अर्ज / नोंदणी क्रमांक", fMobile: "मोबाईल (ऐच्छिक)",
     copy: "तक्रार कॉपी करा", copied: "कॉपी झाली", copyFail: "येथे कॉपी झाली नाही. मजकूर निवडला आहे: दीर्घ दाबून कॉपी करा.", where: "कुठे पाठवायची",
     privacy: "तुम्ही येथे टाइप केलेले काहीही तुमच्या फोनबाहेर जात नाही. आधार किंवा बँक क्रमांक सार्वजनिक ठिकाणी टाकू नका.", readGuide: "पूर्ण मार्गदर्शक वाचा",
+    pLbl: "तुमची स्थिती पेस्ट करा (ऐच्छिक)", pHint: "पोर्टलवरील स्थितीच्या ओळी किंवा आलेला SMS कॉपी करून येथे पेस्ट करा. हे तुमच्या फोनमध्येच राहते.", pBtn: "माझा टप्पा शोधा", pFound: x => `हे असे दिसते: “${x}”. ते खाली निवडले आहे; चुकीचे असल्यास बदला.`, pNone: "हे ओळखता आले नाही. खालील सर्वात जवळचा पर्याय निवडा.", pDate: d => `तारीख सापडली: ${d}. ही स्थिती दुसऱ्या दिवशी सुरू झाली असल्यास खाली बदला.`,
     ph: { app: "[अर्ज क्रमांक]", name: "[तुमचे नाव]", mobile: "-", date: "[तारीख]", days: "[संख्या]" } },
   hi: { cta: "क्या काम अटका है? आवेदन की स्थिति जांचें", ctaNote: n => `स्थिति का मतलब, अगला कदम और शिकायत का मसौदा। अभी ${n} योजनाओं के लिए।`,
     ctaPost: "क्या काम अटका है? स्थिति जांचें", h1: "क्या काम अटका है?", lead: "अपनी योजना और स्थिति पेज पर जो दिखता है वह चुनें। साथी उसका मतलब बताता है, अगला कदम बताता है, और दफ़्तर देर करे तो शिकायत लिख देता है।",
@@ -521,6 +528,7 @@ const CK = {
     cTitle: "आपकी शिकायत, भेजने के लिए तैयार", fName: "आपका नाम", fApp: "आवेदन / पंजीकरण संख्या", fMobile: "मोबाइल (वैकल्पिक)",
     copy: "शिकायत कॉपी करें", copied: "कॉपी हो गई", copyFail: "यहां कॉपी नहीं हुई। पाठ चुना हुआ है: देर तक दबाकर कॉपी करें।", where: "कहां भेजें",
     privacy: "आप यहां जो लिखते हैं वह आपके फ़ोन से बाहर नहीं जाता। आधार या बैंक नंबर सार्वजनिक जगह पर न डालें।", readGuide: "पूरी मार्गदर्शिका पढ़ें",
+    pLbl: "अपनी स्थिति पेस्ट करें (वैकल्पिक)", pHint: "पोर्टल की स्थिति वाली पंक्तियां या मिला हुआ SMS कॉपी करके यहां पेस्ट करें। यह आपके फ़ोन में ही रहता है।", pBtn: "मेरा चरण खोजें", pFound: x => `यह ऐसा लगता है: “${x}”। यह नीचे चुना गया है; गलत हो तो बदलें।`, pNone: "इसे पहचाना नहीं जा सका। नीचे सबसे नज़दीकी विकल्प चुनें।", pDate: d => `तारीख मिली: ${d}। अगर यह स्थिति किसी और दिन शुरू हुई तो नीचे बदलें।`,
     ph: { app: "[आवेदन संख्या]", name: "[आपका नाम]", mobile: "-", date: "[तारीख]", days: "[संख्या]" } },
   kn: { cta: "ಕೆಲಸ ಸಿಲುಕಿದೆಯೇ? ಅರ್ಜಿಯ ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ", ctaNote: n => `ಸ್ಥಿತಿಯ ಅರ್ಥ, ಮುಂದಿನ ಹಂತ ಮತ್ತು ದೂರಿನ ಕರಡು. ಸದ್ಯಕ್ಕೆ ${n} ಯೋಜನೆಗಳಿಗೆ.`,
     ctaPost: "ಕೆಲಸ ಸಿಲುಕಿದೆಯೇ? ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ", h1: "ಕೆಲಸ ಸಿಲುಕಿದೆಯೇ?", lead: "ನಿಮ್ಮ ಯೋಜನೆ ಮತ್ತು ಸ್ಥಿತಿ ಪುಟದಲ್ಲಿ ಏನು ತೋರಿಸುತ್ತಿದೆ ಎಂದು ಆಯ್ಕೆಮಾಡಿ. ಸಾಥಿ ಅದರ ಅರ್ಥ, ಮುಂದಿನ ಹಂತ ತಿಳಿಸುತ್ತದೆ, ಕಚೇರಿ ತಡ ಮಾಡಿದರೆ ದೂರು ಬರೆದು ಕೊಡುತ್ತದೆ.",
@@ -531,15 +539,35 @@ const CK = {
     cTitle: "ನಿಮ್ಮ ದೂರು, ಕಳುಹಿಸಲು ಸಿದ್ಧ", fName: "ನಿಮ್ಮ ಹೆಸರು", fApp: "ಅರ್ಜಿ / ನೋಂದಣಿ ಸಂಖ್ಯೆ", fMobile: "ಮೊಬೈಲ್ (ಐಚ್ಛಿಕ)",
     copy: "ದೂರು ನಕಲಿಸಿ", copied: "ನಕಲಿಸಲಾಗಿದೆ", copyFail: "ಇಲ್ಲಿ ನಕಲಿಸಲು ಆಗಲಿಲ್ಲ. ಪಠ್ಯ ಆಯ್ಕೆಯಾಗಿದೆ: ದೀರ್ಘವಾಗಿ ಒತ್ತಿ ನಕಲಿಸಿ.", where: "ಎಲ್ಲಿಗೆ ಕಳುಹಿಸಬೇಕು",
     privacy: "ನೀವು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡುವುದು ನಿಮ್ಮ ಫೋನಿನಿಂದ ಹೊರಗೆ ಹೋಗುವುದಿಲ್ಲ. ಆಧಾರ್ ಅಥವಾ ಬ್ಯಾಂಕ್ ಸಂಖ್ಯೆಯನ್ನು ಸಾರ್ವಜನಿಕವಾಗಿ ಹಾಕಬೇಡಿ.", readGuide: "ಪೂರ್ಣ ಮಾರ್ಗದರ್ಶಿ ಓದಿ",
+    pLbl: "ನಿಮ್ಮ ಸ್ಥಿತಿಯನ್ನು ಅಂಟಿಸಿ (ಐಚ್ಛಿಕ)", pHint: "ಪೋರ್ಟಲ್‌ನ ಸ್ಥಿತಿ ಸಾಲುಗಳನ್ನು ಅಥವಾ ಬಂದ SMS ಅನ್ನು ನಕಲಿಸಿ ಇಲ್ಲಿ ಅಂಟಿಸಿ. ಇದು ನಿಮ್ಮ ಫೋನಿನಲ್ಲೇ ಉಳಿಯುತ್ತದೆ.", pBtn: "ನನ್ನ ಹಂತ ಹುಡುಕಿ", pFound: x => `ಇದು ಹೀಗಿದೆ ಎನಿಸುತ್ತದೆ: “${x}”. ಕೆಳಗೆ ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ; ತಪ್ಪಾಗಿದ್ದರೆ ಬದಲಿಸಿ.`, pNone: "ಇದನ್ನು ಗುರುತಿಸಲು ಆಗಲಿಲ್ಲ. ಕೆಳಗಿನ ಹತ್ತಿರದ ಆಯ್ಕೆ ಆರಿಸಿ.", pDate: d => `ದಿನಾಂಕ ಸಿಕ್ಕಿದೆ: ${d}. ಈ ಸ್ಥಿತಿ ಬೇರೆ ದಿನ ಆರಂಭವಾಗಿದ್ದರೆ ಕೆಳಗೆ ಬದಲಿಸಿ.`,
     ph: { app: "[ಅರ್ಜಿ ಸಂಖ್ಯೆ]", name: "[ನಿಮ್ಮ ಹೆಸರು]", mobile: "-", date: "[ದಿನಾಂಕ]", days: "[ಸಂಖ್ಯೆ]" } },
 };
 const TRK = Object.fromEntries(DATA.trackers.map(t => [t.guide, t]));
-const ck = { slug: null, stage: null, date: "", name: "", app: "", mobile: "" };
+const ck = { slug: null, stage: null, date: "", name: "", app: "", mobile: "", paste: "", pasteMsg: "" };
 // Switching scheme clears what belongs to the old application; name and mobile are kept.
-const resetFor = slug => { if (ck.slug !== slug) Object.assign(ck, { slug, stage: null, date: "", app: "" }); };
+const resetFor = slug => { if (ck.slug !== slug) Object.assign(ck, { slug, stage: null, date: "", app: "", paste: "", pasteMsg: "" }); };
 const tl = t => state.lang === "en" ? "en" : "loc";          // tracker text key
 const tLang = t => state.lang === "en" ? "en" : t.local;      // language code of tracker text
 const fill = (tpl, v) => tpl.replace(/\{(\w+)\}/g, (m, k) => v[k] ?? m);
+
+// Match pasted portal / SMS text to a stage: each phrase found scores its length (x3 for act / stuck stages); ties go to the later stage.
+const norm = x => " " + String(x).toLowerCase().replace(/[:|_\-–—/,.()\[\]"']+/g, " ").replace(/\s+/g, " ").trim() + " ";
+function matchStage(t, text) {
+  const hay = norm(text); let best = null, bestScore = 0;
+  t.stages.forEach(s => {
+    const w = s.kind === "act" || s.kind === "stuck" ? 3 : 1;   // a blocker on the page outranks routine lines
+    const score = w * s.match.reduce((n, ph) => { const k = norm(ph); return hay.includes(k) ? n + k.trim().length : n; }, 0);
+    if (score > 0 && score >= bestScore) { best = s; bestScore = score; }
+  });
+  return best;
+}
+// Latest date in the text that is not in the future (dd/mm/yyyy, dd-mm-yyyy, dd.mm.yyyy or yyyy-mm-dd).
+function findDate(text) {
+  const today = new Date().toISOString().slice(0, 10), out = [];
+  for (const m of text.matchAll(/\b(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})\b/g)) out.push(`${m[3]}-${m[2].padStart(2, "0")}-${m[1].padStart(2, "0")}`);
+  for (const m of text.matchAll(/\b(\d{4})-(\d{2})-(\d{2})\b/g)) out.push(m[0]);
+  return out.filter(d => !isNaN(new Date(d)) && d <= today).sort().pop() || "";
+}
 
 function verdict(t, s) {
   const c = CK[state.lang], days = ck.date ? Math.floor((Date.now() - new Date(ck.date + "T00:00:00")) / 86400000) : null;
@@ -600,10 +628,25 @@ function renderStages() {
   if (!t) { box.innerHTML = `<p class="small">${c.pick}</p>`; $("#ck-when").hidden = true; renderResult(); return; }
   const k = tl(t);
   if (!t.stages.some(s => s.id === ck.stage)) ck.stage = null;
-  box.innerHTML = `<fieldset><legend>${c.s2}</legend><div class="opts" lang="${tLang(t)}">${t.stages.map(s =>
+  box.innerHTML = `<div class="paste">
+      <label for="ck-paste">${c.pLbl}</label>
+      <p class="small">${c.pHint}</p>
+      <textarea id="ck-paste" rows="3">${esc(ck.paste)}</textarea>
+      <button type="button" id="ck-find">${c.pBtn}</button>
+      <p id="ck-paste-msg" class="small" aria-live="polite">${esc(ck.pasteMsg)}</p>
+    </div>
+    <fieldset><legend>${c.s2}</legend><div class="opts" lang="${tLang(t)}">${t.stages.map(s =>
     `<label class="opt"><input type="radio" name="ck-stage" value="${s.id}"${s.id === ck.stage ? " checked" : ""}><span>${esc(s.status[k])}</span></label>`).join("")}</div></fieldset>`;
   $("#ck-when").hidden = false;
   box.querySelectorAll("input[name=ck-stage]").forEach(r => r.addEventListener("change", () => { ck.stage = r.value; renderResult(); }));
+  $("#ck-paste").addEventListener("input", e => { ck.paste = e.target.value; });
+  $("#ck-find").addEventListener("click", () => {
+    const s = matchStage(t, ck.paste), d = findDate(ck.paste), msgs = [];
+    if (s) { ck.stage = s.id; msgs.push(c.pFound(s.status[k])); } else { ck.stage = null; msgs.push(c.pNone); }
+    if (d && s) { ck.date = d; $("#ck-date").value = d; msgs.push(c.pDate(fmtDate(d))); }
+    ck.pasteMsg = msgs.join(" ");
+    renderStages();
+  });
   renderResult();
 }
 

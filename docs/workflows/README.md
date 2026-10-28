@@ -102,5 +102,7 @@ Every guide on the website ends with **Did this guide help you? Yes / No** and *
 
 The website's **Am I stuck?** page (`#check`) lets a citizen pick a scheme and the status they see. It explains the stage, gives the next step, and, when the file is overdue or blocked, drafts a complaint in English or the scheme's local language, addressed to the right office. It runs entirely in the browser and stores nothing.
 
+Citizens can also **paste their status text or SMS**. Sathi then picks the matching stage and the latest date in the text. Each stage's `match` phrases in `tracker.py` drive this. Add the exact wording people see on the portal or in SMSes, in English and the local language.
+
 It currently covers PM-KISAN, Income certificate (UP), Ladki Bahin and Gruha Lakshmi. To add a scheme, add an entry to [`../site/tracker.py`](../site/tracker.py). Take its stages, time limits and offices from that scheme's guide and Verification notes. Then run `python3 ../site/build_site.py`. The build fails if a tracker points at a guide that does not exist.
 

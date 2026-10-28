@@ -134,6 +134,7 @@ def trackers(slugs):
         assert tr["guide"] in slugs, f"tracker for unknown guide {tr['guide']}"
         for s in tr["stages"]:
             assert s["kind"] in ("wait", "act", "stuck", "done"), s["id"]
+            assert s["match"], f"{tr['guide']}/{s['id']} needs match phrases"
     return dict(trackers=t["TRACKERS"], bodies=t["BODY"])
 
 
