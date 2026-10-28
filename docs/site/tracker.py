@@ -1,0 +1,222 @@
+"""Content for the "Am I stuck?" status checker on the guides site.
+
+Each tracker belongs to one guide (by slug) and is written in English plus that
+guide's local language, like the guides themselves. A stage is what the citizen
+sees on their status page. kind: wait (normal, keep waiting), act (citizen must
+do something), stuck (blocked; complain), done. follow_up: days after which a
+"wait" or "act" stage counts as overdue and the complaint draft is offered.
+Facts come from the matching guide and its Verification section.
+
+Complaint bodies are str.format templates filled in the browser with
+{to} {subject} {scheme} {app} {date} {days} {status} {ask} {name} {mobile} {today}.
+"""
+
+BODY = {
+    "en": ("To,\n{to}\n\nSubject: {subject} (application {app})\n\nRespected Sir / Madam,\n\n"
+           "I applied for {scheme}. My application number is {app}. Since {date} ({days} days), my status has been: \"{status}\".\n\n"
+           "{ask}\n\nPlease look into this and tell me in writing what is pending, or release the benefit. A screenshot of my status is attached.\n\n"
+           "Name: {name}\nMobile: {mobile}\nDate: {today}"),
+    "mr": ("प्रति,\n{to}\n\nविषय: {subject} (अर्ज क्रमांक {app})\n\nमहोदय / महोदया,\n\n"
+           "मी {scheme} साठी अर्ज केला आहे. माझा अर्ज क्रमांक {app} आहे. {date} पासून ({days} दिवस) माझी स्थिती अशी आहे: \"{status}\".\n\n"
+           "{ask}\n\nकृपया याची दखल घ्यावी आणि काय प्रलंबित आहे ते लेखी कळवावे, किंवा लाभ जमा करावा. माझ्या स्थितीचा स्क्रीनशॉट सोबत जोडला आहे.\n\n"
+           "नाव: {name}\nमोबाईल: {mobile}\nदिनांक: {today}"),
+    "hi": ("सेवा में,\n{to}\n\nविषय: {subject} (आवेदन संख्या {app})\n\nमहोदय / महोदया,\n\n"
+           "मैंने {scheme} के लिए आवेदन किया है। मेरी आवेदन संख्या {app} है। {date} से ({days} दिन) मेरी स्थिति यह है: \"{status}\"।\n\n"
+           "{ask}\n\nकृपया इसकी जांच करें और लिखित में बताएं कि क्या लंबित है, या लाभ जारी करें। मेरी स्थिति का स्क्रीनशॉट संलग्न है।\n\n"
+           "नाम: {name}\nमोबाइल: {mobile}\nदिनांक: {today}"),
+    "kn": ("ಗೆ,\n{to}\n\nವಿಷಯ: {subject} (ಅರ್ಜಿ ಸಂಖ್ಯೆ {app})\n\nಮಾನ್ಯರೇ,\n\n"
+           "ನಾನು {scheme} ಗಾಗಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಿದ್ದೇನೆ. ನನ್ನ ಅರ್ಜಿ ಸಂಖ್ಯೆ {app}. {date} ರಿಂದ ({days} ದಿನಗಳು) ನನ್ನ ಸ್ಥಿತಿ ಹೀಗಿದೆ: \"{status}\".\n\n"
+           "{ask}\n\nದಯವಿಟ್ಟು ಇದನ್ನು ಪರಿಶೀಲಿಸಿ, ಏನು ಬಾಕಿ ಇದೆ ಎಂದು ಲಿಖಿತವಾಗಿ ತಿಳಿಸಿ, ಅಥವಾ ಸೌಲಭ್ಯ ಬಿಡುಗಡೆ ಮಾಡಿ. ನನ್ನ ಸ್ಥಿತಿಯ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಲಗತ್ತಿಸಿದ್ದೇನೆ.\n\n"
+           "ಹೆಸರು: {name}\nಮೊಬೈಲ್: {mobile}\nದಿನಾಂಕ: {today}"),
+}
+
+
+def S(id, kind, follow_up, status, meaning, next):
+    """One stage; status / meaning / next are (English, local) pairs."""
+    return dict(id=id, kind=kind, follow_up=follow_up,
+                status=dict(en=status[0], loc=status[1]), meaning=dict(en=meaning[0], loc=meaning[1]),
+                next=dict(en=next[0], loc=next[1]))
+
+
+def L(en, loc):
+    return dict(en=en, loc=loc)
+
+
+TRACKERS = [
+    dict(guide="pm-kisan", local="mr",
+         stages=[
+             S("pending", "wait", 30,
+               ("Pending for approval / land verification", "मंजुरीसाठी प्रलंबित / जमीन पडताळणी"),
+               ("Your registration is waiting for the Talathi and the state to check your land record.",
+                "तुमची नोंदणी तलाठी आणि राज्याकडून जमीन नोंद तपासणीसाठी प्रलंबित आहे."),
+               ("Check that land seeding shows Yes. If your name or Gat number differs from the 7/12, meet the Talathi with your 7/12 and Aadhaar.",
+                "लँड सीडिंग Yes आहे का ते पाहा. नाव किंवा गट क्रमांक 7/12 शी जुळत नसेल तर 7/12 आणि आधार घेऊन तलाठ्यांना भेटा.")),
+             S("land-no", "act", 30,
+               ("Land seeding: No", "लँड सीडिंग: No"),
+               ("Your 7/12 land record is not linked to your PM-KISAN record, so payments are held.",
+                "तुमची 7/12 जमीन नोंद पीएम-किसान नोंदीशी जोडलेली नाही, त्यामुळे हप्ता थांबला आहे."),
+               ("Meet the Talathi or Krushi Sahayak with your 7/12 and Aadhaar. Land still in a parent's name? Get the ferfar done first.",
+                "7/12 आणि आधार घेऊन तलाठी किंवा कृषी सहायकांना भेटा. जमीन अजून पालकांच्या नावावर? आधी फेरफार करून घ्या.")),
+             S("ekyc", "act", None,
+               ("eKYC: No / pending", "ई-केवायसी: No / प्रलंबित"),
+               ("Payments stop until eKYC is done. Only you can fix this.",
+                "ई-केवायसी होईपर्यंत हप्ते थांबतात. हे तुम्हालाच करावे लागेल."),
+               ("Do eKYC by OTP on pmkisan.gov.in, face authentication in the PM-KISAN app, or fingerprint at a CSC.",
+                "pmkisan.gov.in वर OTP ने, पीएम-किसान ॲपमध्ये चेहरा प्रमाणीकरणाने, किंवा CSC मध्ये अंगठ्याने ई-केवायसी करा.")),
+             S("rft", "wait", 60,
+               ("RFT signed by State Govt", "RFT signed by State Govt"),
+               ("Maharashtra has approved you. The Centre will now make the payment order.",
+                "महाराष्ट्राने तुम्हाला मंजुरी दिली आहे. आता केंद्र सरकार पेमेंट ऑर्डर तयार करेल."),
+               ("Just wait for the next instalment. Keep eKYC and bank linking correct.",
+                "पुढच्या हप्त्याची वाट पाहा. ई-केवायसी आणि बँक लिंक बरोबर ठेवा.")),
+             S("fto", "wait", 21,
+               ("FTO generated, payment confirmation pending", "FTO generated, payment confirmation pending"),
+               ("The payment order is made. The money is on its way to your bank.",
+                "पेमेंट ऑर्डर तयार झाली आहे. पैसे तुमच्या बँकेकडे येत आहेत."),
+               ("Wait one to two weeks. If nothing arrives, check that your bank account is Aadhaar-seeded with DBT on.",
+                "एक-दोन आठवडे थांबा. पैसे आले नाहीत तर बँक खाते आधार-सीडेड आणि DBT सुरू आहे का ते तपासा.")),
+             S("failed", "stuck", 0,
+               ("Payment failed / account not Aadhaar-seeded", "पेमेंट अयशस्वी / खाते आधार-सीडेड नाही"),
+               ("Your bank rejected the transfer, usually because the account is not Aadhaar-seeded, DBT is off or the account is inactive.",
+                "बँकेने रक्कम नाकारली; सहसा खाते आधार-सीडेड नाही, DBT बंद आहे किंवा खाते निष्क्रिय आहे."),
+               ("Go to your bank and ask for \"Aadhaar seeding and DBT on\". Then send the complaint below so the failed instalment is checked.",
+                "बँकेत जाऊन \"आधार सीडिंग आणि DBT सुरू\" करायला सांगा. नंतर अयशस्वी हप्ता तपासला जावा म्हणून खालील तक्रार पाठवा.")),
+             S("paid", "done", None,
+               ("Payment success", "Payment success"),
+               ("The instalment reached your bank.", "हप्ता तुमच्या बँकेत जमा झाला आहे."),
+               ("Keep eKYC, land seeding and bank linking correct so the next instalment also comes.",
+                "पुढचा हप्ताही यावा म्हणून ई-केवायसी, लँड सीडिंग आणि बँक लिंक बरोबर ठेवा.")),
+         ],
+         complaint=dict(
+             to=L("The District Superintending Agriculture Officer / PM-KISAN Help Desk", "जिल्हा अधीक्षक कृषी अधिकारी / पीएम-किसान हेल्प डेस्क"),
+             subject=L("PM-KISAN instalment not received", "पीएम-किसान हप्ता मिळाला नाही"),
+             ask=L("My land, Aadhaar and bank details are correct as far as I know, but the instalment has not reached me.",
+                   "माझ्या माहितीप्रमाणे जमीन, आधार आणि बँक तपशील बरोबर आहेत, तरीही हप्ता मला मिळालेला नाही."),
+             where=L("Register it on the Help Desk at pmkisan.gov.in, file it on CPGRAMS (pgportal.gov.in), or call 155261 / 011-24300606. You can also hand it to the Taluka Agriculture Officer and take an acknowledgement.",
+                     "pmkisan.gov.in वरील हेल्प डेस्कवर नोंदवा, CPGRAMS (pgportal.gov.in) वर दाखल करा, किंवा 155261 / 011-24300606 वर कॉल करा. तालुका कृषी अधिकाऱ्यांना देऊन पोच घेऊ शकता."))),
+
+    dict(guide="up-income-certificate", local="hi",
+         stages=[
+             S("submitted", "wait", 20,
+               ("Application submitted / Pending", "आवेदन जमा / लंबित"),
+               ("Your application is waiting for the Lekhpal's report.", "आपका आवेदन लेखपाल की रिपोर्ट की प्रतीक्षा में है।"),
+               ("Wait. Reported time limits are 7 to 20 days. Keep your application number.",
+                "प्रतीक्षा करें। बताई गई समय-सीमा 7 से 20 दिन है। आवेदन संख्या संभाल कर रखें।")),
+             S("lekhpal", "wait", 20,
+               ("Sent to Lekhpal / Under verification", "लेखपाल को भेजा गया / सत्यापन में"),
+               ("The Lekhpal is checking your income, sometimes with a village visit.",
+                "लेखपाल आपकी आय की जांच कर रहे हैं, कभी-कभी गांव आकर।"),
+               ("If it is slow, meet the Lekhpal with your application number and income proof.",
+                "देर हो रही हो तो आवेदन संख्या और आय प्रमाण लेकर लेखपाल से मिलें।")),
+             S("tehsildar", "wait", 20,
+               ("Pending with Tehsildar", "तहसीलदार के पास लंबित"),
+               ("The Lekhpal's report is done; the Tehsildar has to approve and sign.",
+                "लेखपाल की रिपोर्ट हो चुकी है; तहसीलदार को स्वीकृति और हस्ताक्षर करने हैं।"),
+               ("Wait a few days. If the time limit has passed, complain.",
+                "कुछ दिन प्रतीक्षा करें। समय-सीमा निकल गई हो तो शिकायत करें।")),
+             S("returned", "act", None,
+               ("Objection / Returned for correction", "आपत्ति / सुधार के लिए लौटाया गया"),
+               ("Something in your application did not match.", "आपके आवेदन में कुछ मेल नहीं खाया।"),
+               ("Read the reason on e-District, correct the document, and resubmit.",
+                "ई-डिस्ट्रिक्ट पर कारण पढ़ें, दस्तावेज़ ठीक करें और दोबारा जमा करें।")),
+             S("rejected", "stuck", 0,
+               ("Rejected", "अस्वीकृत"),
+               ("Your application was rejected.", "आपका आवेदन अस्वीकार कर दिया गया।"),
+               ("Read the reason. If it was a document problem, apply again with the right papers. If you think it is wrong, send the complaint below.",
+                "कारण पढ़ें। दस्तावेज़ की कमी थी तो सही कागज़ों के साथ फिर आवेदन करें। आपको गलत लगे तो नीचे दी शिकायत भेजें।")),
+             S("approved", "done", None,
+               ("Approved / Digitally signed", "स्वीकृत / डिजिटल हस्ताक्षरित"),
+               ("Your certificate is ready.", "आपका प्रमाण पत्र तैयार है।"),
+               ("Download it from e-District with your application number and check the name and income.",
+                "आवेदन संख्या से ई-डिस्ट्रिक्ट से डाउनलोड करें और नाम व आय जांच लें।")),
+         ],
+         complaint=dict(
+             to=L("The Tehsildar, Tehsil ______, District ______", "तहसीलदार महोदय, तहसील ______, ज़िला ______"),
+             subject=L("Delay in income certificate", "आय प्रमाण पत्र में देरी"),
+             ask=L("The service time limit has passed and my certificate has not been issued.",
+                   "सेवा की समय-सीमा निकल चुकी है और मेरा प्रमाण पत्र जारी नहीं हुआ है।"),
+             where=L("File it on IGRS Jansunwai (jansunwai.up.nic.in) or call the CM Helpline 1076. You can also give it at the tehsil and take a receipt.",
+                     "आईजीआरएस जनसुनवाई (jansunwai.up.nic.in) पर दर्ज करें या मुख्यमंत्री हेल्पलाइन 1076 पर कॉल करें। तहसील में देकर रसीद भी ले सकते हैं।"))),
+
+    dict(guide="ladki-bahin", local="mr",
+         stages=[
+             S("pending", "wait", 45,
+               ("Pending / Under review", "प्रलंबित / तपासणी सुरू"),
+               ("Women and Child Development officials are checking your form and documents.",
+                "महिला व बाल विकास अधिकारी तुमचा अर्ज आणि कागदपत्रे तपासत आहेत."),
+               ("Wait, and keep your application number. Ask your Anganwadi Sevika if it takes long.",
+                "वाट पाहा आणि अर्ज क्रमांक जपून ठेवा. उशीर झाल्यास अंगणवाडी सेविकेला विचारा.")),
+             S("sent-back", "act", None,
+               ("Sent back / Correction needed", "परत पाठवला / दुरुस्ती आवश्यक"),
+               ("Something in your form or documents needs fixing.", "अर्जात किंवा कागदपत्रांत दुरुस्ती हवी आहे."),
+               ("Read the reason on the portal or ask your Anganwadi Sevika. Correct it and resubmit.",
+                "पोर्टलवर कारण वाचा किंवा अंगणवाडी सेविकेला विचारा. दुरुस्त करून पुन्हा सादर करा.")),
+             S("ekyc", "stuck", 0,
+               ("eKYC pending / removed after eKYC", "ई-केवायसी प्रलंबित / ई-केवायसीनंतर नाव वगळले"),
+               ("Without yearly eKYC, payments stop and names can be removed. Some women were removed by mistake, for example wrongly flagged as government employees.",
+                "दरवर्षी ई-केवायसी नसेल तर पैसे थांबतात आणि नाव वगळले जाऊ शकते. काही महिलांची नावे चुकून वगळली गेली, उदा. चुकीने सरकारी कर्मचारी दाखवले."),
+               ("Do eKYC on the portal when the window is open. If you were removed wrongly, send the complaint below with proof.",
+                "खिडकी उघडी असताना पोर्टलवर ई-केवायसी करा. चुकीने वगळले असल्यास पुराव्यासह खालील तक्रार पाठवा.")),
+             S("approved-no-money", "stuck", 0,
+               ("Approved, but no money", "मंजूर, पण पैसे आले नाहीत"),
+               ("Your name is approved, but the bank did not receive the transfer.", "तुमचे नाव मंजूर आहे, पण बँकेत रक्कम पोहोचली नाही."),
+               ("Ask your bank for \"Aadhaar seeding and DBT on\" and check the account is active. Then send the complaint below.",
+                "बँकेत \"आधार सीडिंग आणि DBT सुरू\" करायला सांगा आणि खाते सक्रिय आहे का पाहा. नंतर खालील तक्रार पाठवा.")),
+             S("rejected", "stuck", 0,
+               ("Rejected", "नाकारला"),
+               ("Your application was rejected.", "तुमचा अर्ज नाकारला गेला."),
+               ("Read the reason. If you are eligible and the reason is wrong, send the complaint below with proof.",
+                "कारण वाचा. तुम्ही पात्र असाल आणि कारण चुकीचे असेल तर पुराव्यासह खालील तक्रार पाठवा.")),
+             S("paid", "done", None,
+               ("Money coming every month", "दरमहा पैसे येत आहेत"),
+               ("₹1,500 reaches your account each month by DBT.", "दरमहा ₹1,500 DBT ने तुमच्या खात्यात येतात."),
+               ("Do eKYC every year and keep your bank details correct.", "दरवर्षी ई-केवायसी करा आणि बँक तपशील बरोबर ठेवा.")),
+         ],
+         complaint=dict(
+             to=L("The District Women and Child Development Officer, District ______", "जिल्हा महिला व बाल विकास अधिकारी, जिल्हा ______"),
+             subject=L("Ladki Bahin payment not received", "लाडकी बहीण योजनेचा लाभ मिळाला नाही"),
+             ask=L("I meet the eligibility conditions, my bank account is Aadhaar-seeded, and I have not received the monthly payment.",
+                   "मी पात्रतेच्या अटी पूर्ण करते, माझे बँक खाते आधार-सीडेड आहे, तरीही मला मासिक लाभ मिळालेला नाही."),
+             where=L("Raise it as a grievance on ladakibahin.maharashtra.gov.in, or hand it to your Anganwadi Sevika / the district WCD office and take an acknowledgement (पोच). Helpline 181 can guide you.",
+                     "ladakibahin.maharashtra.gov.in वर तक्रार नोंदवा, किंवा अंगणवाडी सेविका / जिल्हा महिला व बाल विकास कार्यालयात देऊन पोच घ्या. 181 हेल्पलाइन मार्गदर्शन करू शकते."))),
+
+    dict(guide="ka-gruha-lakshmi", local="kn",
+         stages=[
+             S("pending", "wait", 30,
+               ("Application under verification", "ಅರ್ಜಿ ಪರಿಶೀಲನೆಯಲ್ಲಿದೆ"),
+               ("The department is checking your ration card, Aadhaar and tax records.",
+                "ಇಲಾಖೆ ನಿಮ್ಮ ಪಡಿತರ ಚೀಟಿ, ಆಧಾರ್ ಮತ್ತು ತೆರಿಗೆ ದಾಖಲೆಗಳನ್ನು ಪರಿಶೀಲಿಸುತ್ತಿದೆ."),
+               ("Wait, and keep your acknowledgement number. Call 1902 if it takes long.",
+                "ಕಾಯಿರಿ ಮತ್ತು ಸ್ವೀಕೃತಿ ಸಂಖ್ಯೆ ಜೋಪಾನವಾಗಿಡಿ. ತಡವಾದರೆ 1902 ಗೆ ಕರೆ ಮಾಡಿ.")),
+             S("reverify", "act", None,
+               ("Re-verification / biometric asked", "ಮರುಪರಿಶೀಲನೆ / ಬಯೋಮೆಟ್ರಿಕ್ ಕೇಳಲಾಗಿದೆ"),
+               ("The department wants to confirm your identity again.", "ಇಲಾಖೆ ನಿಮ್ಮ ಗುರುತನ್ನು ಮತ್ತೆ ದೃಢೀಕರಿಸಲು ಬಯಸುತ್ತದೆ."),
+               ("Complete it at a Grama One / Karnataka One centre or during the home visit, or payments may stop.",
+                "ಗ್ರಾಮ ಒನ್ / ಕರ್ನಾಟಕ ಒನ್ ಕೇಂದ್ರದಲ್ಲಿ ಅಥವಾ ಮನೆ ಭೇಟಿಯ ವೇಳೆ ಮಾಡಿಸಿ, ಇಲ್ಲದಿದ್ದರೆ ಹಣ ನಿಲ್ಲಬಹುದು.")),
+             S("approved-no-money", "stuck", 0,
+               ("Approved, but money not credited", "ಮಂಜೂರಾಗಿದೆ, ಆದರೆ ಹಣ ಜಮೆಯಾಗಿಲ್ಲ"),
+               ("Your application is approved, but the transfer did not reach your account.",
+                "ನಿಮ್ಮ ಅರ್ಜಿ ಮಂಜೂರಾಗಿದೆ, ಆದರೆ ಹಣ ನಿಮ್ಮ ಖಾತೆಗೆ ತಲುಪಿಲ್ಲ."),
+               ("Ask your bank to seed Aadhaar to the active account and turn DBT on. Then send the complaint below.",
+                "ಸಕ್ರಿಯ ಖಾತೆಗೆ ಆಧಾರ್ ಜೋಡಿಸಿ DBT ಆನ್ ಮಾಡಲು ಬ್ಯಾಂಕಿಗೆ ಕೇಳಿ. ನಂತರ ಕೆಳಗಿನ ದೂರು ಕಳುಹಿಸಿ.")),
+             S("rejected", "stuck", 0,
+               ("Rejected / not eligible", "ತಿರಸ್ಕೃತ / ಅರ್ಹರಲ್ಲ"),
+               ("Your application was rejected, often for income-tax or GST filing in the family.",
+                "ನಿಮ್ಮ ಅರ್ಜಿ ತಿರಸ್ಕೃತವಾಗಿದೆ, ಹೆಚ್ಚಾಗಿ ಕುಟುಂಬದಲ್ಲಿ ಆದಾಯ ತೆರಿಗೆ ಅಥವಾ GST ಸಲ್ಲಿಕೆಯ ಕಾರಣ."),
+               ("Check the reason. If it is wrong (for example, nobody in the family files tax), send the complaint below with proof.",
+                "ಕಾರಣ ನೋಡಿ. ಅದು ತಪ್ಪಾಗಿದ್ದರೆ (ಉದಾ. ಕುಟುಂಬದಲ್ಲಿ ಯಾರೂ ತೆರಿಗೆ ಸಲ್ಲಿಸುವುದಿಲ್ಲ), ಪುರಾವೆಯೊಂದಿಗೆ ಕೆಳಗಿನ ದೂರು ಕಳುಹಿಸಿ.")),
+             S("paid", "done", None,
+               ("Money credited every month", "ಪ್ರತಿ ತಿಂಗಳು ಹಣ ಜಮೆಯಾಗುತ್ತಿದೆ"),
+               ("₹2,000 reaches your account each month.", "ಪ್ರತಿ ತಿಂಗಳು ₹2,000 ನಿಮ್ಮ ಖಾತೆಗೆ ಬರುತ್ತದೆ."),
+               ("Keep the bank account active and complete any re-verification you are asked for.",
+                "ಬ್ಯಾಂಕ್ ಖಾತೆ ಸಕ್ರಿಯವಾಗಿಡಿ ಮತ್ತು ಕೇಳಿದ ಮರುಪರಿಶೀಲನೆ ಪೂರ್ಣಗೊಳಿಸಿ.")),
+         ],
+         complaint=dict(
+             to=L("The Child Development Project Officer (CDPO), Women and Child Development Department, Taluk ______",
+                  "ಶಿಶು ಅಭಿವೃದ್ಧಿ ಯೋಜನಾಧಿಕಾರಿ (CDPO), ಮಹಿಳಾ ಮತ್ತು ಮಕ್ಕಳ ಅಭಿವೃದ್ಧಿ ಇಲಾಖೆ, ತಾಲೂಕು ______"),
+             subject=L("Gruha Lakshmi amount not received", "ಗೃಹಲಕ್ಷ್ಮಿ ಹಣ ಬಂದಿಲ್ಲ"),
+             ask=L("I am the woman head of the family on our ration card, nobody in the family is a government employee or tax filer, and my Aadhaar-seeded account has not received the money.",
+                   "ನಾನು ನಮ್ಮ ಪಡಿತರ ಚೀಟಿಯಲ್ಲಿ ಕುಟುಂಬದ ಯಜಮಾನಿ, ಕುಟುಂಬದಲ್ಲಿ ಯಾರೂ ಸರ್ಕಾರಿ ನೌಕರರು ಅಥವಾ ತೆರಿಗೆದಾರರಲ್ಲ, ಆದರೂ ನನ್ನ ಆಧಾರ್ ಜೋಡಣೆಯಾದ ಖಾತೆಗೆ ಹಣ ಬಂದಿಲ್ಲ."),
+             where=L("Call the guarantee schemes helpline 1902, give it at the taluk CDPO office and take an acknowledgement, or file it on IPGRS (ipgrs.karnataka.gov.in).",
+                     "ಗ್ಯಾರಂಟಿ ಯೋಜನೆಗಳ ಸಹಾಯವಾಣಿ 1902 ಗೆ ಕರೆ ಮಾಡಿ, ತಾಲೂಕು CDPO ಕಚೇರಿಯಲ್ಲಿ ನೀಡಿ ಸ್ವೀಕೃತಿ ಪಡೆಯಿರಿ, ಅಥವಾ IPGRS (ipgrs.karnataka.gov.in) ನಲ್ಲಿ ದಾಖಲಿಸಿ."))),
+]

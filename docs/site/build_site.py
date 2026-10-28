@@ -8,7 +8,7 @@ workflow and the sources.
 
     python3 docs/site/build_site.py   ->   docs/site/index.html
 """
-import datetime, json, os, pathlib, re
+import datetime, json, os, pathlib, re, runpy
 from bs4 import BeautifulSoup
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -127,6 +127,16 @@ def parse_md(path):
     return guide, links, mermaid, sources, verified
 
 
+def trackers(slugs):
+    """'Am I stuck?' content from tracker.py; every tracker must point at an existing guide."""
+    t = runpy.run_path(str(ROOT / "tracker.py"))
+    for tr in t["TRACKERS"]:
+        assert tr["guide"] in slugs, f"tracker for unknown guide {tr['guide']}"
+        for s in tr["stages"]:
+            assert s["kind"] in ("wait", "act", "stuck", "done"), s["id"]
+    return dict(trackers=t["TRACKERS"], bodies=t["BODY"])
+
+
 def build():
     posts, state_routers = [], {}
     for sid, _, _, _, _, folder, local in STATES:
@@ -141,7 +151,7 @@ def build():
     posts.sort(key=lambda p: ([s[0] for s in STATES].index(p["state"]), order.index(p["cat"])))
     data = dict(cats=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k in CATS],
                 states=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k, _, _ in STATES],
-                posts=posts, routers=state_routers, repo=REPO)
+                posts=posts, routers=state_routers, repo=REPO, **trackers({p["slug"] for p in posts}))
     js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (ROOT / "template.html").read_text().replace("/*__DATA__*/null", js)
     # index.html: page fragment for the claude.ai artifact host, which adds the document skeleton.

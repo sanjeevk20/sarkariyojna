@@ -98,3 +98,9 @@ Every guide on the website ends with **Did this guide help you? Yes / No** and *
 - **Yes / No counts** use [GoatCounter](https://www.goatcounter.com) (free for non-commercial use, no cookies, no personal data). They are off until you create a GoatCounter site and add its code as the repository variable `GOATCOUNTER_CODE` (Settings → Secrets and variables → Actions → Variables). The next deploy turns counting on: page views per guide, plus events `/feedback/<guide>/yes` and `/feedback/<guide>/no`.
 - The page shows each guide's **Verification** date and how many of its official links are confirmed on government pages, so readers can judge how much to trust it.
 
+## "Am I stuck?" status checker
+
+The website's **Am I stuck?** page (`#check`) lets a citizen pick a scheme and the status they see. It explains the stage, gives the next step, and, when the file is overdue or blocked, drafts a complaint in English or the scheme's local language, addressed to the right office. It runs entirely in the browser and stores nothing.
+
+It currently covers PM-KISAN, Income certificate (UP), Ladki Bahin and Gruha Lakshmi. To add a scheme, add an entry to [`../site/tracker.py`](../site/tracker.py). Take its stages, time limits and offices from that scheme's guide and Verification notes. Then run `python3 ../site/build_site.py`. The build fails if a tracker points at a guide that does not exist.
+
