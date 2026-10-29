@@ -9,6 +9,7 @@ A 4-week field pilot in which Common Service Centre (CSC) and state kiosk operat
 | [`operator-handout-en.pdf`](operator-handout-en.pdf) | Same, English, for the team and partners |
 | [`recruitment.md`](recruitment.md) | Messages to CSC district managers and operators (Marathi, Hindi, English), 5-minute demo script, answers to common questions, welcome message |
 | [`case-log.csv`](case-log.csv) | Columns for typing the paper logs into a spreadsheet each week |
+| [`scorecard.py`](scorecard.py) | Weekly scorecard: reads `case-log.csv` and reports the six pass marks, by district and operator, plus follow-ups due |
 | [`pitch-one-pager.md`](pitch-one-pager.md) | One-page summary for MSInS, StartinUP and early investors |
 | [`build_handout.py`](build_handout.py) | Regenerates the handouts; [`qr-check.svg`](qr-check.svg) opens the checker |
 
@@ -44,7 +45,7 @@ How to find operators (messages and demo script in [`recruitment.md`](recruitmen
 | Week | What happens |
 | :--- | :--- |
 | 0 (prep) | Recruit 20 operators. Fill the coordinator name and WhatsApp number in `build_handout.py`, rebuild and print 2 handouts per operator (plus 3 extra log pages). Create a WhatsApp group per district. Train each operator for 30–45 minutes at their kiosk, using a real customer if one walks in. |
-| 1–4 | Operators use Sathi and fill the paper log. Coordinator collects a photo of each log page every Friday and types it into `case-log.csv`. A 20-minute group call each week: what confused customers, wrong content, ideas. |
+| 1–4 | Operators use Sathi and fill the paper log. Coordinator collects a photo of each log page every Friday and types it into `case-log.csv`. Then run `python3 docs/pilot/scorecard.py --week N` and share the top table on the call. A 20-minute group call each week: what confused customers, wrong content, ideas. |
 | 5–8 | Follow-up: on each row's follow-up date, the operator asks the customer (when they return, or by the operator's own call) whether it was solved, and fills the last column. |
 | 8 | Pilot report: the six pass marks, five short case stories (no names), content fixes made, operator quotes. |
 
@@ -95,7 +96,7 @@ Do not pay per case: it rewards inventing rows. Pay for complete logs and follow
 
 ## 8. After the pilot
 
-Write the report with the numbers from `case-log.csv`, then:
+Write the report with the numbers from `python3 docs/pilot/scorecard.py --continue X/Y --errors X/Y --out docs/pilot/scorecard-final.md`, then:
 
 1. Fix every content and wording issue found.
 2. If the pass marks are met, apply to the Maharashtra State Innovation Society (Startup Week) and StartinUP with the report. Check each programme's current call and terms first.
