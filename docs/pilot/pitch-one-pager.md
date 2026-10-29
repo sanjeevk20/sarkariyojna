@@ -22,7 +22,7 @@ When the time limit has passed, it drafts the complaint letter and says where to
 | :--- | :--- |
 | Website | sanjeevk20.github.io/sarkariyojna: mobile-first and fast on low-end phones. Light, dark and black-and-white themes |
 | Coverage | **68 step-by-step guides** across 5 states (Maharashtra, Uttar Pradesh, Karnataka, Madhya Pradesh, Rajasthan) plus central schemes. English, Marathi, Hindi and Kannada |
-| "Am I stuck?" checker | **8 schemes**. It reads pasted portal or SMS status text, flags overdue cases and drafts the complaint |
+| "Am I stuck?" checker | **12 schemes**. It reads pasted portal or SMS status text, flags overdue cases and drafts the complaint |
 | District map | Anonymous counts of where people are stuck, alongside news reports of bribe arrests and payment delays |
 | Trust | Every guide lists its official links, its sources and the date it was checked. Readers can report errors on any page |
 

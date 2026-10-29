@@ -136,8 +136,11 @@ def parse_md(path):
 
 
 def trackers(slugs):
-    """'Am I stuck?' content from tracker.py; every tracker must point at an existing guide."""
+    """'Am I stuck?' content from tracker.py; every tracker must point at an existing guide.
+    Listed in the same order as the guides, so the checker groups schemes by state."""
     t = runpy.run_path(str(ROOT / "tracker.py"))
+    order = {s: i for i, s in enumerate(slugs)}
+    t["TRACKERS"].sort(key=lambda tr: order.get(tr["guide"], len(order)))
     for tr in t["TRACKERS"]:
         assert tr["guide"] in slugs, f"tracker for unknown guide {tr['guide']}"
         for s in tr["stages"]:
@@ -204,7 +207,7 @@ def build():
     posts.sort(key=lambda p: ([s[0] for s in STATES].index(p["state"]), order.index(p["cat"])))
     data = dict(cats=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k in CATS],
                 states=[dict(id=i, en=e, mr=m, hi=h, kn=k) for i, e, m, h, k, _, _ in STATES],
-                posts=posts, routers=state_routers, repo=REPO, **trackers({p["slug"] for p in posts}), **map_data())
+                posts=posts, routers=state_routers, repo=REPO, **trackers([p["slug"] for p in posts]), **map_data())
     js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = (ROOT / "template.html").read_text().replace("/*__DATA__*/null", js)
     # index.html: page fragment for the claude.ai artifact host, which adds the document skeleton.
