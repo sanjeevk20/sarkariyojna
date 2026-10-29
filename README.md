@@ -13,6 +13,7 @@ Sathi tells common citizens in Maharashtra, Uttar Pradesh, Karnataka, Madhya Pra
 | `docs/workflows/ka/README.md` | **Karnataka guides** (10, English + Kannada): five guarantees (Gruha Lakshmi, Gruha Jyothi, Shakti, Anna Bhagya, Yuva Nidhi), caste and income certificate, land mutation, pensions, SSP scholarship, PM-KISAN (FRUITS) |
 | `docs/workflows/mp/README.md` | **Madhya Pradesh guides** (10, English + Hindi): Ladli Behna, Ladli Laxmi, Samagra ID, income / domicile / caste certificates, land mutation (Cyber Tehsil), CM Kisan Kalyan, social security pension, ration card |
 | `docs/workflows/rj/README.md` | **Rajasthan guides** (10, English + Hindi): Jan Aadhaar, income / Mool Niwas / caste certificates, namantaran, social security pension, food security ration, Lado Protsahan, MAA Yojana, PM-KISAN + CM Kisan Samman Nidhi |
+| `docs/pilot/README.md` | **CSC / kiosk operator pilot kit**: 4-week pilot plan with pass marks, printable operator handouts (Marathi, Hindi, English) with QR and case log, pitch one-pager |
 | `docs/workflows/README.md` | **Index of all workflow guides**, grouped by category, with quick routers |
 | `docs/product-brief.md` | Product brief: pain points, differentiator, 12 concepts, Scheme Finder deep dive, MVP plan, tech stack |
 | `docs/workflows/pm-kisan.md` | PM-KISAN: step-by-step farmer guide + system workflow with Sathi touchpoints |

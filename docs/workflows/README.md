@@ -104,7 +104,7 @@ The website's **Am I stuck?** page (`#check`) lets a citizen pick a scheme and t
 
 Citizens can also **paste their status text or SMS**. Sathi then picks the matching stage and the latest date in the text. Each stage's `match` phrases in `tracker.py` drive this. Add the exact wording people see on the portal or in SMSes, in English and the local language.
 
-It currently covers PM-KISAN, Income certificate (UP), Ladki Bahin, Gruha Lakshmi, Ladli Behna (MP) and Social security pension (Rajasthan). To add a scheme, add an entry to [`../site/tracker.py`](../site/tracker.py). Take its stages, time limits and offices from that scheme's guide and Verification notes. Then run `python3 ../site/build_site.py`. The build fails if a tracker points at a guide that does not exist.
+It currently covers PM-KISAN (Maharashtra and UP), Income certificate (UP), Old-age pension (UP), Ladki Bahin, Gruha Lakshmi, Ladli Behna (MP) and Social security pension (Rajasthan). To add a scheme, add an entry to [`../site/tracker.py`](../site/tracker.py). Take its stages, time limits and offices from that scheme's guide and Verification notes. Then run `python3 ../site/build_site.py`. The build fails if a tracker points at a guide that does not exist.
 
 ## "Where are people stuck?" map
 
