@@ -1,0 +1,110 @@
+"""MAA Yojana health cover (Rajasthan) guide content (EN + HI)."""
+
+OUT = "rj-maa-yojana-guide"
+PHASE_BREAK = 4
+
+T = {'en': {'lang': 'en',
+        'font': "'Noto Sans','FreeSans',sans-serif",
+        'h1': 'MAA Yojana: cashless treatment up to ₹25 lakh',
+        'sub': 'मुख्यमंत्री आयुष्मान आरोग्य (मा) योजना',
+        'benefit': 'Cashless hospital treatment up to ₹25 lakh per family per year, plus ₹10 lakh accident cover',
+        'legend': ['You do this', 'Government does this (you wait)', 'Treated cashless'],
+        'phases': ['Before you need it', 'At the hospital'],
+        'who': {'you': 'You', 'gov': 'Government', 'done': 'Done'},
+        'stuck': 'Stuck?',
+        'tip': 'Tip:',
+        'steps': [('you',
+                   'Check free or paid',
+                   'मुफ़्त या सशुल्क जांचें',
+                   '<ul><li><b>Free:</b> NFSA ration families, SECC 2011 families, small and marginal farmers, state '
+                   'contract workers</li><li><b>Others:</b> about <b>₹850 per family per year</b></li></ul>',
+                   None),
+                  ('you',
+                   'Register with Jan Aadhaar',
+                   'जन आधार से पंजीकरण',
+                   'On <b>sso.rajasthan.gov.in</b> choose the MAA Yojana service, enter the <b>Jan Aadhaar number</b>, '
+                   'do Aadhaar eKYC and choose free or paid. Or go to e-Mitra.',
+                   ('tip',
+                    "Almost every Rajasthan service now starts from your family's <b>Jan Aadhaar</b>. Names must match "
+                    'Aadhaar. No Jan Aadhaar yet? See the <b>Jan Aadhaar</b> guide first.')),
+                  ('you',
+                   "Keep the family's eKYC done",
+                   'परिवार का ई-केवाईसी पूरा रखें',
+                   'Aadhaar eKYC is needed for the head of family and members above 5 years.',
+                   ('stuck', 'A member missing from Jan Aadhaar is not covered. Add them to Jan Aadhaar first.')),
+                  ('gov',
+                   'Cover becomes active',
+                   'बीमा सक्रिय होता है',
+                   'Once registered (and the premium paid, if you are in the paid group), the family is covered for '
+                   'the policy year.',
+                   None),
+                  ('you',
+                   'At an empanelled hospital',
+                   'सूचीबद्ध अस्पताल में',
+                   'Show your <b>Jan Aadhaar</b> at the MAA help desk of an empanelled hospital. Treatment in covered '
+                   'packages should be <b>cashless</b>.',
+                   ('stuck',
+                    'Asked to pay for a covered package? Do not pay; ask the help desk for a written refusal and call '
+                    'Sampark 181.')),
+                  ('done',
+                   'Cashless treatment',
+                   'कैशलेस इलाज',
+                   'Keep the discharge summary. Check that no money was charged for covered items.',
+                   None)],
+        'rights_t': 'Refused or charged? Complain.',
+        'rights': 'Complain on <b>Rajasthan Sampark 181</b> with your Jan Aadhaar number and the hospital name, and to '
+                  'the scheme helpline shown on the MAA portal.',
+        'help': '<b>Register:</b> SSO portal or e-Mitra · <b>Complaints:</b> Sampark 181<br><b>Free for eligible '
+                'families</b> · Premium and cover as reported'},
+ 'hi': {'lang': 'hi',
+        'font': "'Noto Sans Devanagari','Noto Sans','FreeSans',sans-serif",
+        'h1': 'मा योजना: ₹25 लाख तक कैशलेस इलाज',
+        'sub': None,
+        'benefit': 'प्रति परिवार प्रति वर्ष ₹25 लाख तक कैशलेस अस्पताल इलाज, साथ में ₹10 लाख दुर्घटना बीमा',
+        'legend': ['यह आप करें', 'यह सरकार करती है (आप प्रतीक्षा करें)', 'कैशलेस इलाज हुआ'],
+        'phases': ['ज़रूरत से पहले', 'अस्पताल में'],
+        'who': {'you': 'आप', 'gov': 'सरकार', 'done': 'पूरा'},
+        'stuck': 'अटक गए?',
+        'tip': 'सुझाव:',
+        'steps': [('you',
+                   'मुफ़्त या सशुल्क जांचें',
+                   None,
+                   '<ul><li><b>मुफ़्त:</b> NFSA राशन परिवार, SECC 2011 परिवार, लघु और सीमांत किसान, राज्य के संविदा '
+                   'कर्मी</li><li><b>अन्य:</b> लगभग <b>₹850 प्रति परिवार प्रति वर्ष</b></li></ul>',
+                   None),
+                  ('you',
+                   'जन आधार से पंजीकरण',
+                   None,
+                   '<b>sso.rajasthan.gov.in</b> पर मा योजना सेवा चुनें, <b>जन आधार संख्या</b> डालें, आधार ई-केवाईसी '
+                   'करें और मुफ़्त या सशुल्क चुनें। या ई-मित्र पर जाएं।',
+                   ('tip',
+                    'राजस्थान की लगभग हर सेवा अब परिवार के <b>जन आधार</b> से शुरू होती है। नाम आधार से मेल खाने चाहिए। '
+                    'जन आधार नहीं है? पहले <b>जन आधार</b> मार्गदर्शिका देखें।')),
+                  ('you',
+                   'परिवार का ई-केवाईसी पूरा रखें',
+                   None,
+                   'परिवार के मुखिया और 5 वर्ष से बड़े सदस्यों का आधार ई-केवाईसी ज़रूरी है।',
+                   ('stuck', 'जन आधार में जिस सदस्य का नाम नहीं, उसे बीमा नहीं मिलता। पहले उसे जन आधार में जोड़ें।')),
+                  ('gov',
+                   'बीमा सक्रिय होता है',
+                   None,
+                   'पंजीकरण (और सशुल्क श्रेणी में प्रीमियम भुगतान) के बाद परिवार पॉलिसी वर्ष के लिए कवर होता है।',
+                   None),
+                  ('you',
+                   'सूचीबद्ध अस्पताल में',
+                   None,
+                   'सूचीबद्ध अस्पताल की मा हेल्प डेस्क पर अपना <b>जन आधार</b> दिखाएं। कवर पैकेज का इलाज <b>कैशलेस</b> '
+                   'होना चाहिए।',
+                   ('stuck',
+                    'कवर पैकेज के लिए पैसे मांगे? न दें; हेल्प डेस्क से लिखित इनकार मांगें और संपर्क 181 पर कॉल '
+                    'करें।')),
+                  ('done',
+                   'कैशलेस इलाज',
+                   None,
+                   'डिस्चार्ज सारांश संभाल कर रखें। जांचें कि कवर चीज़ों का कोई पैसा नहीं लिया गया।',
+                   None)],
+        'rights_t': 'मना किया या पैसे लिए? शिकायत करें।',
+        'rights': 'जन आधार संख्या और अस्पताल के नाम के साथ <b>राजस्थान संपर्क 181</b> पर, और मा पोर्टल पर दी गई योजना '
+                  'हेल्पलाइन पर शिकायत करें।',
+        'help': '<b>पंजीकरण:</b> SSO पोर्टल या ई-मित्र · <b>शिकायत:</b> संपर्क 181<br><b>पात्र परिवारों के लिए '
+                'मुफ़्त</b> · प्रीमियम और कवर बताए अनुसार'}}

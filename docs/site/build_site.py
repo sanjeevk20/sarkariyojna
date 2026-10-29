@@ -36,6 +36,9 @@ CATEGORY = {
     "mp-ladli-behna": "women", "mp-ladli-laxmi": "women", "mp-samagra-id": "docs", "mp-income-certificate": "docs",
     "mp-domicile-certificate": "docs", "mp-caste-certificate": "docs", "mp-land-mutation": "docs",
     "mp-kisan-kalyan": "farm", "mp-social-pension": "pension", "mp-ration-card": "pension",
+    "rj-jan-aadhaar": "docs", "rj-income-certificate": "docs", "rj-mool-niwas": "docs", "rj-caste-certificate": "docs",
+    "rj-land-mutation": "docs", "rj-social-pension": "pension", "rj-ration-card": "pension",
+    "rj-lado-protsahan": "women", "rj-maa-yojana": "health", "rj-kisan-samman": "farm",
 }
 # (id, English, Marathi, Hindi, Kannada, folder, local language of its guides)
 STATES = [
@@ -43,6 +46,7 @@ STATES = [
     ("up", "Uttar Pradesh", "उत्तर प्रदेश", "उत्तर प्रदेश", "ಉತ್ತರ ಪ್ರದೇಶ", WF / "up", "hi"),
     ("ka", "Karnataka", "कर्नाटक", "कर्नाटक", "ಕರ್ನಾಟಕ", WF / "ka", "kn"),
     ("mp", "Madhya Pradesh", "मध्य प्रदेश", "मध्य प्रदेश", "ಮಧ್ಯ ಪ್ರದೇಶ", WF / "mp", "hi"),
+    ("rj", "Rajasthan", "राजस्थान", "राजस्थान", "ರಾಜಸ್ಥಾನ", WF / "rj", "hi"),
 ]
 # (id, English, Marathi, Hindi, Kannada)
 CATS = [

@@ -12,7 +12,7 @@ body:
     id: state
     attributes:
       label: State
-      description: Filled in by the website (mh, up, ka or mp).
+      description: Filled in by the website (mh, up, ka, mp or rj).
     validations:
       required: true
   - type: input
