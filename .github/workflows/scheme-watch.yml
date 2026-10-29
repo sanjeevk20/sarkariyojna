@@ -1,0 +1,76 @@
+name: Scheme watch (weekly)
+
+# Every Monday 06:12 IST: open every official link in the guides, compare with last week, and open a
+# "Scheme watch" issue listing pages whose text changed, new notices / orders, and broken links.
+# Last week's snapshots live on the scheme-watch-data branch (created on the first run).
+on:
+  schedule:
+    - cron: "42 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write  # push state.json to the scheme-watch-data branch
+  issues: write    # open the weekly report issue
+
+concurrency:
+  group: scheme-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      DATA_BRANCH: scheme-watch-data
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Get last week's state
+        run: |
+          mkdir -p watch-data
+          if git ls-remote --exit-code --heads origin "$DATA_BRANCH" >/dev/null; then
+            git fetch --depth 1 origin "$DATA_BRANCH"
+            git --work-tree=watch-data checkout "origin/$DATA_BRANCH" -- state.json || true
+            git reset -q
+          fi
+          ls -la watch-data
+
+      - name: Check official links
+        id: watch
+        run: python3 docs/watch/scheme_watch.py --state watch-data/state.json --report report.md
+
+      - name: Save this week's state
+        run: |
+          cd watch-data
+          git init -q
+          git config user.name "scheme-watch[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q -b "$DATA_BRANCH"
+          printf '# Scheme watch data\n\nWritten by .github/workflows/scheme-watch.yml on main. Do not edit by hand.\n' > README.md
+          git add state.json README.md
+          git commit -q -m "Scheme watch state $(date -u +%F)"
+          git push -q --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "$DATA_BRANCH"
+
+      - name: Open the weekly issue
+        if: steps.watch.outputs.notable == 'true'
+        run: |
+          gh label create scheme-watch --color 0E8A16 --description "Weekly report of changes on official scheme pages" --force
+          title="Scheme watch: $(date -u +%F)"
+          # Issue bodies are limited to 65,536 characters; the full report is kept as a run artifact.
+          if [ "$(wc -c < report.md)" -gt 60000 ]; then
+            head -c 58000 report.md > body.md
+            printf '\n\n…report truncated. Full report: %s/%s/actions/runs/%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" >> body.md
+          else
+            cp report.md body.md
+          fi
+          gh issue create --title "$title" --label scheme-watch --body-file body.md
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scheme-watch-report
+          path: report.md
+          retention-days: 90
