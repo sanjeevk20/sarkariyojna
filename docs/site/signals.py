@@ -11,7 +11,9 @@ stuck payments or services). district=None marks a state-wide signal, listed but
 ALIASES = {"Aurangabad": "Chhatrapati Sambhajinagar", "Raigarh": "Raigad", "Bid": "Beed",
            "Mysore": "Mysuru", "Belgaum": "Belagavi", "Gulbarga": "Kalaburagi", "Bangalore": "Bengaluru",
            "Allahabad": "Prayagraj", "Faizabad": "Ayodhya",
-           "Hoshangabad": "Narmadapuram", "East Nimar": "Khandwa", "West Nimar": "Khargone", "Narsimhapur": "Narsinghpur"}
+           "Hoshangabad": "Narmadapuram", "East Nimar": "Khandwa", "West Nimar": "Khargone", "Narsimhapur": "Narsinghpur",
+           "Ganganagar": "Sri Ganganagar", "Chittaurgarh": "Chittorgarh", "Dhaulpur": "Dholpur", "Jalor": "Jalore",
+           "Jhunjhunun": "Jhunjhunu"}
 
 
 def sig(state, district, month, kind, service, summary, src, url):
@@ -78,4 +80,17 @@ SIGNALS = [
     sig("mp", "Chhatarpur", "2026-03", "bribe-arrest", "Land compensation",
         "A patwari was arrested taking ₹50,000 (₹1.5 lakh allegedly demanded) to release Ken-Betwa project compensation; he denies the charge.",
         "Free Press Journal", "https://www.freepressjournal.in/bhopal/mp-news-patwari-caught-red-handed-accepting-50k-bribe-in-exchange-of-releasing-compensation-under-ken-betwa-link-project-in-chhatarpur"),
+    # ---------------- Rajasthan
+    sig("rj", "Rajsamand", "2026-05", "bribe-arrest", "Land mutation (gift deed)",
+        "ACB trapped a patwari in Khamnor tehsil taking ₹4,000 (₹7,000 demanded) to start mutation of land received by gift deed.",
+        "SocialNews / IANS", "https://www.socialnews.xyz/2026/05/26/rajasthan-acb-arrests-patwari-taking-bribe-in-land-mutation-case/amp/"),
+    sig("rj", "Ganganagar", "2026-06", "bribe-arrest", "Joint khata partition",
+        "ACB caught a patwari in Padampur tehsil taking ₹50,000, the first instalment of a ₹1 lakh demand, to partition and correct a joint land account.",
+        "ThePrint / PTI", "https://theprint.in/india/acb-arrests-patwari-while-taking-rs-50k-bribe-in-rajasthan/2948514/"),
+    sig("rj", "Bhilwara", "2026-07", "bribe-arrest", "Land record work",
+        "ACB arrested a patwari taking a ₹20,000 bribe for land work.",
+        "Patrika", "https://www.patrika.com/bhilwara-news/acb-action-on-patwari-bhanwar-singh-arrested-for-taking-20k-rupees-bribe-20727566"),
+    sig("rj", "Jaipur", "2026-03", "delay", "Pension verification",
+        "About 1.37 lakh social security pensioners in Jaipur district had not completed annual verification and risked having their pension stopped.",
+        "Patrika", "https://www.patrika.com/en/jaipur-news/rajasthan-pension-scheme-1-36-lakh-beneficiaries-risk-losing-pension-if-task-not-completed-by-march-31-20439716"),
 ]
