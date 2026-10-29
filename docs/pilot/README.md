@@ -34,7 +34,7 @@ Below half of any pass mark, stop and fix that part before expanding. All six me
 | Why | Mixed rural and urban; land-record bribe and Ladki Bahin eKYC problems already on the Sathi map | Large rural caseload; lekhpal bribe arrests on the map; three UP checkers ready |
 | Operators | 10 (CSC VLEs and Aaple Sarkar Seva Kendra operators) | 10 (CSC VLEs and Jan Seva Kendra operators) |
 | Handout | Marathi | Hindi |
-| Checkers most used | PM-KISAN, Ladki Bahin | PM-KISAN (UP), old-age pension, income certificate |
+| Checkers most used | PM-KISAN, Ladki Bahin, income certificate, 7/12 ferfar, Sanjay Gandhi / Shravanbal pension | PM-KISAN (UP), old-age pension, income certificate |
 
 These are proposals: swap either district if you have stronger contacts elsewhere. Pick operators with a mix of busy town kiosks and village centres, and at least 3 run by women.
 

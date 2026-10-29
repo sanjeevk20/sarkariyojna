@@ -84,9 +84,10 @@ T = {
 
 # Which checkers each pilot handout lists (the pilot states' own schemes first).
 COVER = {
- "en": ("PM-KISAN, Ladki Bahin, income certificate (UP), old-age pension (UP), Ladli Behna (MP), "
-        "Gruha Lakshmi (Karnataka), social security pension (Rajasthan)", 68),
- "mr": ("पीएम-किसान, माझी लाडकी बहीण योजना (तसेच UP, MP, कर्नाटक व राजस्थानच्या काही योजना)", 68),
+ "en": ("Maharashtra: PM-KISAN, Ladki Bahin, income certificate, 7/12 ferfar, Sanjay Gandhi and Shravanbal pensions. "
+        "UP: PM-KISAN, old-age pension, income certificate. Also Karnataka, MP and Rajasthan schemes", 68),
+ "mr": ("पीएम-किसान, माझी लाडकी बहीण योजना, उत्पन्नाचा दाखला, 7/12 फेरफार, संजय गांधी निराधार व श्रावणबाळ पेन्शन "
+        "(तसेच UP, MP, कर्नाटक व राजस्थानच्या काही योजना)", 68),
  "hi": ("पीएम-किसान, वृद्धावस्था पेंशन, आय प्रमाण पत्र (उत्तर प्रदेश), लाड़ली बहना (मप्र), सामाजिक सुरक्षा पेंशन (राजस्थान)", 68),
 }
 
