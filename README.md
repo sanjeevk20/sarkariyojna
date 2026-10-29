@@ -15,6 +15,7 @@ Sathi tells common citizens in Maharashtra, Uttar Pradesh, Karnataka, Madhya Pra
 | `docs/workflows/rj/README.md` | **Rajasthan guides** (10, English + Hindi): Jan Aadhaar, income / Mool Niwas / caste certificates, namantaran, social security pension, food security ration, Lado Protsahan, MAA Yojana, PM-KISAN + CM Kisan Samman Nidhi |
 | `docs/pilot/README.md` | **CSC / kiosk operator pilot kit**: 4-week pilot plan with pass marks, printable operator handouts (Marathi, Hindi, English) with QR and case log, pitch one-pager |
 | `docs/watch/README.md` | **Weekly scheme watch**: GitHub Actions job checks all official links for changed pages, new orders and broken links, then a Claude scheduled task proposes guide updates as a PR |
+| `tests/README.md` | **Tests** run by GitHub on every pull request: checker data, map signals, guides, pilot scorecard, scheme watch, and browser tests of all 12 checkers, 68 guides, map and themes |
 | `docs/workflows/README.md` | **Index of all workflow guides**, grouped by category, with quick routers |
 | `docs/product-brief.md` | Product brief: pain points, differentiator, 12 concepts, Scheme Finder deep dive, MVP plan, tech stack |
 | `docs/workflows/pm-kisan.md` | PM-KISAN: step-by-step farmer guide + system workflow with Sathi touchpoints |
