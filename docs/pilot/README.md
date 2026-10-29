@@ -7,6 +7,7 @@ A 4-week field pilot in which Common Service Centre (CSC) and state kiosk operat
 | [`operator-handout-mr.pdf`](operator-handout-mr.pdf) | Operator guide + paper case log, **Marathi** (Maharashtra pilot). Print 2 pages, A4 |
 | [`operator-handout-hi.pdf`](operator-handout-hi.pdf) | Same, **Hindi** (Uttar Pradesh pilot) |
 | [`operator-handout-en.pdf`](operator-handout-en.pdf) | Same, English, for the team and partners |
+| [`recruitment.md`](recruitment.md) | Messages to CSC district managers and operators (Marathi, Hindi, English), 5-minute demo script, answers to common questions, welcome message |
 | [`case-log.csv`](case-log.csv) | Columns for typing the paper logs into a spreadsheet each week |
 | [`pitch-one-pager.md`](pitch-one-pager.md) | One-page summary for MSInS, StartinUP and early investors |
 | [`build_handout.py`](build_handout.py) | Regenerates the handouts; [`qr-check.svg`](qr-check.svg) opens the checker |
@@ -36,7 +37,7 @@ Below half of any pass mark, stop and fix that part before expanding. All six me
 
 These are proposals: swap either district if you have stronger contacts elsewhere. Pick operators with a mix of busy town kiosks and village centres, and at least 3 run by women.
 
-How to find operators: the district CSC manager (CSC e-Governance Services) and the district e-governance society can introduce VLEs; also ask at the tehsil office kiosk cluster. Offer a short demo on their own customer's status.
+How to find operators (messages and demo script in [`recruitment.md`](recruitment.md)): the district CSC manager (CSC e-Governance Services) and the district e-governance society can introduce VLEs; also ask at the tehsil office kiosk cluster. Offer a short demo on their own customer's status.
 
 ## 3. Timeline
 
