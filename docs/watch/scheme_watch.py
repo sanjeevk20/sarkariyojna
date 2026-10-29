@@ -187,7 +187,7 @@ def report(cmp, prev_state, cur, links, baseline):
     lines += ["| What | Count |", "| :--- | ---: |",
               f"| Pages whose text changed | {len(cmp['changed'])} |",
               f"| Pages with new notices / orders / PDFs | {len(cmp['notices'])} |",
-              f"| Links that stopped working | {len(cmp['failing'])} |",
+              f"| {'Links that did not open' if baseline else 'Links that stopped working'} | {len(cmp['failing'])} |",
               f"| Links working again | {len(cmp['recovered'])} |",
               f"| Still not working | {len(cmp['still'])} |", ""]
     prev = prev_state.get("pages", {})
@@ -214,7 +214,8 @@ def report(cmp, prev_state, cur, links, baseline):
                 lines.append(f"- … and {len(fresh) - 15} more")
             lines.append("")
     if cmp["failing"]:
-        lines += ["## Links that stopped working", "", "| Link | Problem | Cited in |", "| :--- | :--- | :--- |"]
+        lines += ["## Links that did not open" if baseline else "## Links that stopped working", "",
+                  "| Link | Problem | Cited in |", "| :--- | :--- | :--- |"]
         lines += [f"| {u} | {cur[u].get('error') or cur[u].get('status')} | {cites(links, u)} |" for u in cmp["failing"]]
         lines.append("")
     if cmp["recovered"]:

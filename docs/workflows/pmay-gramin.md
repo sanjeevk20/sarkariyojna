@@ -1,6 +1,6 @@
 # PM Awas Yojana - Gramin (PMAY-G) - End-to-End Workflow
 
-Rural housing: financial help to build a pucca house, released in stages as construction progresses. Official site: https://pmayg.nic.in. Urban families use [PMAY-Urban 2.0](pmay-urban.md).
+Rural housing: financial help to build a pucca house, released in stages as construction progresses. Official site: https://pmayg.dord.gov.in. Urban families use [PMAY-Urban 2.0](pmay-urban.md).
 
 ## For citizens: step by step
 
@@ -22,7 +22,7 @@ Use only these addresses. Checked on 27 Oct 2026 through search results; the gov
 
 | What | Link | Checked via |
 | :--- | :--- | :--- |
-| PMAY-G: beneficiary search and reports | <https://pmayg.nic.in> | Third-party sites only |
+| PMAY-G: beneficiary search and reports | <https://pmayg.dord.gov.in> | Government page |
 | PIB: PMAY-G document (PDF) | <https://static.pib.gov.in/WriteReadData/specificdocs/documents/2024/nov/doc20241119437801.pdf> | Government page |
 
 ## For the Sathi team: system workflow
@@ -83,6 +83,7 @@ flowchart TD
 
 ## Verification (27 Oct 2026, batch 3)
 
+- **29 Oct 2026:** the PMAY-G portal moved from pmayg.nic.in (no longer resolves) to [pmayg.dord.gov.in](https://pmayg.dord.gov.in/netiayHome/Home.aspx), run by the Department of Rural Development.
 - **Confirmed (official):** 2024-29 phase, 2 crore houses; unit assistance **₹1.20 lakh** (plains) / **₹1.30 lakh** (NE, hill states, J&K, Ladakh); **90/95 days MGNREGA** wages; **₹12,000** toilet support; identification via **Awaas+ 2024 app** (launched 17 Sep 2024).
 - **Changed in guide:** exclusion list updated to the **Sept 2024 relaxed criteria**: still excluded for motorised 3/4-wheelers, mechanised farm equipment, KCC limit ₹50,000+, income/professional tax payers, 2.5+ acres irrigated land; two-wheelers, fridges and income up to ₹15,000/month **no longer** exclude.
 - **Still unverified:** instalment count/stages, state gharkul scheme names, land-purchase assistance, grievance route.
