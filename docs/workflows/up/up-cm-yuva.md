@@ -23,7 +23,6 @@ Use only these addresses. Checked on 27 Oct 2026 through search results; the gov
 | What | Link | Checked via |
 | :--- | :--- | :--- |
 | UP MSME One Connect: CM-YUVA scheme page | <https://msme1connect.up.gov.in/Home/SchemesList/18> | Government page |
-| ODOP UP: Mukhyamantri Yuva Udyami page | <https://odopup.in/en/page/myuva> | Third-party sites only |
 | IGRS Jansunwai: complaints | <https://jansunwai.up.nic.in> | Third-party sites only |
 | CM Helpline: 1076 | - | Third-party sites only |
 
@@ -53,6 +52,7 @@ flowchart TD
 
 ## Verification (27 Oct 2026)
 
+- **29 Oct 2026:** removed the odopup.in Yuva Udyami page link, which returns 404; the UP MSME One Connect CM-YUVA page remains the official link.
 - **Reported:** interest-free, collateral-free loans up to ₹5 lakh; 10 percent margin-money subsidy; age 21 to 40; Class 8 pass; 2026 instruction to banks to speed up disbursal.
 - **Conflicting, left out:** second-phase loan size and subsidy (sources differ), and the exact application portal address (msme1connect vs diupmsme.upsdc.gov.in).
 - **Still unverified:** helpline numbers.

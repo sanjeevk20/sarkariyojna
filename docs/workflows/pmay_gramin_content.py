@@ -38,7 +38,7 @@ T = {
   ],
   rights_t="Stuck for long? Complain.",
   rights="Give a written complaint to the <b>BDO, Panchayat Samiti</b> with your PMAY-G registration number and take an <b>acknowledgement (पोच)</b>. You can also use the central grievance portal <b>CPGRAMS</b>.",
-  help="<b>Check status:</b> pmayg.nic.in → beneficiary search (registration number)<br>Selection and instalments are <b>free</b>, never pay anyone to \"get your name\" or \"release\" money · <b>Use only .gov.in / .nic.in websites</b>",
+  help="<b>Check status:</b> pmayg.dord.gov.in → beneficiary search (registration number)<br>Selection and instalments are <b>free</b>, never pay anyone to \"get your name\" or \"release\" money · <b>Use only .gov.in / .nic.in websites</b>",
  ),
  "mr": dict(
   lang="mr", font="'Noto Sans Devanagari','Noto Sans','FreeSans',sans-serif",
@@ -74,6 +74,6 @@ T = {
   ],
   rights_t="खूप दिवस अडकले? तक्रार करा.",
   rights="तुमच्या PMAY-G नोंदणी क्रमांकासह <b>गटविकास अधिकारी, पंचायत समिती</b> यांना लेखी तक्रार द्या आणि <b>पोच</b> घ्या. केंद्राच्या <b>CPGRAMS</b> तक्रार पोर्टलचाही वापर करता येतो.",
-  help="<b>स्थिती तपासा:</b> pmayg.nic.in → लाभार्थी शोध (नोंदणी क्रमांक)<br>निवड आणि हप्ते <b>मोफत</b> आहेत, \"नाव लावण्यासाठी\" किंवा \"पैसे सोडवण्यासाठी\" कोणालाही पैसे देऊ नका · <b>फक्त .gov.in / .nic.in वेबसाइट वापरा</b>",
+  help="<b>स्थिती तपासा:</b> pmayg.dord.gov.in → लाभार्थी शोध (नोंदणी क्रमांक)<br>निवड आणि हप्ते <b>मोफत</b> आहेत, \"नाव लावण्यासाठी\" किंवा \"पैसे सोडवण्यासाठी\" कोणालाही पैसे देऊ नका · <b>फक्त .gov.in / .nic.in वेबसाइट वापरा</b>",
  ),
 }
